@@ -60,6 +60,9 @@ include ($repInclude . "connexionBDD.php");
                 <li class="smenu">
                     <a href="cModifierCharges.php" title="Charges">Charges</a>
                 </li>  
+<!--                <li class="smenu">
+                   <a href="cConsulterBaseDeDonnee.php" title="Charges">Consulter la BDD</a>
+                </li> -->
                 <li class="smenu">
                     <a href="cSeDeconnecter.php" title="Se déconnecter">Se déconnecter</a>
                 </li>

@@ -25,7 +25,7 @@ require($repInclude . "_sommaire.inc.php");
     <div id="contenu">
         <?php
         include ($repInclude . "connexionBDD.php");
-        echo "<h2>Consultation de toutes les tables de la base de donnée $nomBDD :</h2>";
+        echo "<h2>Affichage des BDD</h2>";
         $lesTables = $pdo->query("SHOW TABLES", PDO::FETCH_NUM);
 
         //parcourir chaque table de la base $nomBDD ici gsb_frais
