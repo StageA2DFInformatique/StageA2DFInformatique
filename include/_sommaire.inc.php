@@ -67,5 +67,4 @@ include ($repInclude . "connexionBDD.php");
         <?php
     }
     ?>
-</ul>
 </div>
