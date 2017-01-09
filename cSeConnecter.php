@@ -23,7 +23,7 @@ if ($etape == 'validerConnexion') { // un client demande à s'authentifier
         affecterInfosConnecte($lgUser["id"], $lgUser["login"]);
     } else {
         $nbErreur ++; //le compteur du nombre de tentative n'est pas au point
-        ajouterErreur($tabErreurs, "Pseudo et/ou mot de passe incorrects" . " Tentative n°" . $nbErreur . " [ " . $mdp . " ] est un mauvais mot de passe ou [ " . $login . " ] est un mauvais identifiant, veuillez réessayer s'il vout plait");
+        ajouterErreur($tabErreurs, "Pseudo et/ou mot de passe incorrects, veuillez réessayer s'il vout plait");
     }
 }
 if ($etape == "validerConnexion" && nbErreurs($tabErreurs) == 0) {
