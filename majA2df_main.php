@@ -7,8 +7,8 @@ include("include/fct.inc.php");
 
 $serveur='mysql:host=localhost';
 $bdd='dbname=a2df_informatique';   		
-$user='ADMINA2DF' ;    		
-$mdp='ADMINA2DF' ;	
+$user='fbaraud' ;    		
+$mdp='admin' ;	
 
 /* fin paramètres*/
 /*tentative de connexion a la base de donnée*/

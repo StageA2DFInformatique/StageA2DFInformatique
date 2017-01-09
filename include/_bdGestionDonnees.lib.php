@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Se connecte au serveur de donn�es MySql.                      
  * Se connecte au serveur de donn�es MySql � partir de valeurs

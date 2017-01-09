@@ -6,7 +6,7 @@
  */
 $repInclude = './include/';
 require($repInclude . "_init.inc.php");
-$idConnexion = connecterServeurBD();
+
 // est-on au 1er appel du programme ou non ?
 $etape = (count($_POST) != 0) ? 'validerConnexion' : 'demanderConnexion';
 
@@ -14,14 +14,16 @@ if ($etape == 'validerConnexion') { // un client demande à s'authentifier
     // acquisition des données envoyées, ici login et mot de passe
     $login = lireDonneePost("txtLogin");
     $mdp = lireDonneePost("txtMdp");
-    $mdp = md5($mdp);
+    //ajout de la fontion md5 qui prend en parametre me mot de passe non crypté saisit par l'utilisateur pour le crypter et le comparer a celui crypté dans la base de donnée
+    $lgUser = verifierInfosConnexion($idConnexion, $login, md5($mdp));
 
-    $lgUser = verifierInfosConnexion($idConnexion, $login, $mdp);
     // si l'id utilisateur a été trouvé, donc informations fournies sous forme de tableau
+    $nbErreur = 0;
     if (is_array($lgUser)) {
         affecterInfosConnecte($lgUser["id"], $lgUser["login"]);
     } else {
-        ajouterErreur($tabErreurs, "Pseudo et/ou mot de passe incorrects, veuillez réessayer");
+        $nbErreur ++; //le compteur du nombre de tentative n'est pas au point
+        ajouterErreur($tabErreurs, "Pseudo et/ou mot de passe incorrects" . " Tentative n°" . $nbErreur . " [ " . $mdp . " ] est un mauvais mot de passe ou [ " . $login . " ] est un mauvais identifiant, veuillez réessayer s'il vout plait");
     }
 }
 if ($etape == "validerConnexion" && nbErreurs($tabErreurs) == 0) {
