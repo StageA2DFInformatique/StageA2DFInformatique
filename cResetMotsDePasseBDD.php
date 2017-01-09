@@ -28,7 +28,7 @@
             $laTable = "Visiteur";
             echo 'Mise a jour des mots de passes des utilisateurs de la ' . $laTable . ' de la base de donnée '.$nomBDD.' en mot de passes de base: <br/>';
             //liste des mots de passe de base
-            $mdpDeBase = array('admin', 'employe1', 'employe2');              
+            $mdpDeBase = array('joliverie', 'jux7g', 'oppg5', 'gmhxd', 'ktp3s', 'doyw1', 'hrjfs', '4vbnd', 's1y1r', 'uf7r3', '6u8dc', 'u817o', 'bw1us', '2hoh9', '7oqpv', 'gk9kx', 'od5rt', 'nvwqq', 'sghkb', 'f1fob', '4k2o5', '44im8', 'qf77j', 'y2qdu', 'i7sn3', 'mpb3t', 'xs5tq', 'dywvt');              
             //on selectionne tout dans la base que lon stock le resultat de la requete SQL dans la variable $contenuTable
             $contenuTable = $pdo->query("SELECT * from $laTable");
             //on recupere le contenu des lignes de la table
@@ -38,7 +38,7 @@
             //pour chaque ligne
             foreach ($lignes as $ligne) {
                 //message si les mots de passe sont déjà standards
-                if($ligne['mdp'] == 'admin' || $ligne['mdp'] == 'employe1' || $ligne['mdp'] == 'employe2'){
+                if($ligne['mdp'] == 'joliverie' || $ligne['mdp'] == 'jux7g' || $ligne['mdp'] == 'oppg5' || $ligne['mdp'] == 'gmhxd' || $ligne['mdp'] == 'ktp3s' || $ligne['mdp'] == 'doyw1' || $ligne['mdp'] == 'hrjfs' || $ligne['mdp'] == '4vbnd' || $ligne['mdp'] == 's1y1r' || $ligne['mdp'] == 'uf7r3' || $ligne['mdp'] == '6u8dc' || $ligne['mdp'] == 'u817o' || $ligne['mdp'] == 'bw1us' || $ligne['mdp'] == '2hoh9' || $ligne['mdp'] == '7oqpv' || $ligne['mdp'] == 'gk9kx' || $ligne['mdp'] == 'od5rt' || $ligne['mdp'] == 'nvwqq' || $ligne['mdp'] == 'sghkb' || $ligne['mdp'] == 'f1fob' || $ligne['mdp'] == '4k2o5' || $ligne['mdp'] == '44im8' || $ligne['mdp'] == 'qf77j' || $ligne['mdp'] == 'y2qdu' || $ligne['mdp'] == 'i7sn3' || $ligne['mdp'] == 'mpb3t' || $ligne['mdp'] == 'xs5tq' || $ligne['mdp'] == 'dywvt'){
                     echo '<h2>Le mot de passe de <mark>'.$ligne['login'].'</mark> ('.$ligne['prenom']." ".$ligne['nom'].') est déjà le mot de passe de base : <mark>'.$ligne['mdp'].'</mark>.</h2></br>';    
                 }else{
                     //sinon on execute la remise a jour des mots de passe de base
@@ -54,6 +54,7 @@
     </body>
 </html>
 <?php        
+  require($repInclude . "_pied.inc.html");
   require($repInclude . "_fin.inc.php");
 ?> 
 
