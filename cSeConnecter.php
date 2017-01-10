@@ -9,7 +9,7 @@ require($repInclude . "_init.inc.php");
 // Si l'utilisateur veut aller sur la page précédente il est renvoyé sur la page d'accueil pour ne pas retomber sur la page d'authentification
 if ( estVisiteurConnecte() ) 
 {
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    header('Location: ' . $_SERVER['HTTP_REFERER']); // $_SERVER (historique ) ['HTTP_REFERER'] (page précédente)
 }
 // est-on au 1er appel du programme ou non ?
 $etape = (count($_POST) != 0) ? 'validerConnexion' : 'demanderConnexion';
