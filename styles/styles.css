@@ -34,23 +34,23 @@ body{
 }
 #menuGauche {
     margin-top : 0em;
-    padding: 1em;
+    padding: 0.5em;
     color: #E9F1FE;
     float: left;
     width: 20%;
 }
-
+.arrondie2 {
+    border:2px solid black;
+    -moz-border-radius:7px;
+    -webkit-border-radius:7px;
+    border-radius:7px;
+}
 #contenu{
     padding: 1.8em;
     background-color: white;
     margin-top : 1.2em;
     margin-left: 20%;
     margin-right: 20%;
-    /* permet de fixer une hauteur mini sur les navigateurs modernes */
-    min-height:16em;
-    /* pour obtenir le m�me effet sur IE, sachant que si le contenu d�passe, il
-    "poussera" la hauteur en ne respectant pas la norme. On se joue de ses lacunes
-    */
     height:27em;
     border: 2px solid #F5B46C;
 }
@@ -120,14 +120,6 @@ ul#menuList a:hover {
     vertical-align:middle;
 }
 
-/* Style des formulaires */
-.corpsForm {
-    padding-top: 5px;
-    border : solid 0.1em #000;
-    border-bottom-width:1px;
-    margin-bottom : 0em;
-    width : 100%;
-}
 .piedForm {
     border-bottom-width : 0.1em;
     border-left-width : 0.1em;
@@ -289,7 +281,7 @@ table.listeLegere th.libelle{
     color: white;
     text-decoration: none;
     border : 1px solid #626262;
-    padding-left: 25%;
+    padding-left: 35%;
     padding-top: 2px;
     background-color: #626262;
     height : 28px;

@@ -52,11 +52,11 @@ if ($etape == "validerConnexion") {
             <input type="hidden" name="etape" id="etape" value="validerConnexion" />
             <p>
                 <label for="txtLogin" accesskey="n">Login* : </label>
-                <input type="text" id="txtLogin" name="txtLogin" maxlength="20" size="15" value="" title="Entrez votre login" />
+                <input type="text" id="txtLogin" name="txtLogin" maxlength="40" size="40" value="" title="Entrez votre login" />
             </p>
             <p>
                 <label for="txtMdp" accesskey="m">Mot de passe* : </label>
-                <input type="password" id="txtMdp" name="txtMdp" maxlength="40" size="15" value=""  title="Entrez votre mot de passe"/>
+                <input type="password" id="txtMdp" name="txtMdp" maxlength="40" size="40" value=""  title="Entrez votre mot de passe"/>
             </p>
         </div>
         <div class="bouton">

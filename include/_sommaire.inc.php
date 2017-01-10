@@ -25,7 +25,7 @@ include ($repInclude . "connexionBDD.php");
             <?php
             //different affichage selon la personne connecté (administrateur ou simple visiteur)
             if ($login == 'admin') {
-                echo '<center><h4>François Baraud</h4></center>';
+                echo '<center><h3>François Baraud</h3></center>';
             }
         }
         ?>  
@@ -33,7 +33,7 @@ include ($repInclude . "connexionBDD.php");
     <?php
     if (estVisiteurConnecte()) {
         ?>
-        <div class="corpsForm">
+        <div class="arrondie2">
             <ul id="menuList">
                 <li class="smenu">
                     <a href="cAccueil.php" title="Page d'accueil">Accueil</a>
@@ -49,14 +49,11 @@ include ($repInclude . "connexionBDD.php");
                     <a href="cConsulterGraphique.php" title="Graphique">Graphique</a>
                 </li> 
                 <li class="smenu">
-                    <a href="cModifierFournisseurs.php" title="Fournisseurs">Fournisseurs</a>
+                    <a href="cGestionFournisseurs.php" title="Fournisseurs">Fournisseurs</a>
                 </li> 
                 <li class="smenu">
-                    <a href="cModifierCharges.php" title="Charges">Charges</a>
+                    <a href="cGestionCharges.php" title="Charges">Charges</a>
                 </li>  
-                <!--                <li class="smenu">
-                                   <a href="cConsulterBaseDeDonnee.php" title="Charges">Consulter la BDD</a>
-                                </li> -->
                 <li class="smenu">
                     <a href="cSeDeconnecter.php" title="Se déconnecter">Se déconnecter</a>
                 </li>

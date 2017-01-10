@@ -14,7 +14,7 @@ require($repInclude . "_sommaire.inc.php");
 
 //Division principale
 echo '<div id="contenu">';
-echo "<h2>Tableau de Bord</h2>";
+echo "<h2>Charges</h2>";
 echo '</div>';
 ?>
 <?php
