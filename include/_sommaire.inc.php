@@ -24,15 +24,9 @@ include ($repInclude . "connexionBDD.php");
             </h2>
             <?php
             //different affichage selon la personne connecté (administrateur ou simple visiteur)
-            if ($login != 'admin') {
-                ?>
-                <h3>Employé</h3>  
-                <?php
-            } else {
-                echo '<h3>François Baraud</h3>';
+            if ($login == 'admin') {
+                echo '<center><h4>François Baraud</h4></center>';
             }
-            ?>
-            <?php
         }
         ?>  
     </div>  
@@ -60,9 +54,9 @@ include ($repInclude . "connexionBDD.php");
                 <li class="smenu">
                     <a href="cModifierCharges.php" title="Charges">Charges</a>
                 </li>  
-<!--                <li class="smenu">
-                   <a href="cConsulterBaseDeDonnee.php" title="Charges">Consulter la BDD</a>
-                </li> -->
+                <!--                <li class="smenu">
+                                   <a href="cConsulterBaseDeDonnee.php" title="Charges">Consulter la BDD</a>
+                                </li> -->
                 <li class="smenu">
                     <a href="cSeDeconnecter.php" title="Se déconnecter">Se déconnecter</a>
                 </li>

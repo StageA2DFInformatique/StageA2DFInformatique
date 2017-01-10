@@ -33,11 +33,11 @@ body{
     border-collapse: separate;
 }
 #menuGauche {
-    margin-top : 0.8em;
+    margin-top : 0em;
     padding: 1em;
     color: #E9F1FE;
     float: left;
-    width: 14%;
+    width: 20%;
 }
 
 #contenu{
