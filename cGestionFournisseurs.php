@@ -1,4 +1,9 @@
+<!--Contrôleur : gestion des Fournisseurs-->
+use modele\dao\FournisseursDAO;
+use modele\metier\Fournisseurs;
+use modele\dao\Bdd;
 <?php
+
 $repInclude = './include/';
 require($repInclude . "_init.inc.php");
 
@@ -9,19 +14,18 @@ if (!estVisiteurConnecte()) {
 require($repInclude . "_entete.inc.html");
 require($repInclude . "_sommaire.inc.php");
 ?>
+<?php
+
+//Division principale
+echo '<div id="contenu">';
+echo "<h2>Bienvenue sur l'accueil</h2>";
+echo '</div>';
+?>
 <!-- Division pour le contenu principal -->
 <div id="contenu">
     <h2>Fournisseurs</h2>
     <?php
-
-    /**
-     * Contrôleur : gestion des Fournisseurs
-     */
-    use modele\dao\FournisseursDAO;
-    use modele\metier\Fournisseurs;
-    use modele\dao\Bdd;
-
-require_once __DIR__ . '/includes/autoload.php';
+    require_once __DIR__ . '/includes/autoload.php';
     Bdd::connecter();
 
     include("includes/_gestionErreurs.inc.php");
