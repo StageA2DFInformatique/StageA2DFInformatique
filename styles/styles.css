@@ -1,7 +1,6 @@
 /* Styles des divisions principales de la page */
 body{
     background-color: rgb(70, 70, 70);
-    background-image: url(imgs/FONDGLOBAL.jpg);
     background-repeat: repeat-x;
     margin:0% 0%;
     padding : 0.6em;
@@ -9,16 +8,16 @@ body{
     font-size:0.8em;
 }
 #page {
-    background-color:rgb(105, 105, 105);
-    width : 50%;
+    background-color:#626262;
+    width : 30%;
     margin : auto ;
     border : 0.2em solid black;
-    padding : 0.1em;
+    border-radius: 10px;
+    padding : 0.3em;
 }
 #entete{
     background-color:rgb(98, 98, 98);
     color : #980101;
-    border: 1px solid black;;
     height: 142px;
     padding: 1em;
     border-collapse: separate;
@@ -44,6 +43,7 @@ body{
     -moz-border-radius:7px;
     -webkit-border-radius:7px;
     border-radius:7px;
+    background-color: #626262;
 }
 #contenu{
     padding: 1.8em;
@@ -52,7 +52,8 @@ body{
     margin-left: 20%;
     margin-right: 20%;
     height:27em;
-    border: 2px solid #F5B46C;
+    border: 2px solid black;
+    border-radius: 7px;
 }
 
 /* pour r�tablir le mauvais effet sur les nav. modernes */
@@ -87,7 +88,7 @@ ul#menuList a:hover {
     color: black;
     font-weight:bold;
     text-transform:uppercase;
-    }
+}
 
 #entete #logoA2DF {
     float : none;
@@ -281,7 +282,8 @@ table.listeLegere th.libelle{
     font-weight: lighter;
     color: white;
     text-decoration: none;
-    border : 1px solid #626262;
+    border : 1px solid #F5B46C;
+    border-radius: 7px;
     padding-left: 35%;
     padding-top: 2px;
     background-color: #626262;
@@ -293,4 +295,12 @@ table.listeLegere th.libelle{
     height : 28px;
     float : left;
 
+}
+.copy-right {
+    color: #808080;
+    position:absolute;
+    bottom:0;
+    min-height: 1px;
+    padding-right: 0%;
+    padding-left: 40%;
 }
