@@ -18,6 +18,6 @@ deconnecterServeurBD($idConnexion);
     </head>
     <body>
         <div class="copy-right">
-            Copyright © Charly FLEURANCE 2017
+            <p>Copyright © Charly FLEURANCE 2017</p>
         </div>
     </body>

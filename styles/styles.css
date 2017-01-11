@@ -304,10 +304,3 @@ table.listeLegere th.libelle{
     padding-right: 0%;
     padding-left: 40%;
 }
-#linkAccueil{
-    border:1px solid #40A9DF;
-    box-shadow: 0 0 1em #40A9DF;
-    -webkit-box-shadow: 0 0 1em #40A9DF;
-    -o-box-shadow: 0 0 1em #40A9DF;
-    -moz-box-shadow: 0 0 1em #40A9DF;
-}
