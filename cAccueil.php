@@ -17,6 +17,7 @@ echo '<div id="contenu">';
 echo "<h2>Bienvenue sur l'accueil</h2>";
 echo '</div>';
 ?>
+
 <?php
 
 require($repInclude . "_fin.inc.php");

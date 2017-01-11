@@ -36,7 +36,7 @@ include ($repInclude . "connexionBDD.php");
         <div class="arrondie2">
             <ul id="menuList">
                 <li class="smenu">
-                    <a href="cAccueil.php" title="Page d'accueil">Accueil</a>
+                    <a href="cAccueil.php" title="Accueil">Accueil</a>
                 </li>
 
                 <li class="smenu">

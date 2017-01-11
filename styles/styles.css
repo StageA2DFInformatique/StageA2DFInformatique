@@ -63,7 +63,7 @@ html>body #contenu{
 /* style � appliquer � la balise ul d'identifiant menulist */
 ul#menuList{
     list-style:none;
-    margin:5px;
+    margin:10px;
     padding:0px;
     width:100%;
     font-size: 1em;
@@ -84,9 +84,10 @@ ul#menuList a {
     width:100%;
 }
 ul#menuList a:hover {
-    background: rgb(0,85,227);
-    color: white;
-}
+    color: black;
+    font-weight:bold;
+    text-transform:uppercase;
+    }
 
 #entete #logoA2DF {
     float : none;

@@ -1,73 +1,5 @@
 <?php
 /** 
- * Regroupe les fonctions utilitaires et de gestion des erreurs.
- * @package default
- * @todo  fonction estMoisValide à définir complètement ou à supprimer
- */
-
-
-function obtenirLibelleMois($unNoMois) {
-    $tabLibelles = array(1=>"Janvier", 
-                            "Février", "Mars", "Avril", "Mai", "Juin", "Juillet",
-                            "Août", "Septembre", "Octobre", "Novembre", "Décembre");
-    $libelle="";
-    if ( $unNoMois >=1 && $unNoMois <= 12 ) {
-        $libelle = $tabLibelles[$unNoMois];
-    }
-    return $libelle;
-}
-
-/** 
- * Vérifie si une chaîne fournie est bien une date valide, au format JJ/MM/AAAA.                     
- * 
- * Retrourne true si la chaîne $date est une date valide, au format JJ/MM/AAAA, false sinon.
- * @param string date à vérifier
- * @return boolean succès ou échec
- */ 
-function estDate($date) {
-	$tabDate = explode('/',$date);
-	if (count($tabDate) != 3) {
-	    $dateOK = false;
-    }
-    elseif (!verifierEntiersPositifs($tabDate)) {
-        $dateOK = false;
-    }
-    elseif (!checkdate($tabDate[1], $tabDate[0], $tabDate[2])) {
-        $dateOK = false;
-    }
-    else {
-        $dateOK = true;
-    }
-	return $dateOK;
-}
-
-/**
- * Transforme une date au format format anglais aaaa-mm-jj vers le format 
- * français jj/mm/aaaa 
- * @param $date au format  aaaa-mm-jj
- * @return string la date au format format français jj/mm/aaaa
-*/
-function convertirDateAnglaisVersFrancais($date){
-    @list($annee,$mois,$jour) = explode('-',$date);
-	return date("d/m/Y", mktime(0, 0, 0, $mois, $jour, $annee));
-}
-
-/**
- * Indique si une date est incluse ou non dans l'année écoulée.
- * 
- * Retourne true si la date $date est comprise entre la date du jour moins un an et la 
- * la date du jour. False sinon.   
- * @param $date date au format jj/mm/aaaa
- * @return boolean succès ou échec
-*/
-function estDansAnneeEcoulee($date) {
-	$dateAnglais = convertirDateFrancaisVersAnglais($date);
-	$dateDuJourAnglais = date("Y-m-d");
-	$dateDuJourMoinsUnAnAnglais = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d"), date("Y") - 1));
-	return ($dateAnglais >= $dateDuJourMoinsUnAnAnglais) && ($dateAnglais <= $dateDuJourAnglais);
-}
-
-/** 
  * Vérifie si une chaîne fournie est bien numérique entière positive.                     
  * 
  * Retrourne true si la valeur transmise $valeur ne contient pas d'autres 
@@ -77,24 +9,6 @@ function estDansAnneeEcoulee($date) {
  */ 
 function estEntierPositif($valeur) {
     return preg_match("/[^0-9]/", $valeur) == 0;
-}
-
-/** 
- * Vérifie que chaque valeur est bien renseignée et numérique entière positive.
- *  
- * Renvoie la valeur booléenne true si toutes les valeurs sont bien renseignées et
- * numériques entières positives. False si l'une d'elles ne l'est pas.
- * @param array $lesValeurs tableau des valeurs
- * @return booléen succès ou échec
- */ 
-function verifierEntiersPositifs($lesValeurs){
-    $ok = true;     
-    foreach ( $lesValeurs as $val ) {
-        if ($val=="" || ! estEntierPositif($val) ) {
-            $ok = false;
-        }
-    }
-    return $ok; 
 }
 
 /** 
@@ -216,42 +130,5 @@ function toStringErreurs($tabErr) {
  */ 
 function filtrerChainePourNavig($str) {
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
-}
-
-/** 
- * Vérifie la validité des données d'une ligne de frais hors forfait.
- *  
- * Renseigne le tableau des messages d'erreurs d'après les erreurs rencontrées
- * sur chaque donnée d'une ligne de frais hors forfait : vérifie que chaque 
- * donnée est bien renseignée, le montant est numérique positif, la date valide
- * et dans l'année écoulée.  
- * @param array $date date d'engagement de la ligne de frais HF
- * @param array $libelle libellé de la ligne de frais HF
- * @param array $montant montant de la ligne de frais HF
- * @param array $tabErrs tableau des messages d'erreurs passé par référence
- * @return void
- */ 
-function verifierLigneFraisHF($date, $libelle, $montant, &$tabErrs) {
-    // vérification du libellé 
-    if ($libelle == "") {
-		ajouterErreur($tabErrs, "Le libellé doit être renseigné.");
-	}
-	// vérification du montant
-	if ($montant == "") {
-		ajouterErreur($tabErrs, "Le montant doit être renseigné.");
-	}
-	elseif ( !is_numeric($montant) || $montant < 0 ) {
-        ajouterErreur($tabErrs, "Le montant doit être numérique positif.");
-    }
-    // vérification de la date d'engagement
-	if ($date == "") {
-		ajouterErreur($tabErrs, "La date d'engagement doit être renseignée.");
-	}
-	elseif (!estDate($date)) {
-		ajouterErreur($tabErrs, "La date d'engagement doit être valide au format JJ/MM/AAAA");
-	}	
-	elseif (!estDansAnneeEcoulee($date)) {
-	    ajouterErreur($tabErrs,"La date d'engagement doit se situer dans l'année écoulée");
-    }
 }
 ?>
