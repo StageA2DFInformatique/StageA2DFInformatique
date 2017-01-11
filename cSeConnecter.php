@@ -7,8 +7,7 @@
 $repInclude = './include/';
 require($repInclude . "_init.inc.php");
 // Si l'utilisateur veut aller sur la page précédente il est renvoyé sur la page d'accueil pour ne pas retomber sur la page d'authentification
-if ( estVisiteurConnecte() ) 
-{
+if (estVisiteurConnecte()) {
     header('Location: ' . $_SERVER['HTTP_REFERER']); // $_SERVER (historique ) ['HTTP_REFERER'] (page précédente)
 }
 // est-on au 1er appel du programme ou non ?
@@ -40,24 +39,26 @@ require($repInclude . "_sommaire.inc.php");
 <!-- Division pour le contenu principal -->
 <div id="contenu">
     <h2>Identifiez - vous</h2>
-<?php
-if ($etape == "validerConnexion") {
-    if (nbErreurs($tabErreurs) > 0) {
-        echo toStringErreurs($tabErreurs);
+    <?php
+    if ($etape == "validerConnexion") {
+        if (nbErreurs($tabErreurs) > 0) {
+            echo toStringErreurs($tabErreurs);
+        }
     }
-}
-?>               
+    ?>               
     <form id="frmConnexion" action="" method="post">
         <div class="corpsForm">
-            <input type="hidden" name="etape" id="etape" value="validerConnexion" />
-            <p>
-                <label for="txtLogin" accesskey="n">Login* : </label>
-                <input type="text" id="txtLogin" name="txtLogin" maxlength="40" size="40" value="" title="Entrez votre login" />
-            </p>
-            <p>
-                <label for="txtMdp" accesskey="m">Mot de passe* : </label>
-                <input type="password" id="txtMdp" name="txtMdp" maxlength="40" size="40" value=""  title="Entrez votre mot de passe"/>
-            </p>
+            <div class="linkAccueil">
+                <input type="hidden" name="etape" id="etape" value="validerConnexion" />
+                <p>
+                    <label for="txtLogin" accesskey="n">Login* : </label>
+                    <input type="text" id="txtLogin" name="txtLogin" maxlength="40" size="40" value="" title="Entrez votre login" />
+                </p>
+                <p>
+                    <label for="txtMdp" accesskey="m">Mot de passe* : </label>
+                    <input type="password" id="txtMdp" name="txtMdp" maxlength="40" size="40" value=""  title="Entrez votre mot de passe"/>
+                </p>
+            </div>
         </div>
         <div class="bouton">
             <p>

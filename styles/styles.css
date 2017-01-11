@@ -282,7 +282,7 @@ table.listeLegere th.libelle{
     font-weight: lighter;
     color: white;
     text-decoration: none;
-    border : 1px solid #F5B46C;
+    border : 1px solid black;
     border-radius: 7px;
     padding-left: 35%;
     padding-top: 2px;
@@ -303,4 +303,11 @@ table.listeLegere th.libelle{
     min-height: 1px;
     padding-right: 0%;
     padding-left: 40%;
+}
+#linkAccueil{
+    border:1px solid #40A9DF;
+    box-shadow: 0 0 1em #40A9DF;
+    -webkit-box-shadow: 0 0 1em #40A9DF;
+    -o-box-shadow: 0 0 1em #40A9DF;
+    -moz-box-shadow: 0 0 1em #40A9DF;
 }
