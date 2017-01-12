@@ -1,46 +1,136 @@
 <?php
-$repInclude = './include/';
-require($repInclude . "_init.inc.php");
 
-// page inaccessible si visiteur non connecté
-if (!estVisiteurConnecte()) {
-    header("Location: cSeConnecter.php");
+/**
+ * Contrôleur : gestion des fournisseurs
+ */
+use modele\dao\FournisseursDAO;
+use modele\metier\Fournisseurs;
+use modele\dao\Bdd;
+
+require_once __DIR__ . './includes/autoload.php';
+
+Bdd::connecter();
+
+include("includes/_gestionErreurs.inc.php");
+
+// 1ère étape (donc pas d'action choisie) : affichage du tableau des 
+// fournisseurs 
+if (!isset($_REQUEST['action'])) {
+    $_REQUEST['action'] = 'initial';
 }
-require($repInclude . "_entete.inc.html");
-require($repInclude . "_sommaire.inc.php");
-?>
-<div id="contenu">
-    <h2>Gestion des Fournisseurs</h2>
-    <br>
-    <table width='55%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
 
-        <tr class='enTeteTabNonQuad'>
-            <td colspan='4'><strong>Fournisseurs</strong></td>
-        </tr>
-        <tr class='ligneTabNonQuad'>
-            <td width='52%'>FournisseurTest</td>
+$action = $_REQUEST['action'];
 
-            <td width='20%' align='center'> 
-                <a href='cGestionFournisseurs.php?action=detailFourni&id=11111111'>
-                    <button type=button class="bouton-details">Voir détail</button></a></td>
+// Aiguillage selon l'étape
+switch ($action) {
+    case 'initial' :
+        include("vues/GestionFournisseurs/vObtenirFournisseurs.php");
+        break;
 
-            <td width='16%' align='center'> 
-                <a href='cGestionFournisseurs.php?action=demanderModifierFourni&id=11111111'>
-                    <button type=button class="bouton-modifier">Modifier</button></a></td>
-            <td width='16%' align='center'> 
-                <a href='cGestionFournisseurs.php?action=demanderSupprimerFourni&id=11111111'>
-                    <button type=button class="bouton-supprimer">Supprimer</button></a></td>
-        </tr>
-    </table>
-    <br>
-    <div class="bouton">
-        <p>
-            <a href='cGestionFournisseurs.php?action=demanderCreerEtab'>
-                <button type=button>Ajout d'un fournisseur</button></a > 
-        </p> 
-    </div>
-    <br>
-</div>
-<?php
-require($repInclude . "_fin.inc.php");
-?>
+    case 'detailFourni':
+        $id = $_REQUEST['id'];
+        include("vues/GestionFournisseurs/vObtenirDetailFournisseur.php");
+        break;
+
+    case 'demanderSupprimerFourni':
+        $id = $_REQUEST['id'];
+        include("vues/GestionFournisseurs/vSupprimerFournisseur.php");
+        break;
+
+    case 'demanderCreerFourni':
+        include("vues/GestionFournisseurs/vCreerModifierFournisseur.php");
+        break;
+
+    case 'demanderModifierFourni':
+        $id = $_REQUEST['id'];
+        include("vues/GestionFournisseurs/vCreerModifierFournisseur.php");
+        break;
+
+    case 'validerSupprimerFourni':
+        $id = $_REQUEST['id'];
+        FournisseursDAO::delete($id);
+        include("vues/GestionFournisseurs/vObtenirFournisseur.php");
+        break;
+
+    case 'validerCreerFourni':case 'validerModifierFourni':
+        $id = $_REQUEST['id'];
+        $nom = $_REQUEST['nom'];
+        $adresseRue = $_REQUEST['adresseRue'];
+        $codePostal = $_REQUEST['codePostal'];
+        $ville = $_REQUEST['ville'];
+        $tel = $_REQUEST['tel'];
+        $adresseElectronique = $_REQUEST['adresseElectronique'];
+        $paiement = $_REQUEST['paiement'];
+
+        if ($action == 'validerCreerFourni') {
+            verifierDonneesFourniC($id, $nom, $adresseRue, $codePostal, $ville, $tel, $adresseElectronique, $paiement);
+            if (nbErreurs() == 0) {
+                $unFourni = new Fournisseurs($id, $nom, $adresseRue, $codePostal, $ville, $tel, $adresseElectronique, $paiement);
+                FournisseursDAO::insert($unFourni);
+                include("vues/GestionFournisseurs/vObtenirFournisseur.php");
+            } else {
+                include("vues/GestionFournisseurs/vCreerModifierFournisseur.php");
+            }
+        } else {
+            verifierDonneesFourniM($id, $nom, $adresseRue, $codePostal, $ville, $tel, $adresseElectronique, $paiement);
+            if (nbErreurs() == 0) {
+                $unFourni = new Fournisseurs($id, $nom, $adresseRue, $codePostal, $ville, $tel, $adresseElectronique, $paiement);
+                FournisseursDAO::update($id, $unFourni);
+                include("vues/GestionFournisseurs/vObtenirFournisseur.php");
+            } else {
+                include("vues/GestionFournisseurs/vCreerModifierFournisseur.php");
+            }
+        }
+        break;
+}
+
+// Fermeture de la connexion au serveur MySql
+Bdd::deconnecter();
+
+function verifierDonneesFourniC($id, $nom, $adresseRue, $codePostal, $ville, $tel, $adresseElectronique, $paiement) {
+    if ($id == "" || $nom == "" || $adresseRue == "" || $codePostal == "" ||
+            $ville == "" || $tel == "" || $adresseElectronique == "" || $paiement == "") {
+        ajouterErreur('Chaque champ suivi du caractère * est obligatoire');
+    }
+    if ($id != "") {
+        // Si l'id est constitué d'autres caractères que de lettres non accentuées 
+        // et de chiffres, une erreur est générée
+        if (!estChiffresOuEtLettres($id)) {
+            ajouterErreur
+                    ("L'identifiant doit comporter uniquement des lettres non accentuées et des chiffres");
+        } else {
+            if (FournisseursDAO::isAnExistingId($id)) {
+                ajouterErreur("Le fournisseur $id existe déjà");
+            }
+        }
+    }
+    if ($nom != "" && FournisseursDAO::isAnExistingName(true, $id, $nom)) {
+        ajouterErreur("Le fournisseur $nom existe déjà");
+    }
+}
+
+if ($codePostal != "" && !estUnCp($codePostal)) {
+    ajouterErreur('Le code postal doit comporter 5 chiffres');
+}
+
+if (!filter_var($adresseElectronique, FILTER_VALIDATE_EMAIL)) {
+    ajouterErreur('Le format de l\'adresse élèctronique n\'est pas valide');
+}
+
+function verifierDonneesFourniM($id, $nom, $adresseRue, $codePostal, $ville, $tel, $adresseElectronique, $paiement) {
+    if ($id == "" || $nom == "" || $adresseRue == "" || $codePostal == "" ||
+            $ville == "" || $tel == "" || $adresseElectronique == "" || $paiement == "") {
+        ajouterErreur('Chaque champ suivi du caractère * est obligatoire');
+    }
+    if ($nom != "" && FournisseursDAO::isAnExistingName(false, $id, $nom)) {
+        ajouterErreur("Le fournisseur $nom existe déjà");
+    }
+    if ($codePostal != "" && !estUnCp($codePostal)) {
+        ajouterErreur('Le code postal doit comporter 5 chiffres');
+    }
+}
+
+function estUnCp($codePostal) {
+    // Le code postal doit comporter 5 chiffres
+    return strlen($codePostal) == 5 && estEntier($codePostal);
+}
