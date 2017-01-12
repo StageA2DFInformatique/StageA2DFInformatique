@@ -85,7 +85,7 @@ ul#menuList a {
     width:100%;
 }
 ul#menuList a:hover {
-    color: black;
+    color: #EE7F16;
     font-weight:bold;
     text-transform:uppercase;
 }
@@ -153,7 +153,6 @@ input, button, textarea, select{
     font-size : 1em;
 }
 button{
-    width : 60px;
     height : 30px;
     text-align:center;
     vertical-align:middle;
@@ -304,3 +303,12 @@ table.listeLegere th.libelle{
     padding-right: 0%;
     padding-left: 40%;
 }
+.bouton-modifier{
+background:url(/images/modifier.png);
+}
+.bouton-details{
+background:url(/images/details.png);
+} 
+.bouton-supprimer{
+background:url(/images/supprimer.png);
+} 
