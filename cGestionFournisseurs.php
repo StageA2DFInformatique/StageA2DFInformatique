@@ -7,11 +7,11 @@ use modele\dao\FournisseursDAO;
 use modele\metier\Fournisseurs;
 use modele\dao\Bdd;
 
-require_once __DIR__ . './includes/autoload.php';
+require_once __DIR__ . '/include/autoload.php';
 
 Bdd::connecter();
 
-include("includes/_gestionErreurs.inc.php");
+include("include/_gestionErreurs.inc.php");
 
 // 1ère étape (donc pas d'action choisie) : affichage du tableau des 
 // fournisseurs 
@@ -24,7 +24,7 @@ $action = $_REQUEST['action'];
 // Aiguillage selon l'étape
 switch ($action) {
     case 'initial' :
-        include("vues/GestionFournisseurs/vObtenirFournisseurs.php");
+        include("vues/GestionFournisseurs/vObtenirFournisseur.php");
         break;
 
     case 'detailFourni':

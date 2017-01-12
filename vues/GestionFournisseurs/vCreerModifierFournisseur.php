@@ -2,10 +2,10 @@
 use modele\dao\FournisseursDAO;
 use modele\metier\Fournisseurs;
 use modele\dao\Bdd;
-require_once __DIR__.'/../../includes/autoload.php';
+require_once __DIR__.'/../../include/autoload.php';
 Bdd::connecter();
 
-include("includes/_debut.inc.php");
+include("include/_debut.inc.php");
 
 // CRÉER OU MODIFIER UN FOURNISSEUR
 // S'il s'agit d'une création et qu'on ne "vient" pas de ce formulaire (on 
@@ -118,5 +118,5 @@ echo "
    <a href='cGestionFournisseurs.php'>Retour</a>
 </form>";
 
-include("includes/_fin.inc.php");
+include("include/_fin.inc.php");
 

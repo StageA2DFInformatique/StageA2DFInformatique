@@ -3,10 +3,10 @@
 use modele\dao\FournisseursDAO;
 use modele\dao\Bdd;
 
-require_once __DIR__ . '/../../includes/autoload.php';
+require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
-include("includes/_debut.inc.php");
+include("include/_debut.inc.php");
 
 // AFFICHER L'ENSEMBLE DES FOURNISSEURS
 // CETTE PAGE CONTIENT UN TABLEAU CONSTITUÉ D'1 LIGNE D'EN-TÊTE ET D'1 LIGNE PAR
@@ -45,5 +45,5 @@ echo "
 <a href='cGestionFournisseurs.php?action=demanderCreerFourni'>
 Création d'un fournisseur</a >";
 
-include("includes/_fin.inc.php");
+include("include/_fin.inc.php");
 

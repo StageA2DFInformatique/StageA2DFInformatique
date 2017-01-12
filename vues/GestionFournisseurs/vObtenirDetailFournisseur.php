@@ -4,10 +4,10 @@ use modele\dao\FournisseursDAO;
 use modele\metier\Fournisseurs;
 use modele\dao\Bdd;
 
-require_once __DIR__ . '/../../includes/autoload.php';
+require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
-include("includes/_debut.inc.php");
+include("include/_debut.inc.php");
 
 // OBTENIR LE DÉTAIL Du FOURNISSEUR SÉLECTIONNÉ
 
@@ -64,5 +64,5 @@ echo " </table>
 <br>
 <a href='cGestionFournisseurs.php'>Retour</a>";
 
-include("includes/_fin.inc.php");
+include("include/_fin.inc.php");
 

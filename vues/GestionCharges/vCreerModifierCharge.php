@@ -2,10 +2,10 @@
 use modele\dao\EtablissementDAO;
 use modele\metier\Etablissement;
 use modele\dao\Bdd;
-require_once __DIR__.'/../../includes/autoload.php';
+require_once __DIR__.'/../../include/autoload.php';
 Bdd::connecter();
 
-include("includes/_debut.inc.php");
+include("include/_debut.inc.php");
 
 // CRÉER OU MODIFIER UN ÉTABLISSEMENT 
 // S'il s'agit d'une création et qu'on ne "vient" pas de ce formulaire (on 
@@ -170,5 +170,5 @@ echo "
    <a href='cGestionEtablissements.php'>Retour</a>
 </form>";
 
-include("includes/_fin.inc.php");
+include("include/_fin.inc.php");
 

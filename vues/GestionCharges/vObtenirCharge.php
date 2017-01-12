@@ -2,10 +2,10 @@
 use modele\dao\EtablissementDAO;
 use modele\dao\AttributionDAO;
 use modele\dao\Bdd;
-require_once __DIR__.'/../../includes/autoload.php';
+require_once __DIR__.'/../../include/autoload.php';
 Bdd::connecter();
 
-include("includes/_debut.inc.php");
+include("include/_debut.inc.php");
 
 // AFFICHER L'ENSEMBLE DES ÉTABLISSEMENTS
 // CETTE PAGE CONTIENT UN TABLEAU CONSTITUÉ D'1 LIGNE D'EN-TÊTE ET D'1 LIGNE PAR
@@ -56,5 +56,5 @@ echo "
 <a href='cGestionEtablissements.php?action=demanderCreerEtab'>
 Création d'un établissement</a >";
 
-include("includes/_fin.inc.php");
+include("include/_fin.inc.php");
 
