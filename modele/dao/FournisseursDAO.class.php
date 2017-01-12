@@ -61,7 +61,7 @@ class FournisseursDAO implements IDAO {
      * Mettre à jour enregistrement dans la table à partir de l'état d'un objet métier
      * @param string identifiant de l'enregistrement à mettre à jour
      * @param Fournisseurs $objet objet métier à mettre à jour
-     * @return boolean =FALSE si l'opérationn échoue
+     * @return boolean =FALSE si l'opération échoue
      */
     public static function update($id, $objet) {
         $ok = false;

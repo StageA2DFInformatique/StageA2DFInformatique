@@ -13,7 +13,6 @@ require($repInclude . "_sommaire.inc.php");
 //Division principale
 echo '<div id="contenu">';
 echo "<h2>Gestion des Fournisseurs</h2>";
-echo '</div>';
 
 use modele\dao\FournisseursDAO;
 use modele\dao\Bdd;
@@ -60,3 +59,4 @@ echo "
 Création d'un fournisseur</a >";
 
 require($repInclude . "_fin.inc.php");
+echo '</div>';
