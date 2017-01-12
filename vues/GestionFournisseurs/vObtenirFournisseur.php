@@ -1,12 +1,26 @@
 <?php
 
+$repInclude = './include/';
+require($repInclude . "_init.inc.php");
+
+// page inaccessible si visiteur non connecté
+if (!estVisiteurConnecte()) {
+    header("Location: cSeConnecter.php");
+}
+require($repInclude . "_entete.inc.html");
+require($repInclude . "_sommaire.inc.php");
+
+//Division principale
+echo '<div id="contenu">';
+echo "<h2>Gestion des Fournisseurs</h2>";
+echo '</div>';
+
 use modele\dao\FournisseursDAO;
 use modele\dao\Bdd;
 
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
-include("include/_debut.inc.php");
 
 // AFFICHER L'ENSEMBLE DES FOURNISSEURS
 // CETTE PAGE CONTIENT UN TABLEAU CONSTITUÉ D'1 LIGNE D'EN-TÊTE ET D'1 LIGNE PAR
@@ -45,5 +59,4 @@ echo "
 <a href='cGestionFournisseurs.php?action=demanderCreerFourni'>
 Création d'un fournisseur</a >";
 
-include("include/_fin.inc.php");
-
+require($repInclude . "_fin.inc.php");

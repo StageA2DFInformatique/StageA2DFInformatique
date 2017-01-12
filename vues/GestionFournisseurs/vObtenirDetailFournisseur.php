@@ -7,7 +7,9 @@ use modele\dao\Bdd;
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
-include("include/_debut.inc.php");
+include("include/_entete.inc.html");
+include("include/_sommaire.inc.php");
+
 
 // OBTENIR LE DÉTAIL Du FOURNISSEUR SÉLECTIONNÉ
 
