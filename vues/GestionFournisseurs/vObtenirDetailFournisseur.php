@@ -1,15 +1,24 @@
 <?php
+
 $repInclude = './include/';
 require($repInclude . "_init.inc.php");
+
+// page inaccessible si visiteur non connecté
+if (!estVisiteurConnecte()) {
+    header("Location: cSeConnecter.php");
+}
+require($repInclude . "_entete.inc.html");
+require($repInclude . "_sommaire.inc.php");
+
+//Division principale
+echo '<div id="contenu">';
+echo "<h2>Détail fournisseur</h2>";
+
 use modele\dao\FournisseursDAO;
-use modele\metier\Fournisseurs;
 use modele\dao\Bdd;
 
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
-
-include("include/_entete.inc.html");
-include("include/_sommaire.inc.php");
 
 
 // OBTENIR LE DÉTAIL Du FOURNISSEUR SÉLECTIONNÉ
@@ -58,12 +67,10 @@ echo "
    </tr>
    <tr class='ligneTabNonQuad'>
       <td> Paiement sous combien de jours: </td>
-      <td>$paiement</td>
-   </tr>
-   <tr class='ligneTabNonQuad'>
-      <td> Type: </td>";
+      <td>$paiement</td>;
+   </tr>;
 
-echo " </table>
+</table>
 <br>
 <a href='cGestionFournisseurs.php'>Retour</a>";
 

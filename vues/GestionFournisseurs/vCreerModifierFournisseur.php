@@ -1,6 +1,18 @@
 <?php
+
 $repInclude = './include/';
 require($repInclude . "_init.inc.php");
+
+// page inaccessible si visiteur non connecté
+if (!estVisiteurConnecte()) {
+    header("Location: cSeConnecter.php");
+}
+require($repInclude . "_entete.inc.html");
+require($repInclude . "_sommaire.inc.php");
+
+//Division principale
+echo '<div id="contenu">';
+echo "<h2>Création d'un Fournisseur</h2>";
 
 use modele\dao\FournisseursDAO;
 use modele\metier\Fournisseurs;
@@ -8,9 +20,6 @@ use modele\dao\Bdd;
 
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
-
-include("include/_entete.inc.html");
-include("include/_sommaire.inc.php");
 
 
 // CRÉER OU MODIFIER UN FOURNISSEUR
@@ -53,6 +62,7 @@ if ($action == 'demanderCreerFourni' || $action == 'validerCreerFournib') {
     $message = "$nom ($id)";            // Alimentation du message de l'en-tête
     $action = "validerModifierFourni";
 }
+echo '<div id="contenu-formulaire">';
 
 // En cas de création, l'id est accessible sinon l'id est dans un champ
 // caché               
@@ -64,56 +74,64 @@ if ($creation) {
     echo '
          <tr class="ligneTabNonQuad">
             <td> Id*: </td>
-            <td><input type="text" value="' . $id . '" name="id" size ="10" 
+            <td><input type="text" value="' . $id . '" name="id" size ="30" 
             maxlength="8"></td>
-         </tr>';
+         </tr>
+         <br>';
 } else {
     echo "
          <tr>
             <td><input type='hidden' value='$id' name='id'></td><td></td>
-         </tr>";
+         </tr>
+            <br>";
 }
 echo '
       <tr class="ligneTabNonQuad">
          <td> Nom*: </td>
-         <td><input type="text" value="' . $nom . '" name="nom" size="50" 
+         <td><input type="text" value="' . $nom . '" name="nom" size="30" 
          maxlength="45"></td>
       </tr>
-      <tr class="ligneTabNonQuad">
+      <br>
+            <tr class="ligneTabNonQuad">
          <td> Adresse*: </td>
          <td><input type="text" value="' . $adresseRue . '" name="adresseRue" 
-         size="50" maxlength="45"></td>
+         size="30" maxlength="45"></td>
       </tr>
+      <br>
       <tr class="ligneTabNonQuad">
          <td> Code postal*: </td>
          <td><input type="text" value="' . $codePostal . '" name="codePostal" 
-         size="7" maxlength="5"></td>
+         size="30" maxlength="5"></td>
       </tr>
+      <br>
       <tr class="ligneTabNonQuad">
-         <td> Ville*: </td>
-         <td><input type="text" value="' . $ville . '" name="ville" size="40" 
+         <td> Ville*:</td>
+         <td><input type="text" value="' . $ville . '" name="ville" size="30" 
          maxlength="35"></td>
       </tr>
+      <br>
       <tr class="ligneTabNonQuad">
-         <td> Téléphone (format 0XXXXXXXXX)*: </td>
-         <td><input type="text" value="' . $tel . '" name="tel" size ="20"
+         <td> Téléphone*: </td>
+         <td><input type="text" value="' . $tel . '" name="tel" size ="30"
          maxlength="10"></td>
       </tr>
+      <br>
       <tr class="ligneTabNonQuad">
-         <td> E-mail*: </td>
+         <td> E-mail*:</td>
          <td><input type="text" value="' . $adresseElectronique . '" name=
-         "adresseElectronique" size ="75" maxlength="70"></td>
+         "adresseElectronique" size ="30" maxlength="70"></td>
       </tr>
+      <br>
       <tr class="ligneTabNonQuad">
          <td> Paiement sous combien de jours*: </td>
-         <td><input type="text" value="' . $paiement . '" name="paiement" size ="10"
+         <td><input type="text" value="' . $paiement . '" name="paiement" size ="30"
          maxlength="5"></td>
       </tr>
-      <tr class="ligneTabNonQuad">
-         <td> Type*: </td>
-         <td>';
-echo "
-   <table align='center' cellspacing='15' cellpadding='0'>
+      <br>';
+echo '</div>';
+
+echo "<br>
+   <table align='right' cellspacing='15' cellpadding='0'>
       <tr>
          <td align='right'><input type='submit' value='Valider' name='valider'>
          </td>
@@ -121,7 +139,7 @@ echo "
          </td>
       </tr>
    </table>
-   <a href='cGestionFournisseurs.php'>Retour</a>
+   <a href='cGestionFournisseurs.php'><button type=button>Retour</button></a>
 </form>";
 
 include("include/_fin.inc.php");

@@ -9,7 +9,7 @@ body{
 }
 #page {
     background-color:#626262;
-    width : 30%;
+    width : 40%;
     margin : auto ;
     border : 0.2em solid black;
     border-radius: 10px;
@@ -292,16 +292,17 @@ table.listeLegere th.libelle{
 
 #contenu img {
     height : 28px;
-    float : left;
+    float : none;
 
 }
-.copy-right {
-    color: #808080;
-    position:absolute;
-    bottom:0;
-    min-height: 1px;
-    padding-right: 0%;
-    padding-left: 40%;
+
+#contenu-formulaire{
+    padding: 1.8em;
+    background-color: white;
+    margin-top : 1.2em;
+    height:100%;
+    border: 2px solid black;
+    border-radius: 7px;
 }
 .bouton-modifier{
 background:url(/images/modifier.png);

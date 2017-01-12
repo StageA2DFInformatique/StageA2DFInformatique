@@ -43,20 +43,21 @@ foreach ($lesFournisseurs as $unFournisseur) {
          <td width='52%'>$nom</td>
          
          <td width='16%' align='center'> 
-         <a href='cGestionFournisseurs.php?action=detailFourni&id=$id'>
-         Voir détail</a></td>
-         
+        <a href='cGestionFournisseurs.php?action=detailFourni&id=$id'>
+                    <img src='./images/detail.png' />
+        </a>  
          <td width='16%' align='center'> 
-         <a href='cGestionFournisseurs.php?action=demanderModifierFourni&id=$id'>
-         Modifier</a></td>";
-    echo "
-      </tr>";
+        <a href='cGestionFournisseurs.php?action=demanderModifierFourni&id=$id'>
+                    <img src='./images/modifier.png' />
+        </a>
+
+    </tr>";
 }
 echo "
-</table>
-<br>
-<a href='cGestionFournisseurs.php?action=demanderCreerFourni'>
-Création d'un fournisseur</a >";
+    </table>
+    <br>
+    <a href = 'cGestionFournisseurs.php?action=demanderCreerFourni'>
+    Création d'un fournisseur</a >";
 
 require($repInclude . "_fin.inc.php");
 echo '</div>';

@@ -16,8 +16,3 @@ deconnecterServeurBD($idConnexion);
         <link href="./styles/styles.css" rel="stylesheet" type="text/css" />
         <link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
     </head>
-    <body>
-        <div class="copy-right">
-            <p>Copyright © Charly FLEURANCE 2017</p>
-        </div>
-    </body>
