@@ -58,7 +58,7 @@ class Fournisseurs {
         $this->ville = $ville;
         $this->tel = $tel;
         $this->email = $email;
-        $this->paiement = $tempsPaiement;
+        $this->paiement = $paiement;
 
     }
 
@@ -90,7 +90,7 @@ class Fournisseurs {
         return $this->email;
     }
 
-    function getTempsPaiement() {
+    function getPaiement() {
         return $this->paiement;
     }
 
@@ -122,7 +122,7 @@ class Fournisseurs {
         $this->email = $email;
     }
 
-    function setTempsPaiement($paiement) {
+    function setPaiement($paiement) {
         $this->paiement = $paiement;
     }
 

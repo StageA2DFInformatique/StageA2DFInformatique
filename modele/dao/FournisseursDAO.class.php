@@ -22,7 +22,7 @@ class FournisseursDAO implements IDAO {
         $email = $enreg[strtoupper('adresseElectronique')];
         $paiement = $enreg[strtoupper('paiement')];
 
-        $unFourni = new FournisseursDAO($id, $nom, $adresse, $cdp, $ville, $tel, $email, $paiement);
+        $unFourni = new Fournisseurs($id, $nom, $adresse, $cdp, $ville, $tel, $email, $paiement);
 
         return $unFourni;
     }
