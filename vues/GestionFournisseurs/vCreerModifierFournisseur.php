@@ -1,4 +1,6 @@
 <?php
+$repInclude = './include/';
+require($repInclude . "_init.inc.php");
 
 use modele\dao\FournisseursDAO;
 use modele\metier\Fournisseurs;
@@ -38,7 +40,7 @@ if ($action == 'demanderModifierFourni') {
     $ville = $unFourni->getVille();
     $tel = $unFourni->getTel();
     $adresseElectronique = $unFourni->getEmail();
-    $paiement = $unFourni->getTempsPaiement();
+    $paiement = $unFourni->getPaiement();
 }
 
 // Initialisations en fonction du mode (création ou modification) 

@@ -105,14 +105,14 @@ function verifierDonneesFourniC($id, $nom, $adresseRue, $codePostal, $ville, $te
     if ($nom != "" && FournisseursDAO::isAnExistingName(true, $id, $nom)) {
         ajouterErreur("Le fournisseur $nom existe déjà");
     }
-}
+    
+    if ($codePostal != "" && !estUnCp($codePostal)) {
+        ajouterErreur('Le code postal doit comporter 5 chiffres');
+    }
 
-if ($codePostal != "" && !estUnCp($codePostal)) {
-    ajouterErreur('Le code postal doit comporter 5 chiffres');
-}
-
-if (!filter_var($adresseElectronique, FILTER_VALIDATE_EMAIL)) {
-    ajouterErreur('Le format de l\'adresse élèctronique n\'est pas valide');
+    if (!filter_var($adresseElectronique, FILTER_VALIDATE_EMAIL)) {
+        ajouterErreur('Le format de l\'adresse élèctronique n\'est pas valide');
+    }
 }
 
 function verifierDonneesFourniM($id, $nom, $adresseRue, $codePostal, $ville, $tel, $adresseElectronique, $paiement) {
@@ -125,6 +125,10 @@ function verifierDonneesFourniM($id, $nom, $adresseRue, $codePostal, $ville, $te
     }
     if ($codePostal != "" && !estUnCp($codePostal)) {
         ajouterErreur('Le code postal doit comporter 5 chiffres');
+    }
+    
+    if (!filter_var($adresseElectronique, FILTER_VALIDATE_EMAIL)) {
+        ajouterErreur('Le format de l\'adresse élèctronique n\'est pas valide');
     }
 }
 

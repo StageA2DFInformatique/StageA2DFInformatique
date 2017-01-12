@@ -23,7 +23,8 @@ if ($etape == 'validerConnexion') { // un client demande à s'authentifier
     // si l'id utilisateur a été trouvé, donc informations fournies sous forme de tableau
     $nbErreur = 0;
     if (is_array($lgUser)) {
-        affecterInfosConnecte($lgUser["id"], $lgUser["login"]);
+        $lgUser = obtenirDetailVisiteur($idConnexion, $lgUser["id"]);
+        affecterInfosConnecte($lgUser["id"], $lgUser["login"], $lgUser['nom'], $lgUser['prenom']);
     } else {
         $nbErreur ++; //le compteur du nombre de tentative n'est pas au point
         ajouterErreur($tabErreurs, "Pseudo et/ou mot de passe incorrects, veuillez réessayer s'il vous plait");

@@ -43,7 +43,7 @@ foreach ($lesFournisseurs as $unFournisseur) {
          <td width='52%'>$nom</td>
          
          <td width='16%' align='center'> 
-         <a href='cGestionFournisseurs.php?action=detailFournib&id=$id'>
+         <a href='cGestionFournisseurs.php?action=detailFourni&id=$id'>
          Voir détail</a></td>
          
          <td width='16%' align='center'> 

@@ -6,17 +6,17 @@
  */
 $repInclude = './include/';
 include ($repInclude . "connexionBDD.php");
+//include ($repInclude . "_bdGestionDonnees.lib.php");
 ?>
 <!-- Division pour le sommaire -->
 <div id="menuGauche">
     <div id="infosUtil">
         <?php
-        if (estVisiteurConnecte()) {
-            $idUser = obtenirIdUserConnecte();
-            $lgUser = obtenirDetailVisiteur($idConnexion, $idUser);
-            $nom = $lgUser['nom'];
-            $prenom = $lgUser['prenom'];
-            $login = $lgUser['login'];
+        if (isset($_SESSION["loginUser"])) {
+            $idUser = $_SESSION["idUser"];
+            $nom = $_SESSION['nomUser'];
+            $prenom = $_SESSION['prenomUser'];
+            $login = $_SESSION['loginUser'];
             ?>
             <h2>
                 <?php
@@ -26,12 +26,14 @@ include ($repInclude . "connexionBDD.php");
             //different affichage selon la personne connecté (administrateur ou simple visiteur)
             if ($login == 'admin') {
                 echo '<center><h3>François Baraud</h3></center>';
+            }else{
+                echo '<center><h3>' . $prenom . $nom . '</h3></center>';
             }
         }
         ?>  
     </div>  
     <?php
-    if (estVisiteurConnecte()) {
+    if (isset($_SESSION["loginUser"])) {
         ?>
         <div class="arrondie2">
             <ul id="menuList">

@@ -1,5 +1,6 @@
 <?php
-
+$repInclude = './include/';
+require($repInclude . "_init.inc.php");
 use modele\dao\FournisseursDAO;
 use modele\metier\Fournisseurs;
 use modele\dao\Bdd;
@@ -21,7 +22,7 @@ $codePostal = $unFourni->getCdp();
 $ville = $unFourni->getVille();
 $tel = $unFourni->getTel();
 $adresseElectronique = $unFourni->getEmail();
-$paiement = $unFourni->getTempsPaiement();
+$paiement = $unFourni->getPaiement();
 
 
 echo "
