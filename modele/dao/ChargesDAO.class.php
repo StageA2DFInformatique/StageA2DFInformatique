@@ -96,7 +96,6 @@ class ChargesDAO implements IDAO {
         }
         return $objetConstruit;
     }
-
     /**
      * Permet de vérifier s'il existe ou non une Charge ayant déjà le même identifiant dans la BD
      * @param string $id identifiant de la charge à tester

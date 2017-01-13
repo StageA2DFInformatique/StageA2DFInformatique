@@ -1,8 +1,5 @@
 <?php
 
-$repInclude = './include/';
-require($repInclude . "_init.inc.php");
-
 // page inaccessible si visiteur non connecté
 if (!estVisiteurConnecte()) {
     header("Location: cSeConnecter.php");
@@ -59,8 +56,8 @@ foreach ($lesCharges as $unCharge) {
 echo "
     </table>
     <br>
-    <a href = 'cGestionCharges.php?action=demanderCreerChrg'>
-    Création d'une Charge</a >";
-echo '</div>';
-require($repInclude . "_fin.inc.php");
+    <a href = 'cGestionCharges.php?action=demanderCreerFourni'>
+    Création d'une charge</a >";
 
+require($repInclude . "_fin.inc.php");
+echo '</div>';

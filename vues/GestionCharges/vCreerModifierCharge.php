@@ -1,8 +1,5 @@
 <?php
 
-$repInclude = './include/';
-require($repInclude . "_init.inc.php");
-
 // page inaccessible si visiteur non connecté
 if (!estVisiteurConnecte()) {
     header("Location: cSeConnecter.php");
@@ -100,7 +97,7 @@ echo "<br>
       <a href='cGestionCharges.php'><button type=button>Retour</button></a>
 
       <tr>
-            <a href='cGestionCharges.php'><button type=button>Valider</button></a>
+         <td align='right'><input type='submit' value='Valider' name='valider'>
       </tr>
    </table>
 </form>";
