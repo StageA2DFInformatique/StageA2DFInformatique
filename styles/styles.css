@@ -24,7 +24,7 @@ body{
 }
 #pied{
     clear : both;
-    border : solid 0.2em #9464646;
+    border : solid 0.2em #464646;
     margin-left : 18%;
     margin-top : 1em;
     padding:0.4em;
@@ -214,12 +214,12 @@ taille de caract�res l�g�rement sup�rieure � la normale */
 
 /* Styles pour les tableaux de la page principale */
 #contenu table {
-    background-color:#FFF;
+    background-color:#F4AD5C;
     border : 0.1em solid #777777;
     color:black;
     margin-right : auto ;
     margin-left:0.3em;
-    border-collapse : collapse;
+    border-collapse : inherit;
 }
 
 /* Style pour les lignes d'en-t�te des tableaux */
@@ -310,4 +310,25 @@ background:url(/images/details.png);
 } 
 .bouton-supprimer{
 background:url(/images/supprimer.png);
+
+#tabNonQuadrille 
+{
+   background-color:#FFFFC0;
+   color:black;
+   border-bottom:1px solid #777777;
+   border-right:1px solid #777777;
+   border-left:1px solid #777777;
+   border-top:1px #777777;
+}
+/* Style pour les lignes d'en-tête des tableaux non quadrillés : fond avec 
+nuances de jaune et trait bas pour séparer l'en-tête du corps du tableau */
+
+#enTeteTabNonQuad
+{
+   background-color:#FFFFC0;
+   color:red;
+   height:21px;
+   text-align:center;
+   border-bottom:1px solid #777777;
+} 
 } 

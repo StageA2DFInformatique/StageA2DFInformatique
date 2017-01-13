@@ -30,7 +30,7 @@ echo "
 <table width='55%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
 
    <tr class='enTeteTabNonQuad'>
-      <td colspan='4'><strong>Charges</strong></td>
+      <td colspan='4'><strong><center>Charges</center></strong></td>
    </tr>";
 
 $lesCharges = ChargesDAO::getAll();
@@ -61,6 +61,6 @@ echo "
     <br>
     <a href = 'cGestionCharges.php?action=demanderCreerChrg'>
     Création d'une Charge</a >";
-
-require($repInclude . "_fin.inc.php");
 echo '</div>';
+require($repInclude . "_fin.inc.php");
+

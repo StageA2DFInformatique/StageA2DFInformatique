@@ -55,14 +55,22 @@ if ($action == 'demanderModifierFourni') {
 // Initialisations en fonction du mode (création ou modification) 
 if ($action == 'demanderCreerFourni' || $action == 'validerCreerFourni') {
     $creation = true;
-    $message = "Nouveau fournisseur";  // Alimentation du message de l'en-tête
+    $message = "<center>Création d'un nouveau Fournisseur</center>";  // Alimentation du message de l'en-tête
     $action = "validerCreerFourni";
 } else {
     $creation = false;
     $message = "$nom ($id)";            // Alimentation du message de l'en-tête
     $action = "validerModifierFourni";
 }
-echo '<div id="contenu-formulaire">';
+echo "
+<form method='POST' action='cGestionFournisseurs.php?'>
+   <input type='hidden' value='$action' name='action'>
+   <br>
+   <table width='65%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
+   
+      <tr class='enTeteTabNonQuad'>
+         <td colspan='3'><strong>$message</strong></td>
+      </tr>";
 
 // En cas de création, l'id est accessible sinon l'id est dans un champ
 // caché               
@@ -73,57 +81,53 @@ if ($creation) {
     // tel qu'il a été saisi) 
     echo '
          <tr class="ligneTabNonQuad">
-            <td> Id*: </td>
+            <td>&nbsp Id*: </td>
             <td><input type="text" value="' . $id . '" name="id" size ="30" 
             maxlength="8"></td>
-         </tr>
-         <br>';
+         </tr>';
 } else {
     echo "
          <tr>
             <td><input type='hidden' value='$id' name='id'></td><td></td>
-         </tr>
-            <br>";
+         </tr>";
 }
 echo '
       <tr class="ligneTabNonQuad">
-         <td> Nom*: </td>
+         <td>&nbsp Nom*: </td>
          <td><input type="text" value="' . $nom . '" name="nom" size="30" 
          maxlength="45"></td>
       </tr>
-      <br>
             <tr class="ligneTabNonQuad">
-         <td> Adresse*: </td>
+         <td>&nbsp Adresse*: </td>
          <td><input type="text" value="' . $adresseRue . '" name="adresseRue" 
          size="30" maxlength="45"></td>
       </tr>
-      <br>
       <tr class="ligneTabNonQuad">
-         <td> Code postal*: </td>
+         <td>&nbsp Code postal*: </td>
          <td><input type="text" value="' . $codePostal . '" name="codePostal" 
          size="30" maxlength="5"></td>
       </tr>
       <br>
       <tr class="ligneTabNonQuad">
-         <td> Ville*:</td>
+         <td>&nbsp Ville*:</td>
          <td><input type="text" value="' . $ville . '" name="ville" size="30" 
          maxlength="35"></td>
       </tr>
       <br>
       <tr class="ligneTabNonQuad">
-         <td> Téléphone*: </td>
+         <td>&nbsp Téléphone*: </td>
          <td><input type="text" value="' . $tel . '" name="tel" size ="30"
          maxlength="10"></td>
       </tr>
       <br>
       <tr class="ligneTabNonQuad">
-         <td> E-mail*:</td>
+         <td>&nbsp E-mail*:</td>
          <td><input type="text" value="' . $adresseElectronique . '" name=
          "adresseElectronique" size ="30" maxlength="70"></td>
       </tr>
       <br>
      <tr class="ligneTabNonQuad">
-         <td> Paiement sous combien de jours*: </td>
+         <td>&nbsp Paiement (sous cb de jours)*: </td>
          <td><input type="text" value="' . $paiement . '" name="paiement" size ="30"
          maxlength="5"></td>
       </tr>
@@ -131,10 +135,12 @@ echo '
 echo '</div>';
 echo "<br>
    <table align='right' cellspacing='15' cellpadding='0'>
+   <br>
+      <a href='cGestionFournisseurs.php'><button type=button>Retour</button></a>
+
       <tr>
          <td align='right'><input type='submit' value='Valider' name='valider'>
       </tr>
    </table>
-   <a href='cGestionFournisseurs.php'><button type=button>Retour</button></a>
 </form>";
 include("include/_fin.inc.php");

@@ -56,7 +56,14 @@ if ($action == 'demanderCreerChrg' || $action == 'validerCreerChrg') {
     $message = "$nom ($id)";            // Alimentation du message de l'en-tête
     $action = "validerModifierChrg";
 }
-echo '<div id="contenu-formulaire">';
+echo "<form method='POST' action='cGestionFournisseurs.php?'>
+   <input type='hidden' value='$action' name='action'>
+   <br>
+   <table width='65%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
+   
+      <tr class='enTeteTabNonQuad'>
+         <td colspan='3'><strong>$message</strong></td>
+      </tr>";
 
 // En cas de création, l'id est accessible sinon l'id est dans un champ
 // caché               
@@ -89,10 +96,12 @@ echo '
 echo '</div>';
 echo "<br>
    <table align='right' cellspacing='15' cellpadding='0'>
+   <br>
+      <a href='cGestionCharges.php'><button type=button>Retour</button></a>
+
       <tr>
-         <td align='right'><input type='submit' value='Valider' name='valider'>
+            <a href='cGestionCharges.php'><button type=button>Valider</button></a>
       </tr>
    </table>
-   <a href='cGestionCharges.php'><button type=button>Retour</button></a>
 </form>";
 include("include/_fin.inc.php");

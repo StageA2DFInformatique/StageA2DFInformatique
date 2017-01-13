@@ -1,13 +1,14 @@
 <?php
+
 /**
  * Contrôleur : gestion des fournisseurs
  */
 use modele\dao\FournisseursDAO;
 use modele\metier\Fournisseurs;
 use modele\dao\Bdd;
+
 require_once __DIR__ . '/include/autoload.php';
 Bdd::connecter();
-
 // 1ère étape (donc pas d'action choisie) : affichage du tableau des 
 // fournisseurs 
 if (!isset($_REQUEST['action'])) {
@@ -102,7 +103,7 @@ function verifierDonneesFourniC($id, $nom, $adresseRue, $codePostal, $ville, $te
     if ($nom != "" && FournisseursDAO::isAnExistingName(true, $id, $nom)) {
         ajouterErreur("Le fournisseur $nom existe déjà");
     }
-    
+
     if ($codePostal != "" && !estUnCp($codePostal)) {
         ajouterErreur('Le code postal doit comporter 5 chiffres');
     }
@@ -123,7 +124,7 @@ function verifierDonneesFourniM($id, $nom, $adresseRue, $codePostal, $ville, $te
     if ($codePostal != "" && !estUnCp($codePostal)) {
         ajouterErreur('Le code postal doit comporter 5 chiffres');
     }
-    
+
     if (!filter_var($adresseElectronique, FILTER_VALIDATE_EMAIL)) {
         ajouterErreur('Le format de l\'adresse élèctronique n\'est pas valide');
     }
