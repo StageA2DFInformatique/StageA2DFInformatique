@@ -78,6 +78,28 @@ INSERT INTO `Visiteur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, 
 ('a001', 'employe1', 'employe1', 'employe1', '54a51d77ba883e4c77cf681bc70214e5', '', '44330', 'Le Pallet', '0000-00-00'),
 ('a002', 'employe2', 'employe2', 'employe2', 'db57a2c4455defb2052e690537e2663e', '', '44330', 'Le Pallet', '0000-00-00');
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Charges`
+--
+
+CREATE TABLE IF NOT EXISTS `Charges` (
+  `id` char(8) NOT NULL,
+  `nom` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `Charges`
+--
+
+INSERT INTO `Charges` (`id`, `nom`) VALUES
+('0350785A', 'ChargeTest'),
+('0350785N', 'ChargeTest'),
+('0350785X', 'ChargeTest');
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
