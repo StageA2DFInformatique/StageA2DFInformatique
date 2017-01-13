@@ -53,13 +53,13 @@ if ($action == 'demanderCreerChrg' || $action == 'validerCreerChrg') {
     $message = "$nom ($id)";            // Alimentation du message de l'en-tête
     $action = "validerModifierChrg";
 }
-echo "<form method='POST' action='cGestionFournisseurs.php?'>
+echo "<form method='POST' action='cGestionCharges.php?'>
    <input type='hidden' value='$action' name='action'>
    <br>
    <table width='65%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
    
       <tr class='enTeteTabNonQuad'>
-         <td colspan='3'><strong>$message</strong></td>
+         <td colspan='3'><strong><center>$message</center></strong></td>
       </tr>";
 
 // En cas de création, l'id est accessible sinon l'id est dans un champ

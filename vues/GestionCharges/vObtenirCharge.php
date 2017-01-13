@@ -56,7 +56,7 @@ foreach ($lesCharges as $unCharge) {
 echo "
     </table>
     <br>
-    <a href = 'cGestionCharges.php?action=demanderCreerFourni'>
+    <a href = 'cGestionCharges.php?action=demanderCreerChrg'>
     Création d'une charge</a >";
 
 require($repInclude . "_fin.inc.php");
