@@ -9,7 +9,8 @@ use modele\dao\Bdd;
 
 require_once __DIR__ . '/include/autoload.php';
 Bdd::connecter();
-
+$repInclude = './include/';
+require($repInclude . "_init.inc.php");
 // 1ère étape (donc pas d'action choisie) : affichage du tableau des 
 // charges 
 if (!isset($_REQUEST['action'])) {
