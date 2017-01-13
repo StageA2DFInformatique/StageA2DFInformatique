@@ -9,12 +9,13 @@
   // initialement, aucune erreur ...
   $tabErreurs = array();
     
-  // Demande-t-on une déconnexion ?
-  $demandeDeconnexion = lireDonneeUrl("cmdDeconnecter");
-  if ( $demandeDeconnexion == "on") {
-      deconnecterVisiteur();
-      header("Location: cAccueil.php");
-  }
+    // Demande-t-on une déconnexion ?
+    if ( isset($_GET['cmdDeconnecter']) ) {
+        if ( $_GET['cmdDeconnecter'] == "on") {
+            deconnecterVisiteur();
+            header("Location: cAccueil.php");
+        }
+    }
     
   // établissement d'une connexion avec le serveur de données 
   // puis sélection de la BD qui contient les données des visiteurs et de leurs frais
