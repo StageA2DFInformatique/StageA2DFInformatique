@@ -1,25 +1,39 @@
 <?php
-use modele\dao\EtablissementDAO;
-use modele\metier\Etablissement;
+
+$repInclude = './include/';
+require($repInclude . "_init.inc.php");
+
+// page inaccessible si visiteur non connecté
+if (!estVisiteurConnecte()) {
+    header("Location: cSeConnecter.php");
+}
+require($repInclude . "_entete.inc.html");
+require($repInclude . "_sommaire.inc.php");
+
+//Division principale
+echo '<div id="contenu">';
+echo "<h2><center>Suppression d'une charge</center></h2>";
+use modele\dao\ChargesDAO;
+use modele\metier\Charges;
 use modele\dao\Bdd;
+
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
-include("include/_debut.inc.php");
 
-// SUPPRIMER L'ÉTABLISSEMENT SÉLECTIONNÉ
+// SUPPRIMER LA CHARGE SÉLECTIONNÉE
 
 $id = $_REQUEST['id'];  // Non obligatoire mais plus propre
-$unEtab = EtablissementDAO::getOneById($id);
-/* @var $unEtab Etablissement  */
-$nom = $unEtab->getNom();
+$unChrg = ChargesDAO::getOneById($id);
+/* @var $unChrg Charges  */
+$nom = $unChrg->getNom();
 echo "
-<br><center>Voulez-vous vraiment supprimer l'établissement $nom ?
+<br><center>Voulez-vous vraiment supprimer la charge $nom ?
 <h3><br>
-<a href='cGestionEtablissements.php?action=validerSupprimerEtab&id=$id'>Oui</a>
+<a href='cGestionCharges.php?action=validerSupprimerChrg&id=$id'>Oui</a>
 &nbsp; &nbsp; &nbsp; &nbsp;
-<a href='cGestionEtablissements.php?'>Non</a></h3>
+<a href='cGestionCharges.php?'>Non</a></h3>
 </center>";
 
-include("include/_fin.inc.php");
-
+require($repInclude . "_fin.inc.php");
+echo '</div>';

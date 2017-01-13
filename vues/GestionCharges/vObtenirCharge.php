@@ -1,60 +1,66 @@
 <?php
-use modele\dao\EtablissementDAO;
-use modele\dao\AttributionDAO;
+
+$repInclude = './include/';
+require($repInclude . "_init.inc.php");
+
+// page inaccessible si visiteur non connecté
+if (!estVisiteurConnecte()) {
+    header("Location: cSeConnecter.php");
+}
+require($repInclude . "_entete.inc.html");
+require($repInclude . "_sommaire.inc.php");
+
+//Division principale
+echo '<div id="contenu">';
+echo "<h2><center>Gestion des Charges</center></h2>";
+
+use modele\dao\ChargesDAO;
 use modele\dao\Bdd;
-require_once __DIR__.'/../../include/autoload.php';
+
+require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
-include("include/_debut.inc.php");
 
-// AFFICHER L'ENSEMBLE DES ÉTABLISSEMENTS
+// AFFICHER L'ENSEMBLE DES CHARGES
 // CETTE PAGE CONTIENT UN TABLEAU CONSTITUÉ D'1 LIGNE D'EN-TÊTE ET D'1 LIGNE PAR
-// ÉTABLISSEMENT
+// CHARGE
 
 echo "
 <br>
 <table width='55%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
 
    <tr class='enTeteTabNonQuad'>
-      <td colspan='4'><strong>Etablissements</strong></td>
+      <td colspan='4'><strong>Charges</strong></td>
    </tr>";
 
-$lesEtablissements = EtablissementDAO::getAll();
-// BOUCLE SUR LES ÉTABLISSEMENTS
-foreach ($lesEtablissements as $unEtablissement) {
-    $id = $unEtablissement->getId();
-    $nom = $unEtablissement->getNom();
+$lesCharges = ChargesDAO::getAll();
+// BOUCLE SUR LES CHARGES
+foreach ($lesCharges as $unCharge) {
+    $id = $unCharge->getId();
+    $nom = $unCharge->getNom();
     echo "
 		<tr class='ligneTabNonQuad'>
          <td width='52%'>$nom</td>
          
          <td width='16%' align='center'> 
-         <a href='cGestionEtablissements.php?action=detailEtab&id=$id'>
-         Voir détail</a></td>
-         
+        <a href='cGestionCharges.php?action=detailChrg&id=$id'>
+                    <img src='./images/detail.png' />
+        </a>  
          <td width='16%' align='center'> 
-         <a href='cGestionEtablissements.php?action=demanderModifierEtab&id=$id'>
-         Modifier</a></td>";
-
-    // S'il existe déjà des attributions pour l'établissement, il faudra
-    // d'abord les supprimer avant de pouvoir supprimer l'établissement
-    if (!AttributionDAO::existeAttributionsEtab($id)) {
-        echo "
-            <td width='16%' align='center'> 
-            <a href='cGestionEtablissements.php?action=demanderSupprimerEtab&id=$id'>
-            Supprimer</a></td>";
-    } else {
-        echo "
-            <td width='16%'>&nbsp; </td>";
-    }
-    echo "
-      </tr>";
+        <a href='cGestionCharges.php?action=demanderModifierChrg&id=$id'>
+                    <img src='./images/modifier.png' />
+        </a>
+         <td width='16%' align='center'> 
+        <a href='cGestionCharges.php?action=demanderSupprimerChrg&id=$id'>
+                    <img src='./images/supprimer.png' />
+        </a>
+    </tr>";
 }
 echo "
-</table>
-<br>
-<a href='cGestionEtablissements.php?action=demanderCreerEtab'>
-Création d'un établissement</a >";
+    </table>
+    <br>
+    <a href = 'cGestionCharges.php?action=demanderCreerChrg'>
+    Création d'une Charge</a >";
 
-include("include/_fin.inc.php");
-
+require($repInclude . "_fin.inc.php");
+echo '</div>';

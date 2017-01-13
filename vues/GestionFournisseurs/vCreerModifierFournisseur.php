@@ -53,7 +53,7 @@ if ($action == 'demanderModifierFourni') {
 }
 
 // Initialisations en fonction du mode (création ou modification) 
-if ($action == 'demanderCreerFourni' || $action == 'validerCreerFournib') {
+if ($action == 'demanderCreerFourni' || $action == 'validerCreerFourni') {
     $creation = true;
     $message = "Nouveau fournisseur";  // Alimentation du message de l'en-tête
     $action = "validerCreerFourni";

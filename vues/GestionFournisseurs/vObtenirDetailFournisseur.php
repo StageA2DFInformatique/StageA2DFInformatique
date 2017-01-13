@@ -67,8 +67,8 @@ echo "
    </tr>
    <tr class='ligneTabNonQuad'>
       <td>&nbsp Paiement: </td>
-      <td>&nbsp$paiement</td>;
-   </tr>;
+      <td>&nbsp$paiement</td>
+   </tr>
 
 </table>
 <br>
