@@ -41,7 +41,7 @@ class FournisseursDAO implements IDAO {
         $stmt->bindValue(':ville', $objetMetier->getVille());
         $stmt->bindValue(':tel', $objetMetier->getTel());
         $stmt->bindValue(':email', $objetMetier->getEmail());
-        $stmt->bindValue(':paiement', $objetMetier->getTempsPaiement());
+        $stmt->bindValue(':paiement', $objetMetier->getPaiement());
     }
 
     /**
