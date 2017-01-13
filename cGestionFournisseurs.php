@@ -1,14 +1,11 @@
 <?php
-
 /**
  * Contrôleur : gestion des fournisseurs
  */
 use modele\dao\FournisseursDAO;
 use modele\metier\Fournisseurs;
 use modele\dao\Bdd;
-
 require_once __DIR__ . '/include/autoload.php';
-
 Bdd::connecter();
 
 // 1ère étape (donc pas d'action choisie) : affichage du tableau des 

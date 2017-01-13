@@ -1,5 +1,18 @@
 <?php
 
+$repInclude = './include/';
+require($repInclude . "_init.inc.php");
+
+// page inaccessible si visiteur non connecté
+if (!estVisiteurConnecte()) {
+    header("Location: cSeConnecter.php");
+}
+require($repInclude . "_entete.inc.html");
+require($repInclude . "_sommaire.inc.php");
+
+//Division principale
+echo '<div id="contenu">';
+echo "<h2><center>Suppression d'un fournisseur</center></h2>";
 use modele\dao\FournisseursDAO;
 use modele\metier\Fournisseurs;
 use modele\dao\Bdd;
@@ -7,8 +20,6 @@ use modele\dao\Bdd;
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
-include("include/_entete.inc.html");
-include("include/_sommaire.inc.php");
 
 // SUPPRIMER LE FOURNISSEUR SÉLECTIONNÉ
 
@@ -24,5 +35,5 @@ echo "
 <a href='cGestionFournisseurs.php?'>Non</a></h3>
 </center>";
 
-include("include/_fin.inc.php");
-
+require($repInclude . "_fin.inc.php");
+echo '</div>';

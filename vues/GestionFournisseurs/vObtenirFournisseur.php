@@ -12,7 +12,7 @@ require($repInclude . "_sommaire.inc.php");
 
 //Division principale
 echo '<div id="contenu">';
-echo "<h2>Gestion des Fournisseurs</h2>";
+echo "<h2><center>Gestion des Fournisseurs</center></h2>";
 
 use modele\dao\FournisseursDAO;
 use modele\dao\Bdd;
@@ -50,7 +50,10 @@ foreach ($lesFournisseurs as $unFournisseur) {
         <a href='cGestionFournisseurs.php?action=demanderModifierFourni&id=$id'>
                     <img src='./images/modifier.png' />
         </a>
-
+         <td width='16%' align='center'> 
+        <a href='cGestionFournisseurs.php?action=demanderSupprimerFourni&id=$id'>
+                    <img src='./images/supprimer.png' />
+        </a>
     </tr>";
 }
 echo "

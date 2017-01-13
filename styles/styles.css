@@ -163,8 +163,8 @@ button{
 }
 
 input:hover, textarea:hover, select:hover{
-    background-color : #FAFAE6;
-    cursor : pointer;
+    color: black;
+    font-weight:bold;
 }
 
 /*  Le texte des messages d'erreur est de couleur rose sur fond ocre et de 
@@ -203,9 +203,8 @@ taille de caract�res l�g�rement sup�rieure � la normale */
     text-decoration:none;
 }
 #contenu a:hover {
-    text-decoration:underline;
-    background-color : #D9BB7A;
-    font-size : 1em;
+    color: black;
+    font-weight:bold;
 }
 
 /* Style pour les parties importantes de la page principale */
@@ -283,7 +282,6 @@ table.listeLegere th.libelle{
     text-decoration: none;
     border : 1px solid black;
     border-radius: 7px;
-    padding-left: 35%;
     padding-top: 2px;
     background-color: #626262;
     height : 28px;

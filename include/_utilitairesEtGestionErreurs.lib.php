@@ -77,30 +77,6 @@ function lireDonnee($nomDonnee, $valDefaut="") {
 }
 
 /** 
- * Ajoute un message dans le tableau des messages d'erreurs.                    
- * 
- * Ajoute le message $msg en fin de tableau $tabErr. Ce tableau est passé par 
- * référence afin que les modifications sur ce tableau soient visibles de l'appelant.  
- * @param array $tabErr  
- * @param string message
- * @return void
- */ 
-function ajouterErreur(&$tabErr,$msg) {
-    $tabErr[count($tabErr)]=$msg;
-}
-
-/** 
- * Retourne le nombre de messages d'erreurs enregistrés.                    
- * 
- * Retourne le nombre de messages d'erreurs enregistrés dans le tableau $tabErr. 
- * @param array $tabErr tableau des messages d'erreurs  
- * @return int nombre de messages d'erreurs
- */ 
-function nbErreurs($tabErr) {
-    return count($tabErr);
-}
- 
-/** 
  * Fournit les messages d'erreurs sous forme d'une liste à puces HTML.                    
  * 
  * Retourne le source HTML, division contenant une liste à puces, d'après les
@@ -130,5 +106,55 @@ function toStringErreurs($tabErr) {
  */ 
 function filtrerChainePourNavig($str) {
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+}
+
+// Si la valeur transmise ne contient pas d'autres caractères que des chiffres, 
+// la fonction retourne vrai
+function estEntier($valeur) {
+    return preg_match('/[^0-9]/', $valeur) != 1;
+}
+
+// Si la valeur transmise ne contient pas d'autres caractères que des chiffres  
+// et des lettres non accentuées, la fonction retourne vrai
+function estChiffresOuEtLettres($valeur) {
+    return preg_match('/[^a-zA-Z0-9]/', $valeur) != 1;
+}
+
+function estMail($valeur) {
+    return preg_match("/^[a-z0-9_\.-]+@([a-z0-9]+([\-]+[a-z0-9]+)*\.)+[a-z]{2,7}$/i", $valeur) != 1;
+}
+
+function razErreurs() {
+    unset($_REQUEST['erreurs']);
+}
+
+function ajouterErreur($msg) {
+    if (!isset($_REQUEST['erreurs'])) {
+        $_REQUEST['erreurs'] = array();
+    }
+    $_REQUEST['erreurs'][] = htmlentities($msg, ENT_QUOTES, 'UTF-8');
+}
+
+function getErreurs() {
+    if (!isset($_REQUEST['erreurs'])) {
+        $_REQUEST['erreurs'] = array();
+    }
+    return $_REQUEST['erreurs'];
+}
+
+function nbErreurs() {
+    return count(getErreurs());
+}
+
+function printErreurs() {
+    if (nbErreurs() != 0) {
+        echo '<div id="erreur" class="msgErreur">';
+        echo '<ul>';
+        foreach (getErreurs() as $erreur) {
+            echo "<li>$erreur</li>";
+        }
+        echo '</ul>';
+        echo '</div>';
+    }
 }
 ?>

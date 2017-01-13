@@ -12,7 +12,7 @@ require($repInclude . "_sommaire.inc.php");
 
 //Division principale
 echo '<div id="contenu">';
-echo "<h2>Détail fournisseur</h2>";
+echo "<h2><center>Détail fournisseur</center></h2>";
 
 use modele\dao\FournisseursDAO;
 use modele\dao\Bdd;
@@ -39,40 +39,38 @@ echo "
 <table width='60%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
    
    <tr class='enTeteTabNonQuad'>
-      <td colspan='3'><strong>$nom</strong></td>
+      <td colspan='3'><strong>&nbsp&nbsp$nom</strong></td>
    </tr>
    <tr class='ligneTabNonQuad'>
-      <td  width='20%'> Id: </td>
-      <td>$id</td>
+      <td  width='20%'>&nbsp Id: </td>
+      <td>&nbsp$id</td>
    </tr>
    <tr class='ligneTabNonQuad'>
-      <td> Adresse: </td>
-      <td>$adresseRue</td>
+      <td>&nbsp Adresse: </td>
+      <td>&nbsp$adresseRue</td>
    </tr>
    <tr class='ligneTabNonQuad'>
-      <td> Code postal: </td>
-      <td>$codePostal</td>
+      <td>&nbsp Code postal: </td>
+      <td>&nbsp$codePostal</td>
    </tr>
    <tr class='ligneTabNonQuad'>
-      <td> Ville: </td>
-      <td>$ville</td>
+      <td>&nbsp Ville: </td>
+      <td>&nbsp$ville</td>
    </tr>
    <tr class='ligneTabNonQuad'>
-      <td> Téléphone: </td>
-      <td>$tel</td>
+      <td>&nbsp Téléphone: </td>
+      <td>&nbsp$tel</td>
    </tr>
    <tr class='ligneTabNonQuad'>
-      <td> E-mail: </td>
-      <td>$adresseElectronique</td>
+      <td>&nbsp E-mail: </td>
+      <td>&nbsp$adresseElectronique</td>
    </tr>
    <tr class='ligneTabNonQuad'>
-      <td> Paiement sous combien de jours: </td>
-      <td>$paiement</td>;
+      <td>&nbsp Paiement: </td>
+      <td>&nbsp$paiement</td>;
    </tr>;
 
 </table>
 <br>
 <a href='cGestionFournisseurs.php'>Retour</a>";
-
-include("include/_fin.inc.php");
 

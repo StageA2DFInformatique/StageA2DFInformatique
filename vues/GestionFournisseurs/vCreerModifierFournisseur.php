@@ -12,7 +12,7 @@ require($repInclude . "_sommaire.inc.php");
 
 //Division principale
 echo '<div id="contenu">';
-echo "<h2>Création d'un Fournisseur</h2>";
+echo "<h2><center>Création  ou modification d'un Fournisseur</center></h2>";
 
 use modele\dao\FournisseursDAO;
 use modele\metier\Fournisseurs;
@@ -122,25 +122,19 @@ echo '
          "adresseElectronique" size ="30" maxlength="70"></td>
       </tr>
       <br>
-      <tr class="ligneTabNonQuad">
+     <tr class="ligneTabNonQuad">
          <td> Paiement sous combien de jours*: </td>
          <td><input type="text" value="' . $paiement . '" name="paiement" size ="30"
          maxlength="5"></td>
       </tr>
       <br>';
 echo '</div>';
-
 echo "<br>
    <table align='right' cellspacing='15' cellpadding='0'>
       <tr>
          <td align='right'><input type='submit' value='Valider' name='valider'>
-         </td>
-         <td align='left'><input type='reset' value='Annuler' name='annuler'>
-         </td>
       </tr>
    </table>
    <a href='cGestionFournisseurs.php'><button type=button>Retour</button></a>
 </form>";
-
 include("include/_fin.inc.php");
-

@@ -14,7 +14,7 @@ require($repInclude . "_sommaire.inc.php");
 
 //Division principale
 echo '<div id="contenu">';
-echo "<h2>En Cours</h2>";
+echo "<h2><center>En Cours</center></h2>";
 echo '</div>';
 ?>
 <?php
