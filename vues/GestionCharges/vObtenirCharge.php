@@ -41,15 +41,15 @@ foreach ($lesCharges as $unCharge) {
          
          <td width='16%' align='center'> 
         <a href='cGestionCharges.php?action=detailChrg&id=$id'>
-                    <img src='./images/detail.png' />
+                    <img src='./images/detail.png'title='Voir détail' />
         </a>  
          <td width='16%' align='center'> 
         <a href='cGestionCharges.php?action=demanderModifierChrg&id=$id'>
-                    <img src='./images/modifier.png' />
+                    <img src='./images/modifier.png'title='Modifier' />
         </a>
          <td width='16%' align='center'> 
         <a href='cGestionCharges.php?action=demanderSupprimerChrg&id=$id'>
-                    <img src='./images/supprimer.png' />
+                    <img src='./images/supprimer.png' title='Supprimer' />
         </a>
     </tr>";
 }

@@ -167,8 +167,6 @@ input:hover, textarea:hover, select:hover{
     font-weight:bold;
 }
 
-/*  Le texte des messages d'erreur est de couleur rose sur fond ocre et de 
-taille de caract�res l�g�rement sup�rieure � la normale */
 .erreur{ 
     background-color:#F4AD5C;
     color:#d43f3a;
@@ -302,14 +300,6 @@ table.listeLegere th.libelle{
     border: 2px solid black;
     border-radius: 7px;
 }
-.bouton-modifier{
-background:url(/images/modifier.png);
-}
-.bouton-details{
-background:url(/images/details.png);
-} 
-.bouton-supprimer{
-background:url(/images/supprimer.png);
 
 #tabNonQuadrille 
 {
@@ -330,5 +320,4 @@ nuances de jaune et trait bas pour séparer l'en-tête du corps du tableau */
    height:21px;
    text-align:center;
    border-bottom:1px solid #777777;
-} 
 } 

@@ -17,8 +17,8 @@ if ($etape == 'validerConnexion') { // un client demande à s'authentifier
     // acquisition des données envoyées, ici login et mot de passe
     $login = lireDonneePost("txtLogin");
     $mdp = lireDonneePost("txtMdp");
-    //ajout de la fontion md5 qui prend en parametre le mot de passe non crypté saisit par l'utilisateur pour le crypter et le comparer a celui crypté dans la base de données
-    $lgUser = verifierInfosConnexion($idConnexion, $login, md5($mdp));
+    //ajout de la fontion sha1 qui prend en parametre le mot de passe non crypté saisit par l'utilisateur pour le crypter et le comparer a celui crypté dans la base de données
+    $lgUser = verifierInfosConnexion($idConnexion, $login,  sha1($mdp));
 
     // si l'id utilisateur a été trouvé, donc informations fournies sous forme de tableau
     $nbErreur = 0;

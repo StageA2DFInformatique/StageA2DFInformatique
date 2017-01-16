@@ -132,7 +132,7 @@ function ajouterErreur($msg) {
     if (!isset($_REQUEST['erreurs'])) {
         $_REQUEST['erreurs'] = array();
     }
-    $_REQUEST['erreurs'][] = htmlentities($msg, ENT_QUOTES, 'UTF-8');
+    $_REQUEST['erreurs']= htmlentities($msg, ENT_QUOTES, 'UTF-8');
 }
 
 function getErreurs() {

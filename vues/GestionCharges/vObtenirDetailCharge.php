@@ -34,6 +34,18 @@ echo "
       <td  width='20%'>&nbsp Id: </td>
       <td>&nbsp$id</td>
    </tr>
+      <tr class='ligneTabNonQuad'>
+      <td  width='20%'>&nbsp Description: </td>
+      <td>&nbsp$description</td>
+   </tr>
+      <tr class='ligneTabNonQuad'>
+      <td  width='20%'>&nbsp N° Contrat: </td>
+      <td>&nbsp$numContrat</td>
+   </tr>
+      <tr class='ligneTabNonQuad'>
+      <td  width='20%'>&nbsp N° Tel: </td>
+      <td>&nbsp$NumTel</td>
+   </tr>
 </table>
 <br>
 <a href='cGestionCharges.php'>Retour</a>";

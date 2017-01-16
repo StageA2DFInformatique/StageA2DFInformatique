@@ -17,18 +17,6 @@ include ($repInclude . "connexionBDD.php");
             $nom = $_SESSION['nomUser'];
             $prenom = $_SESSION['prenomUser'];
             $login = $_SESSION['loginUser'];
-            ?>
-            <h2>
-                <?php
-                ?>
-            </h2>
-            <?php
-            //different affichage selon la personne connecté (administrateur ou simple visiteur)
-            if ($login == 'admin') {
-                echo '<center><h3>François Baraud</h3></center>';
-            }else{
-                echo '<center><h3>' . $prenom . $nom . '</h3></center>';
-            }
         }
         ?>  
     </div>  

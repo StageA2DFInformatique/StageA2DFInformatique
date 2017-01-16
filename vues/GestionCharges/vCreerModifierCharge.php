@@ -26,12 +26,9 @@ Bdd::connecter();
 if ($action == 'demanderCreerChrg') {
     $id = '';
     $nom = '';
-    $adresseRue = '';
-    $ville = '';
-    $codePostal = '';
-    $tel = '';
-    $adresseElectronique = '';
-    $paiement = '';
+    $description = '';
+    $numContrat = '';
+    $NumTel = '';
 }
 
 // S'il s'agit d'une modification et qu'on ne "vient" pas de ce formulaire, il
@@ -46,11 +43,11 @@ if ($action == 'demanderModifierChrg') {
 // Initialisations en fonction du mode (création ou modification) 
 if ($action == 'demanderCreerChrg' || $action == 'validerCreerChrg') {
     $creation = true;
-    $message = "Nouvelle Charge";  // Alimentation du message de l'en-tête
+    $messageChrg = "Nouvelle Charge";  // Alimentation du message de l'en-tête
     $action = "validerCreerChrg";
 } else {
     $creation = false;
-    $message = "$nom ($id)";            // Alimentation du message de l'en-tête
+    $messageChrg = "$nom ($id)";            // Alimentation du message de l'en-tête
     $action = "validerModifierChrg";
 }
 echo "<form method='POST' action='cGestionCharges.php?'>
@@ -59,7 +56,7 @@ echo "<form method='POST' action='cGestionCharges.php?'>
    <table width='65%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
    
       <tr class='enTeteTabNonQuad'>
-         <td colspan='3'><strong><center>$message</center></strong></td>
+         <td colspan='3'><strong><center>$messageChrg</center></strong></td>
       </tr>";
 
 // En cas de création, l'id est accessible sinon l'id est dans un champ
@@ -89,7 +86,25 @@ echo '
          <td><input type="text" value="' . $nom . '" name="nom" size="30" 
          maxlength="45"></td>
       </tr>
-      <br>';
+      <br>
+            <tr class="ligneTabNonQuad">
+         <td> Description*: </td>
+         <td><input type="text" value="' . $description . '" name="description" size="30" 
+         maxlength="45"></td>
+      </tr>
+      <br>
+            <tr class="ligneTabNonQuad">
+         <td> N° Contrat*: </td>
+         <td><input type="text" value="' . $numContrat . '" name="numContrat" size="30" 
+         maxlength="45"></td>
+      </tr>
+      <br>
+            <tr class="ligneTabNonQuad">
+         <td> N° Tel*: </td>
+         <td><input type="text" value="' . $NumTel . '" name="numTel" size="30" 
+         maxlength="45"></td>
+      </tr>
+      <br>'        ;
 echo '</div>';
 echo "<br>
    <table align='right' cellspacing='15' cellpadding='0'>

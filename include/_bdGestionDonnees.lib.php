@@ -97,7 +97,7 @@ function obtenirDetailVisiteur($idCnx, $unId) {
 function verifierInfosConnexion($idCnx, $unLogin, $unMdp) {
     $unLogin = filtrerChainePourBD($unLogin);
     $unMdp = filtrerChainePourBD($unMdp);
-    // le mot de passe est crypté dans la base avec la fonction de hachage md5
+    // le mot de passe est crypté dans la base avec la fonction de hachage sha1
     $req = "select id, nom, prenom, login, mdp from Visiteur where login='".$unLogin."' and mdp='" . $unMdp . "'";
     $idJeuRes = mysqli_query($idCnx, $req);
     $ligne = false;

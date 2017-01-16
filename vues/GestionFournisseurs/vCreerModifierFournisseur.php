@@ -52,21 +52,20 @@ if ($action == 'demanderModifierFourni') {
 // Initialisations en fonction du mode (création ou modification) 
 if ($action == 'demanderCreerFourni' || $action == 'validerCreerFourni') {
     $creation = true;
-    $message = "Création d'un nouveau Fournisseur";  // Alimentation du message de l'en-tête
+    $messageFourni = "Création d'un nouveau Fournisseur";  // Alimentation du message de l'en-tête
     $action = "validerCreerFourni";
 } else {
     $creation = false;
-    $message = "$nom ($id)";            // Alimentation du message de l'en-tête
+    $messageFourni = "$nom ($id)";            // Alimentation du message de l'en-tête
     $action = "validerModifierFourni";
 }
-echo "
-    <form method='POST' action='cGestionCharges.php?'>
+echo "<form method='POST' action='cGestionFournisseurs.php?'>
    <input type='hidden' value='$action' name='action'>
    <br>
    <table width='65%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
    
       <tr class='enTeteTabNonQuad'>
-         <td colspan='3'><strong><center>$message</center></strong></td>
+         <td colspan='3'><strong><center>$messageFourni</center></strong></td>
       </tr>";
 
 // En cas de création, l'id est accessible sinon l'id est dans un champ

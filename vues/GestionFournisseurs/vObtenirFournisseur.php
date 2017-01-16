@@ -41,15 +41,15 @@ foreach ($lesFournisseurs as $unFournisseur) {
          
          <td width='16%' align='center'> 
         <a href='cGestionFournisseurs.php?action=detailFourni&id=$id'>
-                    <img src='./images/detail.png' />
+                    <img src='./images/detail.png' /title='Voir détail'>
         </a>  
          <td width='16%' align='center'> 
         <a href='cGestionFournisseurs.php?action=demanderModifierFourni&id=$id'>
-                    <img src='./images/modifier.png' />
+                    <img src='./images/modifier.png' title='Modifier'/>
         </a>
          <td width='16%' align='center'> 
         <a href='cGestionFournisseurs.php?action=demanderSupprimerFourni&id=$id'>
-                    <img src='./images/supprimer.png' />
+                    <img src='./images/supprimer.png' title='Supprimer'/>
         </a>
     </tr>";
 }
