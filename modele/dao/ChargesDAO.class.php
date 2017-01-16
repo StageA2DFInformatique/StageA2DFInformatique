@@ -60,7 +60,7 @@ class ChargesDAO implements IDAO {
     public static function update($id, $objet) {
         $ok = false;
         $requete = "UPDATE  Charges SET NOM=:nom, DESCRIPTION=:description, 
-                NUMCONTRAT=:numContrat, NUMTEL=:numTel, WHERE ID=:id";
+                NUMCONTRAT=:numContrat, NUMTEL=:numTel WHERE ID=:id";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
         $stmt->bindParam(':id', $id);
@@ -103,7 +103,6 @@ class ChargesDAO implements IDAO {
         }
         return $objetConstruit;
     }
-
     /**
      * Permet de vérifier s'il existe ou non une Charge ayant déjà le même identifiant dans la BD
      * @param string $id identifiant de la charge à tester

@@ -23,6 +23,9 @@ Bdd::connecter();
 $unChrg = ChargesDAO::getOneById($id);
 /* @var $unChrg Charge  */
 $nom = $unChrg->getNom();
+$description = $unChrg->getDescription();
+$numContrat = $unChrg->getNumContrat();
+$numTel = $unChrg->getNumTel();
 echo "
 <br>
 <table width='60%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
@@ -44,7 +47,7 @@ echo "
    </tr>
       <tr class='ligneTabNonQuad'>
       <td  width='20%'>&nbsp N° Tel: </td>
-      <td>&nbsp$NumTel</td>
+      <td>&nbsp$numTel</td>
    </tr>
 </table>
 <br>

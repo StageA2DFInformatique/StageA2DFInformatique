@@ -53,20 +53,24 @@ switch ($action) {
     case 'validerCreerChrg':case 'validerModifierChrg':
         $id = $_REQUEST['id'];
         $nom = $_REQUEST['nom'];
+        $description = $_REQUEST['description'];
+        $numContrat = $_REQUEST['numContrat'];
+        $numTel = $_REQUEST['numTel'];
+
 
         if ($action == 'validerCreerChrg') {
-            verifierDonneesChrgC($id, $nom);
+            verifierDonneesChrgC($id, $nom, $description, $numContrat, $numTel);
             if (nbErreurs() == 0) {
-                $unChrg = new Charges($id, $nom);
+                $unChrg = new Charges($id, $nom, $description, $numContrat, $numTel);
                 ChargesDAO::insert($unChrg);
                 include("vues/GestionCharges/vObtenirCharge.php");
             } else {
                 include("vues/GestionCharges/vCreerModifierCharge.php");
             }
         } else {
-            verifierDonneesChrgM($id, $nom);
+            verifierDonneesChrgM($id, $nom, $description, $numContrat, $numTel);
             if (nbErreurs() == 0) {
-                $unChrg = new Charges($id, $nom);
+                $unChrg = new Charges($id, $nom, $description, $numContrat, $numTel);
                 ChargesDAO::update($id, $unChrg);
                 include("vues/GestionCharges/vObtenirCharge.php");
             } else {
@@ -79,8 +83,8 @@ switch ($action) {
 // Fermeture de la connexion au serveur MySql
 Bdd::deconnecter();
 
-function verifierDonneesChrgC($id, $nom) {
-    if ($id == "" || $nom == "") {
+function verifierDonneesChrgC($id, $nom, $description, $numContrat, $numTel) {
+    if ($id == "" || $nom == "" || $description == "" || $numContrat == "" || $numTel == "") {
         ajouterErreur('Chaque champ suivi du caractère * est obligatoire');
     }
     if ($id != "") {
@@ -100,8 +104,8 @@ function verifierDonneesChrgC($id, $nom) {
     }
 }
 
-function verifierDonneesChrgM($id, $nom) {
-    if ($id == "" || $nom == "") {
+function verifierDonneesChrgM($id, $nom, $description, $numContrat, $numTel) {
+    if ($id == "" || $nom == "" || $description == "" || $numContrat == "" || $numTel == "") {
         ajouterErreur('Chaque champ suivi du caractère * est obligatoire');
     }
     if ($nom != "" && ChargesDAO::isAnExistingName(false, $id, $nom)) {

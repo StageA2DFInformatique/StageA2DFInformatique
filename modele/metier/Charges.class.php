@@ -36,10 +36,11 @@ class Charges {
     function __construct($id, $nom, $description, $numContrat, $numTel) {
         $this->id = $id;
         $this->nom = $nom;
-        $this->nom = $description;
-        $this->nom = $numContrat;
-        $this->nom = $numTel;
+        $this->description = $description;
+        $this->numContrat = $numContrat;
+        $this->numTel = $numTel;
     }
+
     function getId() {
         return $this->id;
     }
@@ -79,7 +80,5 @@ class Charges {
     function setNumTel($numTel) {
         $this->numTel = $numTel;
     }
-
-
 
 }

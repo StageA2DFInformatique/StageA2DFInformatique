@@ -28,7 +28,7 @@ if ($action == 'demanderCreerChrg') {
     $nom = '';
     $description = '';
     $numContrat = '';
-    $NumTel = '';
+    $numTel = '';
 }
 
 // S'il s'agit d'une modification et qu'on ne "vient" pas de ce formulaire, il
@@ -38,6 +38,9 @@ if ($action == 'demanderModifierChrg') {
     $unChrg = ChargesDAO::getOneById($id);
     /* @var $unChrg Charges */
     $nom = $unChrg->getNom();
+    $description = $unChrg->getDescription();
+    $numContrat = $unChrg->getNumContrat();
+    $numTel = $unChrg->getNumTel();
 }
 
 // Initialisations en fonction du mode (création ou modification) 
@@ -96,15 +99,15 @@ echo '
             <tr class="ligneTabNonQuad">
          <td> N° Contrat*: </td>
          <td><input type="text" value="' . $numContrat . '" name="numContrat" size="30" 
-         maxlength="45"></td>
+         maxlength="16"></td>
       </tr>
       <br>
             <tr class="ligneTabNonQuad">
          <td> N° Tel*: </td>
-         <td><input type="text" value="' . $NumTel . '" name="numTel" size="30" 
-         maxlength="45"></td>
+         <td><input type="text" value="' . $numTel . '" name="numTel" size="30" 
+         maxlength="10"></td>
       </tr>
-      <br>'        ;
+      <br>';
 echo '</div>';
 echo "<br>
    <table align='right' cellspacing='15' cellpadding='0'>
