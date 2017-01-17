@@ -291,6 +291,9 @@ table.listeLegere th.libelle{
     float : none;
 
 }
+.img_graph{
+    height: 350px;
+}
 
 #contenu-formulaire{
     padding: 1.8em;

@@ -40,17 +40,17 @@ foreach ($lesCharges as $unCharge) {
          <td width='52%'>$nom</td>
          
          <td width='16%' align='center'> 
-        <a href='cGestionCharges.php?action=detailChrg&id=$id'>
+         <a href='cGestionCharges.php?action=detailChrg&id=$id'>
                     <img src='./images/detail.png'title='Voir détail' />
-        </a>  
-         <td width='16%' align='center'> 
+        </a></td>  
+                 <td width='16%' align='center'> 
         <a href='cGestionCharges.php?action=demanderModifierChrg&id=$id'>
                     <img src='./images/modifier.png'title='Modifier' />
-        </a>
+        </a></td>
          <td width='16%' align='center'> 
         <a href='cGestionCharges.php?action=demanderSupprimerChrg&id=$id'>
                     <img src='./images/supprimer.png' title='Supprimer' />
-        </a>
+        </a></td>
     </tr>";
 }
 echo "

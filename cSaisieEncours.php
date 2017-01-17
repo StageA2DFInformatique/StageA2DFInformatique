@@ -16,8 +16,5 @@ require($repInclude . "_sommaire.inc.php");
 echo '<div id="contenu">';
 echo "<h2><center>En Cours</center></h2>";
 echo '</div>';
-?>
-<?php
-
 require($repInclude . "_fin.inc.php");
 ?>

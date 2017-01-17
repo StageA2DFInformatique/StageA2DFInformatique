@@ -6,18 +6,14 @@ if (!estVisiteurConnecte()) {
 }
 require($repInclude . "_entete.inc.html");
 require($repInclude . "_sommaire.inc.php");
-
-//Division principale
-echo '<div id="contenu">';
-echo "<h2><center>Création  ou modification d'un Fournisseur</center></h2>";
-
 use modele\dao\FournisseursDAO;
 use modele\metier\Fournisseurs;
 use modele\dao\Bdd;
-
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
-
+//Division principale
+echo '<div id="contenu">';
+echo "<h2><center>Création  ou modification d'un Fournisseur</center></h2>";
 
 // CRÉER OU MODIFIER UN FOURNISSEUR
 // S'il s'agit d'une création et qu'on ne "vient" pas de ce formulaire (on 
