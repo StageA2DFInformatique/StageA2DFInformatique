@@ -10,6 +10,7 @@ require($repInclude . "_sommaire.inc.php");
 //Division principale
 echo '<div id="contenu">';
 echo "<h2><center>Suppression d'un fournisseur</center></h2>";
+
 use modele\dao\FournisseursDAO;
 use modele\metier\Fournisseurs;
 use modele\dao\Bdd;

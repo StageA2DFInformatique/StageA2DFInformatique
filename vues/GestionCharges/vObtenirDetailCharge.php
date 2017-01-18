@@ -28,25 +28,21 @@ $numContrat = $unChrg->getNumContrat();
 $numTel = $unChrg->getNumTel();
 echo "
 <br>
-<table width='60%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
+<table width='70%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
    
    <tr class='enTeteTabNonQuad'>
       <td colspan='3'><strong><center>$nom</center></strong></td>
    </tr>
-   <tr class='ligneTabNonQuad'>
-      <td  width='20%'>&nbsp Id: </td>
-      <td>&nbsp$id</td>
-   </tr>
       <tr class='ligneTabNonQuad'>
-      <td  width='20%'>&nbsp Description: </td>
+      <td  width='30%'>&nbsp Description: </td>
       <td>&nbsp$description</td>
    </tr>
       <tr class='ligneTabNonQuad'>
-      <td  width='20%'>&nbsp N° Contrat: </td>
+      <td  width='30%'>&nbsp N° Contrat: </td>
       <td>&nbsp$numContrat</td>
    </tr>
       <tr class='ligneTabNonQuad'>
-      <td  width='20%'>&nbsp N° Tel: </td>
+      <td  width='30%'>&nbsp N° Tel: </td>
       <td>&nbsp$numTel</td>
    </tr>
 </table>

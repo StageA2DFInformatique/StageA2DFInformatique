@@ -4,7 +4,7 @@ namespace modele\metier;
 
 /**
  * Description of Fournisseurs
- * @author btssio
+ * @author Charly
  */
 class Fournisseurs {
 
@@ -44,12 +44,13 @@ class Fournisseurs {
      * @var string
      */
     private $email;
+
     /**
      * paiement sous combien de jours
      * @var string 
      */
     private $paiement;
-    
+
     function __construct($id, $nom, $adresse, $cdp, $ville, $tel, $email, $paiement) {
         $this->id = $id;
         $this->nom = $nom;
@@ -59,7 +60,6 @@ class Fournisseurs {
         $this->tel = $tel;
         $this->email = $email;
         $this->paiement = $paiement;
-
     }
 
     function getId() {

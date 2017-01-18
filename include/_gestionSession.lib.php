@@ -1,11 +1,12 @@
 <?php
-/** 
+
+/**
  * Regroupe les fonctions de gestion d'une session utilisateur.
  * @package default
  * @todo  RAS
  */
 
-/** 
+/**
  * Démarre ou poursuit une session.                     
  *
  * @return void
@@ -14,18 +15,18 @@ function initSession() {
     session_start();
 }
 
-/** 
+/**
  * Fournit l'id du visiteur connecté.                     
  *
  * Retourne l'id du visiteur connecté, une chaîne vide si pas de visiteur connecté.
  * @return string id du visiteur connecté
  */
 function obtenirIdUserConnecte() {
-    $ident="";
-    if ( isset($_SESSION["loginUser"]) ) {
-        $ident = (isset($_SESSION["idUser"])) ? $_SESSION["idUser"] : '';   
-    }  
-    return $ident ;
+    $ident = "";
+    if (isset($_SESSION["loginUser"])) {
+        $ident = (isset($_SESSION["idUser"])) ? $_SESSION["idUser"] : '';
+    }
+    return $ident;
 }
 
 /**
@@ -43,7 +44,7 @@ function affecterInfosConnecte($id, $login, $nom, $prenom) {
     $_SESSION["prenomUser"] = $prenom;
 }
 
-/** 
+/**
  * Déconnecte le visiteur qui s'est identifié sur le site.                     
  *
  * @return void
@@ -53,7 +54,7 @@ function deconnecterVisiteur() {
     unset($_SESSION["loginUser"]);
 }
 
-/** 
+/**
  * Vérifie si un visiteur s'est connecté sur le site.                     
  *
  * Retourne true si un visiteur s'est identifié sur le site, false sinon. 
@@ -63,4 +64,5 @@ function estVisiteurConnecte() {
     // actuellement il n'y a que les visiteurs qui se connectent
     return isset($_SESSION["loginUser"]);
 }
+
 ?>

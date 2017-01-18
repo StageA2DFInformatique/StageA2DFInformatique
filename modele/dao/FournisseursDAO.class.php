@@ -8,7 +8,7 @@ use PDO;
 /**
  * Description of FournisseursDAO
  * Classe métier : Fournisseurs
- * @author btssio
+ * @author Charly
  */
 class FournisseursDAO implements IDAO {
 
@@ -110,6 +110,7 @@ class FournisseursDAO implements IDAO {
         }
         return $objetConstruit;
     }
+
     /**
      * Permet de vérifier s'il existe ou non un Fournisseur ayant déjà le même identifiant dans la BD
      * @param string $id identifiant du Fournisseur à tester

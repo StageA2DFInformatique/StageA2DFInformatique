@@ -39,10 +39,6 @@ echo "
       <td colspan='3'><strong><center>$nom</center></strong></td>
    </tr>
    <tr class='ligneTabNonQuad'>
-      <td  width='20%'>&nbsp Id: </td>
-      <td>&nbsp$id</td>
-   </tr>
-   <tr class='ligneTabNonQuad'>
       <td>&nbsp Adresse: </td>
       <td>&nbsp$adresseRue</td>
    </tr>
@@ -64,7 +60,7 @@ echo "
    </tr>
    <tr class='ligneTabNonQuad'>
       <td>&nbsp Paiement: </td>
-      <td>&nbsp$paiement</td>
+      <td>&nbspSous $paiement jours</td>
    </tr>
 
 </table>

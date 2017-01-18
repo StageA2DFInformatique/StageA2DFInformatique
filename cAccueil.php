@@ -1,24 +1,112 @@
 <?php
 
+/**
+ * Contrôleur : gestion des Syntheses de chaque mois de l'année
+ */
+use modele\dao\SyntheseDAO;
+use modele\metier\Synthese;
+use modele\dao\Bdd;
+
+require_once __DIR__ . '/include/autoload.php';
+Bdd::connecter();
 $repInclude = './include/';
 require($repInclude . "_init.inc.php");
-
-// page inaccessible si visiteur non connecté
-if (!estVisiteurConnecte()) {
-    header("Location: cSeConnecter.php");
+// 1ère étape (donc pas d'action choisie) : affichage du tableau des syntheses 
+if (!isset($_REQUEST['action'])) {
+    $_REQUEST['action'] = 'initial';
 }
-require($repInclude . "_entete.inc.html");
-require($repInclude . "_sommaire.inc.php");
-?>
-<?php
 
-//Division principale
-echo '<div id="contenu">';
-echo "<h2><center>Bienvenue sur l'accueil</center></h2>";
-echo '</div>';
-?>
+$action = $_REQUEST['action'];
 
-<?php
+// Aiguillage selon l'étape
+switch ($action) {
+    case 'initial' :
+        include("vues/AccueilSynthese/vObtenirSynthese.php");
+        break;
 
-require($repInclude . "_fin.inc.php");
-?>
+    case 'detailSynth':
+        $id = $_REQUEST['id'];
+        include("vues/AccueilSynthese/vObtenirDetailSynthese.php");
+        break;
+
+    case 'demanderSupprimerSynth':
+        $id = $_REQUEST['id'];
+        include("vues/AccueilSynthese/vSupprimerSynthese.php");
+        break;
+
+    case 'demanderCreerSynth':
+        include("vues/AccueilSynthese/vCreerModifierSynthese.php");
+        break;
+
+    case 'demanderModifierSynth':
+        $id = $_REQUEST['id'];
+        include("vues/AccueilSynthese/vCreerModifierSynthese.php");
+        break;
+
+    case 'validerSupprimerSynth':
+        $id = $_REQUEST['id'];
+        FournisseursDAO::delete($id);
+        include("vues/AccueilSynthese/vObtenirSynthese.php");
+        break;
+
+    case 'validerCreerSynth':case 'validerModifierSynth':
+        $id = $_REQUEST['id'];
+        $compte = $_REQUEST['compte'];
+        $cb = $_REQUEST['cb'];
+        $espece = $_REQUEST['espece'];
+        $cheque = $_REQUEST['cheque'];
+
+        if ($action == 'validerCreerSynth') {
+            verifierDonneesSynthC($id, $compte, $cb, $espece, $cheque);
+            if (nbErreurs() == 0) {
+                $uneSynth = new Synthese($id, $nom, $adresseRue, $codePostal, $ville, $tel, $adresseElectronique, $paiement);
+                SyntheseDAO::insert($uneSynth);
+                include("vues/AccueilSynthese/vObtenirSynthese.php");
+            } else {
+                include("vues/AccueilSynthese/vCreerModifierSynthese.php");
+            }
+        } else {
+            verifierDonneesSynthM($id, $compte, $cb, $espece, $cheque);
+            if (nbErreurs() == 0) {
+                $uneSynth = new Synthese($id, $nom, $adresseRue, $codePostal, $ville, $tel, $adresseElectronique, $paiement);
+                SyntheseDAO::update($id, $uneSynth);
+                include("vues/AccueilSynthese/vObtenirSynthese.php");
+            } else {
+                include("vues/AccueilSynthese/vCreerModifierSynthese.php");
+            }
+        }
+        break;
+}
+
+// Fermeture de la connexion au serveur MySql
+Bdd::deconnecter();
+
+function verifierDonneesSynthC($id, $compte, $cb, $espece, $cheque) {
+    if ($id == "" || $compte == "" || $cb == "" || $espece == "" || $cheque == "") {
+        ajouterErreur('Chaque champ est obligatoire');
+    }
+    if ($id != "") {
+        // Si l'id est constitué d'autres caractères que de lettres non accentuées 
+        // et de chiffres, une erreur est générée
+        if (!estChiffresOuEtLettres($id)) {
+            ajouterErreur
+                    ("L'identifiant doit comporter uniquement des lettres non accentuées et des chiffres");
+        } else {
+            if (SyntheseDAO::isAnExistingId($id)) {
+                ajouterErreur("La synthese d'id $id existe déjà");
+            }
+        }
+    }
+    if ($mois != "" && SyntheseDAO::isAnExistingName(true, $id, $mois)) {
+        ajouterErreur("La synthese du mois de $mois existe déjà");
+    }
+}
+
+function verifierDonneesSynthM($id, $compte, $cb, $espece, $cheque) {
+    if ($id == "" || $compte == "" || $cb == "" || $espece == "" || $cheque == "") {
+        ajouterErreur('Chaque champ est obligatoire');
+    }
+    if ($mois != "" && SyntheseDAO::isAnExistingName(true, $id, $mois)) {
+        ajouterErreur("La synthese du mois de $mois existe déjà");
+    }
+}

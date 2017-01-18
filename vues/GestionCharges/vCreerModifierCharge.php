@@ -55,10 +55,8 @@ if ($action == 'demanderCreerChrg' || $action == 'validerCreerChrg') {
 }
 echo "<form method='POST' action='cGestionCharges.php?'>
    <input type='hidden' value='$action' name='action'>
-   <br>
-   <table width='65%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
-   
-      <tr class='enTeteTabNonQuad'>
+      <table width='65%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
+         <tr class='enTeteTabNonQuad'>
          <td colspan='3'><strong><center>$messageChrg</center></strong></td>
       </tr>";
 

@@ -10,6 +10,7 @@ require($repInclude . "_sommaire.inc.php");
 //Division principale
 echo '<div id="contenu">';
 echo "<h2><center>Suppression d'une charge</center></h2>";
+
 use modele\dao\ChargesDAO;
 use modele\metier\Charges;
 use modele\dao\Bdd;
@@ -22,7 +23,6 @@ Bdd::connecter();
 
 $id = $_REQUEST['id'];  // Non obligatoire mais plus propre
 $unChrg = ChargesDAO::getOneById($id);
-/* @var $unChrg Charges  */
 $nom = $unChrg->getNom();
 echo "
 <br><center>Voulez-vous vraiment supprimer la charge $nom ?

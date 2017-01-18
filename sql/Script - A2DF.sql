@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 12 Janvier 2017 à 11:24
+-- Généré le: Mer 18 Janvier 2017 à 16:31
 -- Version du serveur: 5.5.43-0ubuntu0.14.04.1
 -- Version de PHP: 5.5.9-1ubuntu4.9
 
@@ -16,10 +16,33 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
-GRANT ALL ON a2df_informatique . * TO 'fbaraud'@'localhost' IDENTIFIED BY 'admin';
 --
 -- Base de données: `a2df_informatique`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Charges`
+--
+
+CREATE TABLE IF NOT EXISTS `Charges` (
+  `id` char(8) NOT NULL,
+  `nom` varchar(45) NOT NULL,
+  `description` varchar(45) NOT NULL,
+  `numContrat` varchar(16) NOT NULL,
+  `numTel` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `Charges`
+--
+
+INSERT INTO `Charges` (`id`, `nom`, `description`, `numContrat`, `numTel`) VALUES
+('03507844', 'JeSuisUneCharge', 'JeSuisUneDescription', '0123456789101112', '0123456789'),
+('0350785A', 'ChargeTest', 'DescriptionTest', '054564145E789SQ4', '0978451574'),
+('0350785N', 'ChargeTest2', 'DescriptionTest2', '054564145E789SQ4', '0978451574');
 
 -- --------------------------------------------------------
 
@@ -44,7 +67,46 @@ CREATE TABLE IF NOT EXISTS `Fournisseurs` (
 --
 
 INSERT INTO `Fournisseurs` (`id`, `nom`, `adresseRue`, `codePostal`, `ville`, `tel`, `adresseElectronique`, `paiement`) VALUES
-('0350785N', 'FournisseurTest', '4 rue Aristide Briand', '44330', 'Saint-Malo', '0968547896', 'fournisseur@test.fr', '15');
+('0350784D', 'FournisseurTest', '5rue hgfh Briand', '49876', 'st tropez', '0363036306', 'hfjkhdsf@ghfigif.fr', '548'),
+('0350784F', 'FournisseurTest', '5rue hgfh Briand', '49876', 'st tropez', '0363036306', 'hfjkhdsf@ghfigif.fr', '548'),
+('0350784N', 'FournisseurTest', '5rue hgfh Briand', '49876', 'st tropez', '0363036306', 'hfjkhdsf@ghfigif.fr', '548');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Synthese`
+--
+
+CREATE TABLE IF NOT EXISTS `Synthese` (
+  `id` char(2) NOT NULL,
+  `mois` varchar(9) NOT NULL,
+  `compte` varchar(8) NOT NULL,
+  `cb` varchar(8) NOT NULL,
+  `espece` varchar(8) NOT NULL,
+  `cheque` varchar(8) NOT NULL,
+  `totalFinMois` varchar(8) NOT NULL,
+  `totalMoisPlusUn` varchar(8) NOT NULL,
+  `caMoisHt` varchar(8) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `Synthese`
+--
+
+INSERT INTO `Synthese` (`id`, `mois`, `compte`, `cb`, `espece`, `cheque`, `totalFinMois`, `totalMoisPlusUn`, `caMoisHt`) VALUES
+('01', 'Janvier', '', '', '', '', '', '', ''),
+('02', 'Février', '', '', '', '', '', '', ''),
+('03', 'Mars', '', '', '', '', '', '', ''),
+('04', 'Avril', '', '', '', '', '', '', ''),
+('05', 'Mai', '', '', '', '', '', '', ''),
+('06', 'Juin', '', '', '', '', '', '', ''),
+('07', 'Juillet', '', '', '', '', '', '', ''),
+('08', 'Aout', '', '', '', '', '', '', ''),
+('09', 'Septembre', '', '', '', '', '', '', ''),
+('10', 'Octobre', '', '', '', '', '', '', ''),
+('11', 'Novembre', '', '', '', '', '', '', ''),
+('12', 'Décembre', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -74,31 +136,7 @@ CREATE TABLE IF NOT EXISTS `Visiteur` (
 --
 
 INSERT INTO `Visiteur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, `ville`, `dateEmbauche`) VALUES
-('', 'Admin', 'A2DF', 'admin', '21232f297a57a5a743894a0e4a801fc3', '', '44330', 'Le Pallet', '0000-00-00'),
-('a001', 'employe1', 'employe1', 'employe1', '54a51d77ba883e4c77cf681bc70214e5', '', '44330', 'Le Pallet', '0000-00-00'),
-('a002', 'employe2', 'employe2', 'employe2', 'db57a2c4455defb2052e690537e2663e', '', '44330', 'Le Pallet', '0000-00-00');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `Charges`
---
-
-CREATE TABLE IF NOT EXISTS `Charges` (
-  `id` char(8) NOT NULL,
-  `nom` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `Charges`
---
-
-INSERT INTO `Charges` (`id`, `nom`) VALUES
-('0350785A', 'ChargeTest'),
-('0350785N', 'ChargeTest'),
-('0350785X', 'ChargeTest');
-
+('', 'Admin', 'A2DF', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', '44330', 'Le Pallet', '0000-00-00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

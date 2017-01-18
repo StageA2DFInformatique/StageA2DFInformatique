@@ -18,7 +18,7 @@ if ($etape == 'validerConnexion') { // un client demande à s'authentifier
     $login = lireDonneePost("txtLogin");
     $mdp = lireDonneePost("txtMdp");
     //ajout de la fontion sha1 qui prend en parametre le mot de passe non crypté saisit par l'utilisateur pour le crypter et le comparer a celui crypté dans la base de données
-    $lgUser = verifierInfosConnexion($idConnexion, $login,  sha1($mdp));
+    $lgUser = verifierInfosConnexion($idConnexion, $login, sha1($mdp));
 
     // si l'id utilisateur a été trouvé, donc informations fournies sous forme de tableau
     $nbErreur = 0;
@@ -26,7 +26,6 @@ if ($etape == 'validerConnexion') { // un client demande à s'authentifier
         $lgUser = obtenirDetailVisiteur($idConnexion, $lgUser["id"]);
         affecterInfosConnecte($lgUser["id"], $lgUser["login"], $lgUser['nom'], $lgUser['prenom']);
     } else {
-        $nbErreur ++; //le compteur du nombre de tentative n'est pas au point
         ajouterErreur($tabErreurs, "Pseudo et/ou mot de passe incorrects, veuillez réessayer s'il vous plait");
     }
 }

@@ -57,7 +57,7 @@ echo "
     </table>
     <br>
     <a href = 'cGestionFournisseurs.php?action=demanderCreerFourni'>
-    Création d'un fournisseur</a >";
+    Ajouter un fournisseur</a >";
 
 require($repInclude . "_fin.inc.php");
 echo '</div>';

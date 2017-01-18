@@ -57,7 +57,7 @@ echo "
     </table>
     <br>
     <a href = 'cGestionCharges.php?action=demanderCreerChrg'>
-    Création d'une charge</a >";
+    Ajouter une charge</a >";
 
 require($repInclude . "_fin.inc.php");
 echo '</div>';

@@ -6,9 +6,11 @@ if (!estVisiteurConnecte()) {
 }
 require($repInclude . "_entete.inc.html");
 require($repInclude . "_sommaire.inc.php");
+
 use modele\dao\FournisseursDAO;
 use modele\metier\Fournisseurs;
 use modele\dao\Bdd;
+
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 //Division principale
@@ -58,7 +60,7 @@ if ($action == 'demanderCreerFourni' || $action == 'validerCreerFourni') {
 echo "<form method='POST' action='cGestionFournisseurs.php?'>
    <input type='hidden' value='$action' name='action'>
    <br>
-   <table width='65%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
+   <table width='100%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
    
       <tr class='enTeteTabNonQuad'>
          <td colspan='3'><strong><center>$messageFourni</center></strong></td>

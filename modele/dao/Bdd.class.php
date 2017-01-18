@@ -43,7 +43,6 @@ class Bdd {
                 $pdo_options[PDO::MYSQL_ATTR_INIT_COMMAND] = "SET NAMES utf8";  // pour récupérer les données en UTF8
                 $pdo_options[PDO::ATTR_CASE] = PDO::CASE_UPPER;                 // pour compatibilité avec Oracle database (noms de champs trancrits en majuscules)
                 self::$pdo = new PDO(DSN, LOGIN, MDP, $pdo_options);
-                
             } catch (PDOException $e) {
                 echo "ERREUR : " . $e->getMessage();
                 die();
