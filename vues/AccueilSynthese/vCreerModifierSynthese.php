@@ -31,7 +31,7 @@ if ($action == 'demanderModifierSynth') {
 
 // Initialisations en fonction du mode (création ou modification) 
 if ($action == 'demanderModifierSynth' || $action == 'ValiderModifierSynth') {
-    $creation = true;
+    $creation = false;
     $messageSynth = "$mois ($id)";            // Alimentation du message de l'en-tête
     $action = "validerModifierSynth";
 }

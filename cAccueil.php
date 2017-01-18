@@ -28,16 +28,6 @@ switch ($action) {
         $id = $_REQUEST['id'];
         include("vues/AccueilSynthese/vObtenirDetailSynthese.php");
         break;
-
-    case 'demanderSupprimerSynth':
-        $id = $_REQUEST['id'];
-        include("vues/AccueilSynthese/vSupprimerSynthese.php");
-        break;
-
-    case 'demanderCreerSynth':
-        include("vues/AccueilSynthese/vCreerModifierSynthese.php");
-        break;
-
     case 'demanderModifierSynth':
         $id = $_REQUEST['id'];
         include("vues/AccueilSynthese/vCreerModifierSynthese.php");
