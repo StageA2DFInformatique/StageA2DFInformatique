@@ -59,7 +59,7 @@ class SyntheseDAO implements IDAO {
         $ok = false;
         $requete = "UPDATE  Synthese SET MOIS=:mois, COMPTE=:compte, CB=:cb,
            ESPECE=:espece, CHEQUE=:cheque, TOTALFINMOIS=:totalFinMois,
-           TOTALMOISPLUSUN=:totalMoisPlu sUn, CAMOISHT=:caMoisHt WHERE ID=:id";
+           TOTALMOISPLUSUN=:totalMoisPlusUn, CAMOISHT=:caMoisHt WHERE ID=:id";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
         $stmt->bindParam(':id', $id);

@@ -17,24 +17,17 @@ Bdd::connecter();
 echo '<div id="contenu">';
 echo "<h2><center>Modification d'une Synthèse</center></h2>";
 
-// S'il s'agit d'une modification et qu'on ne "vient" pas de ce formulaire, il
-// faut récupérer les données sinon on affichera les valeurs précédemment 
-// saisies
-if ($action == 'demanderModifierSynth') {
-    $uneSynth = SyntheseDAO::getOneById($id);
-    $mois = $uneSynth->getMois();
-    $compte = $uneSynth->getCompte();
-    $cb = $uneSynth->getCb();
-    $espece = $uneSynth->getEspece();
-    $cheque = $uneSynth->getCheque();
-}
+// MODIFIER UN FOURNISSEUR
+$uneSynth = SyntheseDAO::getOneById($id);
+$mois = $uneSynth->getMois();
+$compte = $uneSynth->getCompte();
+$cb = $uneSynth->getCb();
+$espece = $uneSynth->getEspece();
+$cheque = $uneSynth->getCheque();
 
-// Initialisations en fonction du mode (création ou modification) 
-if ($action == 'demanderModifierSynth' || $action == 'ValiderModifierSynth') {
-    $creation = false;
-    $messageSynth = "$mois ($id)";            // Alimentation du message de l'en-tête
-    $action = "validerModifierSynth";
-}
+$messageSynth = "$mois ($id)";            // Alimentation du message de l'en-tête
+$action = "validerModifierSynth";
+    
 echo "<form method='POST' action='cAccueil.php?'>
    <input type='hidden' value='$action' name='action'>
    <br>
@@ -44,18 +37,20 @@ echo "<form method='POST' action='cAccueil.php?'>
          <td colspan='3'><strong><center>$messageSynth</center></strong></td>
       </tr>";
 
-// En cas de création, l'id est accessible sinon l'id est dans un champ
-// caché               
-if ($creation) {
-    // On utilise les guillemets comme délimiteur de champ dans l'echo afin
-    // de ne pas perdre les éventuelles quotes saisies (même si les quotes
-    // ne sont pas acceptées dans l'id, on a le souci de ré-afficher l'id
-    // tel qu'il a été saisi) 
-    echo "
-         <tr>
-            <td><input type='hidden' value='. $mois. ' name='mois'></td><td></td>
-         </tr>";
-}
+// l'id est accessible sinon l'id est dans un champ caché               
+// On utilise les guillemets comme délimiteur de champ dans l'echo afin
+// de ne pas perdre les éventuelles quotes saisies (même si les quotes
+// ne sont pas acceptées dans l'id, on a le souci de ré-afficher l'id
+// tel qu'il a été saisi) 
+echo '
+     <tr>
+        <td><input type=\'hidden\' value="' . $id . '" name="id" size ="30" 
+        maxlength="8"></td>
+     </tr>';
+echo "
+     <tr>
+        <td><input type='hidden' value='$mois' name='mois'></td><td></td>
+     </tr>";
 echo '
       <tr class="ligneTabNonQuad">
          <td>&nbsp Compte: </td>

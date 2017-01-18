@@ -51,7 +51,6 @@ class Synthese {
      * @var string
      */
     private $caMoisHt;
-    
     function __construct($id, $mois, $compte, $cb, $espece, $cheque, $totalFinMois, $totalMoisPlusUn, $caMoisHt) {
         $this->id = $id;
         $this->mois = $mois;

@@ -28,9 +28,10 @@ switch ($action) {
         $id = $_REQUEST['id'];
         include("vues/AccueilSynthese/vObtenirDetailSynthese.php");
         break;
+
     case 'demanderModifierSynth':
         $id = $_REQUEST['id'];
-        include("vues/AccueilSynthese/vCreerModifierSynthese.php");
+        include("vues/AccueilSynthese/vModifierSynthese.php");
         break;
 
     case 'validerSupprimerSynth':
@@ -45,16 +46,15 @@ switch ($action) {
         $cb = $_REQUEST['cb'];
         $espece = $_REQUEST['espece'];
         $cheque = $_REQUEST['cheque'];
+        $mois = $_REQUEST['mois'];
 
-        if ($action == 'validerModifierSynth') {
-            verifierDonneesSynthM($id, $compte, $cb, $espece, $cheque);
-            if (nbErreurs() == 0) {
-                $uneSynth = new Synthese($id, $compte, $cb, $espece, $cheque);
-                SyntheseDAO::update($id, $uneSynth);
-                include("vues/AccueilSynthese/vObtenirSynthese.php");
-            } else {
-                include("vues/AccueilSynthese/vCreerModifierSynthese.php");
-            }
+        verifierDonneesSynthM($id, $mois, $compte, $cb, $espece, $cheque);
+        if (nbErreurs() == 0) {
+            $uneSynth = new Synthese($id, $mois, $compte, $cb, $espece, $cheque, $compte+$cb+$espece+$cheque, $compte+$cb+$espece+$cheque+1, 0);
+            SyntheseDAO::update($id, $uneSynth);
+            include("vues/AccueilSynthese/vObtenirSynthese.php");
+        } else {
+            include("vues/AccueilSynthese/vModifierSynthese.php");
         }
         break;
 }
@@ -66,4 +66,9 @@ function verifierDonneesSynthM($id, $compte, $cb, $espece, $cheque) {
     if ($id == "" || $compte == "" || $cb == "" || $espece == "" || $cheque == "") {
         ajouterErreur('Chaque champ est obligatoire');
     }
+    //FAIT FONCTIONNER CA
+    /*else
+    if(!estEntier($compte) || !estEntier($cb) || !estEntier($espece) || !estEntier($cheque) || $compte < 0 || $cb < 0 || $espece < 0 || $cheque < 0){
+        ajouterErreur('Tous les champs doivent être des réels positifs.');
+    }*/
 }
