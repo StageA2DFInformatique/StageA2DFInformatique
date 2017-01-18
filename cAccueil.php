@@ -49,23 +49,14 @@ switch ($action) {
         include("vues/AccueilSynthese/vObtenirSynthese.php");
         break;
 
-    case 'validerCreerSynth':case 'validerModifierSynth':
+    case 'validerModifierSynth':
         $id = $_REQUEST['id'];
         $compte = $_REQUEST['compte'];
         $cb = $_REQUEST['cb'];
         $espece = $_REQUEST['espece'];
         $cheque = $_REQUEST['cheque'];
 
-        if ($action == 'validerCreerSynth') {
-            verifierDonneesSynthC($id, $compte, $cb, $espece, $cheque);
-            if (nbErreurs() == 0) {
-                $uneSynth = new Synthese($id, $compte, $cb, $espece, $cheque);
-                SyntheseDAO::insert($uneSynth);
-                include("vues/AccueilSynthese/vObtenirSynthese.php");
-            } else {
-                include("vues/AccueilSynthese/vCreerModifierSynthese.php");
-            }
-        } else {
+        if ($action == 'validerModifierSynth') {
             verifierDonneesSynthM($id, $compte, $cb, $espece, $cheque);
             if (nbErreurs() == 0) {
                 $uneSynth = new Synthese($id, $compte, $cb, $espece, $cheque);
@@ -80,12 +71,6 @@ switch ($action) {
 
 // Fermeture de la connexion au serveur MySql
 Bdd::deconnecter();
-
-function verifierDonneesSynthC($id, $compte, $cb, $espece, $cheque) {
-    if ($id == "" || $compte == "" || $cb == "" || $espece == "" || $cheque == "") {
-        ajouterErreur('Chaque champ est obligatoire');
-    }
-}
 
 function verifierDonneesSynthM($id, $compte, $cb, $espece, $cheque) {
     if ($id == "" || $compte == "" || $cb == "" || $espece == "" || $cheque == "") {
