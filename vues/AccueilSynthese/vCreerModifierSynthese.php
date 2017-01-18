@@ -6,9 +6,11 @@ if (!estVisiteurConnecte()) {
 }
 require($repInclude . "_entete.inc.html");
 require($repInclude . "_sommaire.inc.php");
+
 use modele\dao\SyntheseDAO;
 use modele\metier\Synthese;
 use modele\dao\Bdd;
+
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 //Division principale
@@ -75,7 +77,7 @@ if ($creation) {
 } else {
     echo "
          <tr>
-            <td><input type='hidden' value='$mois' name='mois'></td><td></td>
+            <td><input type='hidden' value='. $mois. ' name='mois'></td><td></td>
          </tr>";
 }
 echo '

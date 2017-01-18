@@ -32,45 +32,45 @@ $caMoisHt = $uneSynth->getCaMoisHt();
 
 echo "
 <br>
-<table width='60%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
+<table width='100%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
    
    <tr class='enTeteTabNonQuad'>
       <td colspan='3'><strong><center>Synthese global du mois de $mois</center></strong></td>
    </tr>
    <tr class='ligneTabNonQuad'>
-      <td  width='35%'> Compte: </td>
+      <td  width='50%'> Compte: </td>
       <td>&nbsp $compte €</td>
    </tr>
       <tr class='ligneTabNonQuad'>
-      <td  width='35%'> Carte banquaire: </td>
+      <td  width='50%'> Carte banquaire: </td>
       <td>&nbsp $cb €</td>
    </tr>
       <tr class='ligneTabNonQuad'>
-      <td  width='35%'> Espèce: </td>
+      <td  width='50%'> Espèce: </td>
       <td>&nbsp $espece €</td>
    </tr>
       <tr class='ligneTabNonQuad'>
-      <td  width='35%'> Chèque: </td>
+      <td  width='50%'> Chèque: </td>
       <td>&nbsp $cheque €</td>
    </tr>
       </tr>
       <tr class='ligneTabNonQuad'>
-      <td  width='35%'></td>
+      <td  width='50%'></td>
       <td></td>
    </tr>
       </tr>
       <tr class='ligneTabNonQuad'>
-      <td  width='35%'> Total en fin de mois: </td>
+      <td  width='50%'> Total en fin de mois: </td>
       <td>&nbsp $totalFinMois €</td>
    </tr>
       </tr>
       <tr class='ligneTabNonQuad'>
-      <td  width='35%'> Total sur un mois +1: </td>
+      <td  width='50%'> Total sur un mois +1: </td>
       <td>&nbsp $totalMoisPlusUn €</td>
    </tr>
       </tr>
       <tr class='ligneTabNonQuad'>
-      <td  width='35%'> Chiffre d'affaire du mois (HT): </td>
+      <td  width='50%'> Chiffre d'affaire du mois (HT): </td>
       <td>&nbsp $caMoisHt €</td>
    </tr>
    

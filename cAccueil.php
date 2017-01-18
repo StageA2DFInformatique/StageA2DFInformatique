@@ -59,7 +59,7 @@ switch ($action) {
         if ($action == 'validerCreerSynth') {
             verifierDonneesSynthC($id, $compte, $cb, $espece, $cheque);
             if (nbErreurs() == 0) {
-                $uneSynth = new Synthese($id, $nom, $adresseRue, $codePostal, $ville, $tel, $adresseElectronique, $paiement);
+                $uneSynth = new Synthese($id, $compte, $cb, $espece, $cheque);
                 SyntheseDAO::insert($uneSynth);
                 include("vues/AccueilSynthese/vObtenirSynthese.php");
             } else {
@@ -68,7 +68,7 @@ switch ($action) {
         } else {
             verifierDonneesSynthM($id, $compte, $cb, $espece, $cheque);
             if (nbErreurs() == 0) {
-                $uneSynth = new Synthese($id, $nom, $adresseRue, $codePostal, $ville, $tel, $adresseElectronique, $paiement);
+                $uneSynth = new Synthese($id, $compte, $cb, $espece, $cheque);
                 SyntheseDAO::update($id, $uneSynth);
                 include("vues/AccueilSynthese/vObtenirSynthese.php");
             } else {
@@ -85,28 +85,10 @@ function verifierDonneesSynthC($id, $compte, $cb, $espece, $cheque) {
     if ($id == "" || $compte == "" || $cb == "" || $espece == "" || $cheque == "") {
         ajouterErreur('Chaque champ est obligatoire');
     }
-    if ($id != "") {
-        // Si l'id est constitué d'autres caractères que de lettres non accentuées 
-        // et de chiffres, une erreur est générée
-        if (!estChiffresOuEtLettres($id)) {
-            ajouterErreur
-                    ("L'identifiant doit comporter uniquement des lettres non accentuées et des chiffres");
-        } else {
-            if (SyntheseDAO::isAnExistingId($id)) {
-                ajouterErreur("La synthese d'id $id existe déjà");
-            }
-        }
-    }
-    if ($mois != "" && SyntheseDAO::isAnExistingName(true, $id, $mois)) {
-        ajouterErreur("La synthese du mois de $mois existe déjà");
-    }
 }
 
 function verifierDonneesSynthM($id, $compte, $cb, $espece, $cheque) {
     if ($id == "" || $compte == "" || $cb == "" || $espece == "" || $cheque == "") {
         ajouterErreur('Chaque champ est obligatoire');
-    }
-    if ($mois != "" && SyntheseDAO::isAnExistingName(true, $id, $mois)) {
-        ajouterErreur("La synthese du mois de $mois existe déjà");
     }
 }
