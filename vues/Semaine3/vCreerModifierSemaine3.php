@@ -11,8 +11,8 @@ require($repInclude . "_sommaire.inc.php");
 echo '<div id="contenu">';
 echo "<h2><center>Ajouter un(e) vente / dépannage</center></h2>";
 
-use modele\dao\Semaine1DAO;
-use modele\metier\Semaine1;
+use modele\dao\Semaine3DAO;
+use modele\metier\Semaine3;
 use modele\dao\Bdd;
 
 require_once __DIR__ . '/../../include/autoload.php';
@@ -23,7 +23,7 @@ Bdd::connecter();
 // S'il s'agit d'une création et qu'on ne "vient" pas de ce formulaire (on 
 // "vient" de ce formulaire uniquement s'il y avait une erreur), il faut définir 
 // les champs à vide sinon on affichera les valeurs précédemment saisies
-if ($action == 'demanderCreerVente') {
+if ($action == 'demanderCreerVente3') {
     $id = '';
     $designation = '';
     $type = 1;
@@ -34,35 +34,35 @@ if ($action == 'demanderCreerVente') {
 // S'il s'agit d'une modification et qu'on ne "vient" pas de ce formulaire, il
 // faut récupérer les données sinon on affichera les valeurs précédemment 
 // saisies
-if ($action == 'demanderModifierVente') {
-    $uneVente = Semaine1DAO::getOneById($id);
-    /* @var $uneVente Semaine1 */
-    $designation = $uneVente->getDesignation();
-    $type = $uneVente->getType();
-    $prix = $uneVente->getPrix();
+if ($action == 'demanderModifierVente3') {
+    $uneVente3 = Semaine3DAO::getOneById($id3);
+    /* @var $uneVente1 Semaine1 */
+    $designation3 = $uneVente3->getDesignation();
+    $type3 = $uneVente3->getType();
+    $prix3 = $uneVente3->getPrix();
 }
 
 // Initialisations en fonction du mode (création ou modification) 
-if ($action == 'demanderCreerVente' || $action == 'validerCreerVente') {
+if ($action == 'demanderCreerVente3' || $action == 'validerCreerVente3') {
     $creation = true;
-    $messageVente = "Nouvelle vente ou nouveau dépannage";  // Alimentation du message de l'en-tête
-    $action = "validerCreerVente";
+    $messageVente3 = "Nouvelle vente ou nouveau dépannage";  // Alimentation du message de l'en-tête
+    $action = "validerCreerVente3";
 } else {
     $creation = false;
-    $messageVente = "$designation ($id)";            // Alimentation du message de l'en-tête
-    $action = "validerModifierVente";
+    $messageVente3 = "$designation3 ($id3)";            // Alimentation du message de l'en-tête
+    $action = "validerModifierVente3";
 }
 
 // Déclaration du tableau des types
 
 echo "
-    <form method='POST' action='cSaisieEnCours.php?'>
+    <form method='POST' action='cSemaine1.php?'>
    <input type='hidden' value='$action' name='action'>
        <br>
       <table width='65%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
          
       <tr class='enTeteTabNonQuad'>
-         <td colspan='3'><strong><center>$messageVente</center></strong></td>
+         <td colspan='3'><strong><center>$messageVente3</center></strong></td>
       </tr>";
 
 // En cas de création, l'id est accessible sinon l'id est dans un champ
@@ -75,20 +75,20 @@ if ($creation) {
     echo '
          <tr class="ligneTabNonQuad">
             <td>&nbsp Id: </td>
-            <td><input type="text" value="' . $id . '" name="id" size ="30" 
+            <td><input type="text" value="' . $id3 . '" name="id" size ="30" 
             maxlength="8"></td>
          </tr>';
 } else {
     echo "
          <tr>
-            <td><input type='hidden' value='$id' name='id'></td><td></td>
+            <td><input type='hidden' value='$id3' name='id'></td><td></td>
          </tr>
             <br>";
 }
 echo '
       <tr class="ligneTabNonQuad">
          <td>&nbsp Designation: </td>
-         <td><input type="text" value="' . $designation . '" name="designation" size="30" 
+         <td><input type="text" value="' . $designation3 . '" name="designation" size="30" 
          maxlength="45"></td>
       </tr>
      
@@ -110,7 +110,7 @@ if ($type == 1) {
 echo '
            <tr class="ligneTabNonQuad">
          <td>&nbsp Valeur: </td>
-         <td><input type="text" value="' . $prix . '" name="prix" size="30" 
+         <td><input type="text" value="' . $prix3 . '" name="prix" size="30" 
          maxlength="45"></td>
       </tr>';
       
@@ -118,7 +118,7 @@ echo '</div>';
 echo "<br>
    <table align='right' cellspacing='15' cellpadding='0'>
    <br>
-      <a href='cSaisieEnCours.php'><button type=button>Retour</button></a>
+      <a href='cSemaine1.php'><button type=button>Retour</button></a>
 
       <tr>
          <td align='right'><input type='submit' value='Valider' name='valider'>

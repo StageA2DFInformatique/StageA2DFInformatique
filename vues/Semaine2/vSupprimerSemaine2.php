@@ -11,27 +11,27 @@ require($repInclude . "_sommaire.inc.php");
 echo '<div id="contenu">';
 echo "<h2><center>Suppression d'une vente ou d'un dépannage</center></h2>";
 
-use modele\dao\Semaine1DAO;
-use modele\metier\Semaine1;
+use modele\dao\Semaine2DAO;
+use modele\metier\Semaine2;
 use modele\dao\Bdd;
 
-require_once __DIR__ . '/../../../include/autoload.php';
+require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
 
 // SUPPRIMER LA VENTE OU LE DEPANNAGE SÉLECTIONNÉ(E)
 
-$id = $_REQUEST['id'];  // Non obligatoire mais plus propre
-$uneVente1 = Semaine1DAO::getOneById($id);
-/* @var $uneVente1 Semaine1  */
-$designation = $uneVente1->getDesignation();
-$prix = $uneVente1->getPrix();
+$id = $_REQUEST['id2'];  // Non obligatoire mais plus propre
+$uneVente2 = Semaine2DAO::getOneById($id2);
+/* @var $uneVente2 Semaine2  */
+$designation2 = $uneVente2->getDesignation2();
+$prix2 = $uneVente2->getPrix2();
 echo "
-<br><center>Voulez-vous vraiment supprimer la vente ou le dépannage '$designation' d'une valeur de $prix ?
+<br><center>Voulez-vous vraiment supprimer la vente ou le dépannage '$designation2' d'une valeur de $prix ?
 <h3><br>
-<a href='cSaisieEnCours.php?action=validerSupprimerVente1&id=$id'>Oui</a>
+<a href='cSemaine1.php?action=validerSupprimerVente1&id=$id2'>Oui</a>
 &nbsp; &nbsp; &nbsp; &nbsp;
-<a href='cSaisieEnCours.php?'>Non</a></h3>
+<a href='cSemaine2.php?'>Non</a></h3>
 </center>";
 
 require($repInclude . "_fin.inc.php");

@@ -11,11 +11,11 @@ require($repInclude . "_sommaire.inc.php");
 echo '<div id="contenu">';
 echo "<h2><center>Ajouter un(e) vente / dépannage</center></h2>";
 
-use modele\dao\Semaine1DAO;
-use modele\metier\Semaine1;
+use modele\dao\Semaine2DAO;
+use modele\metier\Semaine2;
 use modele\dao\Bdd;
 
-require_once __DIR__ . '/../../../include/autoload.php';
+require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
 
@@ -23,7 +23,7 @@ Bdd::connecter();
 // S'il s'agit d'une création et qu'on ne "vient" pas de ce formulaire (on 
 // "vient" de ce formulaire uniquement s'il y avait une erreur), il faut définir 
 // les champs à vide sinon on affichera les valeurs précédemment saisies
-if ($action == 'demanderCreerVente1') {
+if ($action == 'demanderCreerVente2') {
     $id = '';
     $designation = '';
     $type = 1;
@@ -34,23 +34,23 @@ if ($action == 'demanderCreerVente1') {
 // S'il s'agit d'une modification et qu'on ne "vient" pas de ce formulaire, il
 // faut récupérer les données sinon on affichera les valeurs précédemment 
 // saisies
-if ($action == 'demanderModifierVente1') {
-    $uneVente1 = Semaine1DAO::getOneById($id);
+if ($action == 'demanderModifierVente2') {
+    $uneVente2 = Semaine2DAO::getOneById($id2);
     /* @var $uneVente1 Semaine1 */
-    $designation = $uneVente1->getDesignation();
-    $type = $uneVente1->getType();
-    $prix = $uneVente1->getPrix();
+    $designation2 = $uneVente2->getDesignation();
+    $type2 = $uneVente2->getType();
+    $prix2 = $uneVente2->getPrix();
 }
 
 // Initialisations en fonction du mode (création ou modification) 
-if ($action == 'demanderCreerVente1' || $action == 'validerCreerVente1') {
+if ($action == 'demanderCreerVente2' || $action == 'validerCreerVente2') {
     $creation = true;
-    $messageVente1 = "Nouvelle vente ou nouveau dépannage";  // Alimentation du message de l'en-tête
-    $action = "validerCreerVente1";
+    $messageVente2 = "Nouvelle vente ou nouveau dépannage";  // Alimentation du message de l'en-tête
+    $action = "validerCreerVente2";
 } else {
     $creation = false;
-    $messageVente1 = "$designation ($id)";            // Alimentation du message de l'en-tête
-    $action = "validerModifierVente1";
+    $messageVente2 = "$designation2 ($id2)";            // Alimentation du message de l'en-tête
+    $action = "validerModifierVente2";
 }
 
 // Déclaration du tableau des types
@@ -62,7 +62,7 @@ echo "
       <table width='65%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
          
       <tr class='enTeteTabNonQuad'>
-         <td colspan='3'><strong><center>$messageVente1</center></strong></td>
+         <td colspan='3'><strong><center>$messageVente2</center></strong></td>
       </tr>";
 
 // En cas de création, l'id est accessible sinon l'id est dans un champ
@@ -75,20 +75,20 @@ if ($creation) {
     echo '
          <tr class="ligneTabNonQuad">
             <td>&nbsp Id: </td>
-            <td><input type="text" value="' . $id . '" name="id" size ="30" 
+            <td><input type="text" value="' . $id2 . '" name="id" size ="30" 
             maxlength="8"></td>
          </tr>';
 } else {
     echo "
          <tr>
-            <td><input type='hidden' value='$id' name='id'></td><td></td>
+            <td><input type='hidden' value='$id2' name='id'></td><td></td>
          </tr>
             <br>";
 }
 echo '
       <tr class="ligneTabNonQuad">
          <td>&nbsp Designation: </td>
-         <td><input type="text" value="' . $designation . '" name="designation" size="30" 
+         <td><input type="text" value="' . $designation2 . '" name="designation" size="30" 
          maxlength="45"></td>
       </tr>
      
@@ -110,7 +110,7 @@ if ($type == 1) {
 echo '
            <tr class="ligneTabNonQuad">
          <td>&nbsp Valeur: </td>
-         <td><input type="text" value="' . $prix . '" name="prix" size="30" 
+         <td><input type="text" value="' . $prix2 . '" name="prix" size="30" 
          maxlength="45"></td>
       </tr>';
       

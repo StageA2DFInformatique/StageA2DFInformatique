@@ -14,6 +14,6 @@ function __autoload($className) {
     if (file_exists($fileName)) {
         require_once($fileName);
     } else {
-        throw new Exception('Pb autoload : Le fichier ' . $fileName . ' n\'existe pas.');
+        throw new Exception('Problème avec l\'autoload : Le fichier ' . $fileName . ' n\'existe pas.');
     }
 }

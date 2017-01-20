@@ -2,7 +2,7 @@
 
 namespace modele\dao;
 
-use modele\metier\EnCours\Semaine1;
+use modele\metier\Semaine1;
 use PDO;
 
 /**

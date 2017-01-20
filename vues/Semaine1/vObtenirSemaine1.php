@@ -11,10 +11,10 @@ require($repInclude . "_sommaire.inc.php");
 echo '<div id="contenu">';
 echo "<h2><center>Saisie durant la semaine n°1</center></h2>";
 
-use modele\dao\EnCours\Semaine1DAO;
+use modele\dao\Semaine1DAO;
 use modele\dao\Bdd;
 
-require_once __DIR__ . '/../../../include/autoload.php';
+require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
 
@@ -29,24 +29,24 @@ echo "
 
 $LesVentes1 = Semaine1DAO::getAll();
 // BOUCLE SUR LES CHARGES
-foreach ($LesVentes1 as $uneVente) {
-    $id = $uneVente->getId();
-    $designation = $uneVente->getDesignation();
+foreach ($LesVentes1 as $uneVente1) {
+    $id = $uneVente1->getId();
+    $designation = $uneVente1->getDesignation();
     echo "
         
 		<tr class='ligneTabNonQuad'>
          <td width='52%'>&nbsp $designation</td>
          
          <td width='16%' align='center'>
-         <a href='cSemaine1.php?action=detailVente&id=$id'>
+         <a href='cSemaine1.php?action=detailVente1&id=$id'>
                     <img src='./images/detail.png'title='Voir détail' />
         </a></td>  
                  <td width='16%' align='center'> 
-        <a href='cSemaine1.php?action=demanderModifierVente&id=$id'>
+        <a href='cSemaine1.php?action=demanderModifierVente1&id=$id'>
                     <img src='./images/modifier.png'title='Modifier' />
         </a></td>
          <td width='16%' align='center'> 
-        <a href='cSemaine1.php?action=demanderSupprimerVente&id=$id'>
+        <a href='cSemaine1.php?action=demanderSupprimerVente1&id=$id'>
                     <img src='./images/supprimer.png' title='Supprimer' />
         </a></td>
     </tr>";
@@ -54,7 +54,7 @@ foreach ($LesVentes1 as $uneVente) {
 echo "
     </table>
     <br>
-    <a href = 'cSemaine1.php?action=demanderCreerVente'>
+    <a href = 'cSemaine1.php?action=demanderCreerVente1'>
     Ajouter une vente ou un dépannage pour la semaine 1</a >";
 require($repInclude . "_fin.inc.php");
 echo '</div>';

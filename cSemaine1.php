@@ -21,32 +21,32 @@ $action = $_REQUEST['action'];
 // Aiguillage selon l'étape
 switch ($action) {
     case 'initial' :
-        include("vues/EnCours/Semaine1/vObtenirSemaine1.php");
+        include("vues//Semaine1/vObtenirSemaine1.php");
         break;
 
     case 'detailVente1':
         $id = $_REQUEST['id'];
-        include("vues/EnCours/Semaine1/vObtenirDetailSemaine1.php");
+        include("vues/Semaine1/vObtenirDetailSemaine1.php");
         break;
 
     case 'demanderSupprimerVente1':
         $id = $_REQUEST['id'];
-        include("vues/EnCours/Semaine1/vSupprimerSemaine1.php");
+        include("vues/Semaine1/vSupprimerSemaine1.php");
         break;
 
     case 'demanderCreerVente1':
-        include("vues/EnCours/Semaine1/vCreerModifierSemaine1.php");
+        include("vues/Semaine1/vCreerModifierSemaine1.php");
         break;
 
     case 'demanderModifierVente1':
         $id = $_REQUEST['id'];
-        include("vues/EnCours/Semaine1/vCreerModifierSemaine1.php");
+        include("vues/Semaine1/vCreerModifierSemaine1.php");
         break;
 
     case 'validerSupprimerVente1':
         $id = $_REQUEST['id'];
         Semaine1DAO::delete($id);
-        include("vues/EnCours/Semaine1/vObtenirSemaine1.php");
+        include("vues/Semaine1/vObtenirSemaine1.php");
         break;
 
     case 'validerCreerVente1':case 'validerModifierVente1':
@@ -61,18 +61,18 @@ switch ($action) {
             if (nbErreurs() == 0) {
                 $uneVente1 = new Semaine1($id, $designation, $type, $prix);
                 Semaine1DAO::insert($uneVente1);
-                include("vues/EnCours/Semaine1/vObtenirSemaine1.php");
+                include("vues/Semaine1/vObtenirSemaine1.php");
             } else {
-                include("vues/EnCours/Semaine1/vCreerModifierSemaine1.php");
+                include("vues/Semaine1/vCreerModifierSemaine1.php");
             }
         } else {
             verifierDonneesVente1M($id, $designation, $type, $prix);
             if (nbErreurs() == 0) {
                 $uneVente1 = new Semaine1($id, $designation, $type, $prix);
                 Semaine1DAO::update($id, $uneVente1);
-                include("vues/EnCours/Semaine1/vObtenirSemaine1.php");
+                include("vues/Semaine1/vObtenirSemaine1.php");
             } else {
-                include("vues/EnCours/Semaine1/vCreerModifierSemaine1.php");
+                include("vues/Semaine1/vCreerModifierSemaine1.php");
             }
         }
         break;
@@ -93,7 +93,7 @@ function verifierDonneesVente1C($id, $designation, $type, $prix) {
                     ("L'identifiant doit comporter uniquement des lettres non accentuées et des chiffres");
         } else {
             if (Semaine1DAO::isAnExistingId($id)) {
-                ajouterErreur("La charge $id existe déjà");
+                ajouterErreur("La vente $id existe déjà");
             }
         }
     }

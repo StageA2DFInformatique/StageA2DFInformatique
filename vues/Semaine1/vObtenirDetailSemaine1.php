@@ -20,10 +20,10 @@ Bdd::connecter();
 
 // OBTENIR LE DÉTAIL DE LA VENTE SÉLECTIONNÉE
 
-$uneVente = Semaine1DAO::getOneById($id);
-$designation = $uneVente->getDesignation();
-$type = $uneVente->getType();
-$prix = $uneVente->getPrix();
+$uneVente1 = Semaine1DAO::getOneById($id);
+$designation = $uneVente1->getDesignation();
+$type = $uneVente1->getType();
+$prix = $uneVente1->getPrix();
 echo "
 <br>
 <table width='70%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
@@ -45,5 +45,5 @@ echo "
    </tr>
 </table>
 <br>
-<a href='cSaisieEnCours.php'>Retour</a>";
+<a href='cSemaine1.php'>Retour</a>";
 
