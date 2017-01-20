@@ -24,11 +24,10 @@ Bdd::connecter();
 // "vient" de ce formulaire uniquement s'il y avait une erreur), il faut définir 
 // les champs à vide sinon on affichera les valeurs précédemment saisies
 if ($action == 'demanderCreerVente2') {
-    $id = '';
-    $designation = '';
-    $type = 1;
-    $prix = '';
-    $total = '';
+    $id2 = '';
+    $designation2 = '';
+    $type2 = 1;
+    $prix2 = '';
 }
 
 // S'il s'agit d'une modification et qu'on ne "vient" pas de ce formulaire, il
@@ -36,10 +35,10 @@ if ($action == 'demanderCreerVente2') {
 // saisies
 if ($action == 'demanderModifierVente2') {
     $uneVente2 = Semaine2DAO::getOneById($id2);
-    /* @var $uneVente1 Semaine1 */
-    $designation2 = $uneVente2->getDesignation();
-    $type2 = $uneVente2->getType();
-    $prix2 = $uneVente2->getPrix();
+    /* @var $uneVente2 Semaine2 */
+    $designation2 = $uneVente2->getDesignation2();
+    $type2 = $uneVente2->getType2();
+    $prix2 = $uneVente2->getPrix2();
 }
 
 // Initialisations en fonction du mode (création ou modification) 
@@ -56,7 +55,7 @@ if ($action == 'demanderCreerVente2' || $action == 'validerCreerVente2') {
 // Déclaration du tableau des types
 
 echo "
-    <form method='POST' action='cSemaine1.php?'>
+    <form method='POST' action='cSemaine2.php?'>
    <input type='hidden' value='$action' name='action'>
        <br>
       <table width='65%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
@@ -95,11 +94,11 @@ echo '
       <tr class="ligneTabNonQuad">
          <td>&nbsp Type*: </td>
          <td>';
-if ($type == 1) {
+if ($type2 == 1) {
     echo " 
-               <input type='radio' name='type' value='Dépannage' checked>  
+               <input type='radio' name='type2' value='Dépannage' checked>  
                Dépannage
-               <input type='radio' name='type' value='Vente'>  Vente";
+               <input type='radio' name='type2' value='Vente'>  Vente";
 } else {
     echo " 
                 <input type='radio' name='type' value='Dépannage'> 
@@ -118,7 +117,7 @@ echo '</div>';
 echo "<br>
    <table align='right' cellspacing='15' cellpadding='0'>
    <br>
-      <a href='cSemaine1.php'><button type=button>Retour</button></a>
+      <a href='cSemaine2.php'><button type=button>Retour</button></a>
 
       <tr>
          <td align='right'><input type='submit' value='Valider' name='valider'>

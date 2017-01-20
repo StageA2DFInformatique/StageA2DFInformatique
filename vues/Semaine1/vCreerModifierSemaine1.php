@@ -28,7 +28,6 @@ if ($action == 'demanderCreerVente1') {
     $designation = '';
     $type = 1;
     $prix = '';
-    $total = '';
 }
 
 // S'il s'agit d'une modification et qu'on ne "vient" pas de ce formulaire, il

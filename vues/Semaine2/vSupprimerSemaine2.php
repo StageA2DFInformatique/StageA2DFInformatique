@@ -29,7 +29,7 @@ $prix2 = $uneVente2->getPrix2();
 echo "
 <br><center>Voulez-vous vraiment supprimer la vente ou le dépannage '$designation2' d'une valeur de $prix ?
 <h3><br>
-<a href='cSemaine1.php?action=validerSupprimerVente1&id=$id2'>Oui</a>
+<a href='cSemaine2.php?action=validerSupprimerVente2&id=$id2'>Oui</a>
 &nbsp; &nbsp; &nbsp; &nbsp;
 <a href='cSemaine2.php?'>Non</a></h3>
 </center>";
