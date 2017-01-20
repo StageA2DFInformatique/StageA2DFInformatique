@@ -34,6 +34,10 @@ echo "
       <td colspan='3'><strong><center>$nom</center></strong></td>
    </tr>
       <tr class='ligneTabNonQuad'>
+      <td  width='50%'></td>
+      <td></td>
+   </tr>
+      <tr class='ligneTabNonQuad'>
       <td  width='30%'>&nbsp Description: </td>
       <td>&nbsp$description</td>
    </tr>

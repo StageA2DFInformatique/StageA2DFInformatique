@@ -50,7 +50,7 @@ switch ($action) {
 
         verifierDonneesSynthM($id, $mois, $compte, $cb, $espece, $cheque);
         if (nbErreurs() == 0) {
-            $uneSynth = new Synthese($id, $mois, $compte, $cb, $espece, $cheque, $compte+$cb+$espece+$cheque, $compte+$cb+$espece+$cheque+1, 0);
+            $uneSynth = new Synthese($id, $mois, $compte, $cb, $espece, $cheque, $compte + $cb + $espece + $cheque, $compte + $cb + $espece + $cheque + 1, 0);
             SyntheseDAO::update($id, $uneSynth);
             include("vues/AccueilSynthese/vObtenirSynthese.php");
         } else {
@@ -67,8 +67,8 @@ function verifierDonneesSynthM($id, $compte, $cb, $espece, $cheque) {
         ajouterErreur('Chaque champ est obligatoire');
     }
     //FAIT FONCTIONNER CA
-    /*else
-    if(!estEntier($compte) || !estEntier($cb) || !estEntier($espece) || !estEntier($cheque) || $compte < 0 || $cb < 0 || $espece < 0 || $cheque < 0){
-        ajouterErreur('Tous les champs doivent être des réels positifs.');
-    }*/
+    /* else
+      if(!estEntier($compte) || !estEntier($cb) || !estEntier($espece) || !estEntier($cheque) || $compte < 0 || $cb < 0 || $espece < 0 || $cheque < 0){
+      ajouterErreur('Tous les champs doivent être des réels positifs.');
+      } */
 }

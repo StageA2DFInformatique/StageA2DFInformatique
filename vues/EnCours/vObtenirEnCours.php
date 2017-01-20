@@ -9,47 +9,44 @@ require($repInclude . "_sommaire.inc.php");
 
 //Division principale
 echo '<div id="contenu">';
-echo "<h2><center>Gestion des Charges</center></h2>";
+echo "<h2><center>Saisie en cours</center></h2>";
 
-use modele\dao\ChargesDAO;
+use modele\dao\Semaine1DAO;
 use modele\dao\Bdd;
 
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
 
-// AFFICHER L'ENSEMBLE DES CHARGES
-// CETTE PAGE CONTIENT UN TABLEAU CONSTITUÉ D'1 LIGNE D'EN-TÊTE ET D'1 LIGNE PAR
-// CHARGE
-
+// AFFICHER L'ENSEMBLE DES VENTE ET DEPANNAGE DE LA SEMAINE N°1
 echo "
 <br>
 <table width='55%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
 
    <tr class='enTeteTabNonQuad'>
-      <td colspan='4'><strong><center>Charges</center></strong></td>
+      <td colspan='4'><strong><center>Semaine n°1</center></strong></td>
    </tr>";
 
-$lesCharges = ChargesDAO::getAll();
+$LesVentes = Semaine1DAO::getAll();
 // BOUCLE SUR LES CHARGES
-foreach ($lesCharges as $unCharge) {
-    $id = $unCharge->getId();
-    $nom = $unCharge->getNom();
+foreach ($LesVentes as $uneVente) {
+    $id = $uneVente->getId();
+    $designation = $uneVente->getDesignation();
     echo "
         
 		<tr class='ligneTabNonQuad'>
-         <td width='52%'>$nom</td>
+         <td width='52%'>$designation</td>
          
-         <td width='16%' align='center'> 
-         <a href='cGestionCharges.php?action=detailChrg&id=$id'>
+         <td width='16%' align='center'>
+         <a href='cSaisieEnCours.php?action=detailVente&id=$id'>
                     <img src='./images/detail.png'title='Voir détail' />
         </a></td>  
                  <td width='16%' align='center'> 
-        <a href='cGestionCharges.php?action=demanderModifierChrg&id=$id'>
+        <a href='cSaisieEnCours.php?action=demanderModifierVente&id=$id'>
                     <img src='./images/modifier.png'title='Modifier' />
         </a></td>
          <td width='16%' align='center'> 
-        <a href='cGestionCharges.php?action=demanderSupprimerChrg&id=$id'>
+        <a href='cSaisieEnCours.php?action=demanderSupprimerVente&id=$id'>
                     <img src='./images/supprimer.png' title='Supprimer' />
         </a></td>
     </tr>";
@@ -57,8 +54,7 @@ foreach ($lesCharges as $unCharge) {
 echo "
     </table>
     <br>
-    <a href = 'cGestionCharges.php?action=demanderCreerChrg'>
-    Ajouter une charge</a >";
-
+    <a href = 'cSaisieEnCours.php?action=demanderCreerVente'>
+    Ajouter une vente ou un dépannage pour la semaine 1</a >";
 require($repInclude . "_fin.inc.php");
 echo '</div>';

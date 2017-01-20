@@ -30,7 +30,7 @@ include ($repInclude . "connexionBDD.php");
                 </li>
 
                 <li class="smenu">
-                    <a href="cSaisieEncours.php" title="En cours">En cours</a>
+                    <a href="cSaisieEnCours.php" title="En cours">En cours</a>
                 </li>
                 <li class="smenu">
                     <a href="cSaisieTableauBord.php" title="Tableau de bord">Tableau de bord</a>

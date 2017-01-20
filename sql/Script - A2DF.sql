@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 19 Janvier 2017 à 13:06
+-- Généré le: Ven 20 Janvier 2017 à 14:08
 -- Version du serveur: 5.5.43-0ubuntu0.14.04.1
 -- Version de PHP: 5.5.9-1ubuntu4.9
 
@@ -40,9 +40,8 @@ CREATE TABLE IF NOT EXISTS `Charges` (
 --
 
 INSERT INTO `Charges` (`id`, `nom`, `description`, `numContrat`, `numTel`) VALUES
-('03507844', 'JeSuisUneCharge', 'JeSuisUneDescription', '0123456789101112', '0123456789'),
-('0350785A', 'ChargeTest', 'DescriptionTest', '054564145E789SQ4', '0978451574'),
-('0350785N', 'ChargeTest2', 'DescriptionTest2', '054564145E789SQ4', '0978451574');
+('03507844', 'JeSuisUneCharge', 'JeSuisUneDescription', '0123456789101112', '0123456788'),
+('0350785A', 'ChargeTest', 'DescriptionTest', '054564145E789SQ4', '0978451574');
 
 -- --------------------------------------------------------
 
@@ -74,94 +73,162 @@ INSERT INTO `Fournisseurs` (`id`, `nom`, `adresseRue`, `codePostal`, `ville`, `t
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Semaine 1`
+-- Structure de la table `Semaine1`
 --
 
-CREATE TABLE IF NOT EXISTS `Semaine 1` (
-  `id` char(8) NOT NULL,
-  `prix` varchar(8) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Semaine1` (
+  `id` char(2) NOT NULL,
+  `designation` varchar(32) NOT NULL,
   `type` varchar(16) NOT NULL,
-  `total` varchar(16) NOT NULL,
+  `prix` varchar(8) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `Semaine 1`
+-- Contenu de la table `Semaine1`
 --
 
-INSERT INTO `Semaine 1` (`id`, `prix`, `type`, `total`) VALUES
-('00000001', '1548', 'Vente', ''),
-('00000002', '78451', 'Depannage', ''),
-('00000003', '78451', 'Depannage', '');
+INSERT INTO `Semaine1` (`id`, `designation`, `type`, `prix`) VALUES
+('01', '', '', ''),
+('02', '', '', ''),
+('03', '', '', ''),
+('04', '', '', ''),
+('05', '', '', ''),
+('06', '', '', ''),
+('07', '', '', ''),
+('08', '', '', ''),
+('09', '', '', ''),
+('10', '', '', ''),
+('11', '', '', ''),
+('12', '', '', ''),
+('13', '', '', ''),
+('14', '', '', ''),
+('15', '', '', ''),
+('16', '', '', ''),
+('17', '', '', ''),
+('18', '', '', ''),
+('19', '', '', ''),
+('20', '', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Semaine 2`
+-- Structure de la table `Semaine2`
 --
 
-CREATE TABLE IF NOT EXISTS `Semaine 2` (
-  `id` char(8) NOT NULL,
-  `prix` varchar(8) NOT NULL,
-  `type` varchar(16) NOT NULL,
-  `total` varchar(16) NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE IF NOT EXISTS `Semaine2` (
+  `id2` char(2) NOT NULL,
+  `designation2` varchar(32) NOT NULL,
+  `type2` varchar(16) NOT NULL,
+  `prix2` varchar(8) NOT NULL,
+  PRIMARY KEY (`id2`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `Semaine 2`
+-- Contenu de la table `Semaine2`
 --
 
-INSERT INTO `Semaine 2` (`id`, `prix`, `type`, `total`) VALUES
-('00000001', '1548', 'Vente', ''),
-('00000002', '78451', 'Depannage', ''),
-('00000003', '78451', 'Depannage', '');
+INSERT INTO `Semaine2` (`id2`, `designation2`, `type2`, `prix2`) VALUES
+('01', '', '', ''),
+('02', '', '', ''),
+('03', '', '', ''),
+('04', '', '', ''),
+('05', '', '', ''),
+('06', '', '', ''),
+('07', '', '', ''),
+('08', '', '', ''),
+('09', '', '', ''),
+('10', '', '', ''),
+('11', '', '', ''),
+('12', '', '', ''),
+('13', '', '', ''),
+('14', '', '', ''),
+('15', '', '', ''),
+('16', '', '', ''),
+('17', '', '', ''),
+('18', '', '', ''),
+('19', '', '', ''),
+('20', '', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Semaine 3`
+-- Structure de la table `Semaine3`
 --
 
-CREATE TABLE IF NOT EXISTS `Semaine 3` (
-  `id` char(8) NOT NULL,
-  `prix` varchar(8) NOT NULL,
-  `type` varchar(16) NOT NULL,
-  `total` varchar(16) NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE IF NOT EXISTS `Semaine3` (
+  `id3` char(2) NOT NULL,
+  `designation3` varchar(32) NOT NULL,
+  `type3` varchar(16) NOT NULL,
+  `prix3` varchar(8) NOT NULL,
+  PRIMARY KEY (`id3`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `Semaine 3`
+-- Contenu de la table `Semaine3`
 --
 
-INSERT INTO `Semaine 3` (`id`, `prix`, `type`, `total`) VALUES
-('00000001', '1548', 'Vente', ''),
-('00000002', '78451', 'Depannage', ''),
-('00000003', '78451', 'Depannage', '');
+INSERT INTO `Semaine3` (`id3`, `designation3`, `type3`, `prix3`) VALUES
+('01', '', '', ''),
+('02', '', '', ''),
+('03', '', '', ''),
+('04', '', '', ''),
+('05', '', '', ''),
+('06', '', '', ''),
+('07', '', '', ''),
+('08', '', '', ''),
+('09', '', '', ''),
+('10', '', '', ''),
+('11', '', '', ''),
+('12', '', '', ''),
+('13', '', '', ''),
+('14', '', '', ''),
+('15', '', '', ''),
+('16', '', '', ''),
+('17', '', '', ''),
+('18', '', '', ''),
+('19', '', '', ''),
+('20', '', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Semaine 4`
+-- Structure de la table `Semaine4`
 --
 
-CREATE TABLE IF NOT EXISTS `Semaine 4` (
-  `id` char(8) NOT NULL,
-  `prix` varchar(8) NOT NULL,
-  `type` varchar(16) NOT NULL,
-  `total` varchar(16) NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE IF NOT EXISTS `Semaine4` (
+  `id4` char(2) NOT NULL,
+  `designation4` varchar(32) NOT NULL,
+  `type4` varchar(16) NOT NULL,
+  `prix4` varchar(8) NOT NULL,
+  PRIMARY KEY (`id4`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `Semaine 4`
+-- Contenu de la table `Semaine4`
 --
 
-INSERT INTO `Semaine 4` (`id`, `prix`, `type`, `total`) VALUES
-('00000001', '1548', 'Vente', ''),
-('00000002', '78451', 'Depannage', ''),
-('00000003', '78451', 'Depannage', '');
+INSERT INTO `Semaine4` (`id4`, `designation4`, `type4`, `prix4`) VALUES
+('01', '', '', ''),
+('02', '', '', ''),
+('03', '', '', ''),
+('04', '', '', ''),
+('05', '', '', ''),
+('06', '', '', ''),
+('07', '', '', ''),
+('08', '', '', ''),
+('09', '', '', ''),
+('10', '', '', ''),
+('11', '', '', ''),
+('12', '', '', ''),
+('13', '', '', ''),
+('14', '', '', ''),
+('15', '', '', ''),
+('16', '', '', ''),
+('17', '', '', ''),
+('18', '', '', ''),
+('19', '', '', ''),
+('20', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -187,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `Synthese` (
 --
 
 INSERT INTO `Synthese` (`id`, `mois`, `compte`, `cb`, `espece`, `cheque`, `totalFinMois`, `totalMoisPlusUn`, `caMoisHt`) VALUES
-('01', 'Janvier', '4784', '564', '787', '45678', '51813', '51814', '0'),
+('01', 'Janvier', '0', '0', '0', '0', '0', '1', '0'),
 ('02', 'Février', '', '', '', '', '', '', ''),
 ('03', 'Mars', '', '', '', '', '', '', ''),
 ('04', 'Avril', '', '', '', '', '', '', ''),
@@ -199,6 +266,29 @@ INSERT INTO `Synthese` (`id`, `mois`, `compte`, `cb`, `espece`, `cheque`, `total
 ('10', 'Octobre', '', '', '', '', '', '', ''),
 ('11', 'Novembre', '', '', '', '', '', '', ''),
 ('12', 'Décembre', '', '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `TotalSemaine`
+--
+
+CREATE TABLE IF NOT EXISTS `TotalSemaine` (
+  `id` char(2) NOT NULL,
+  `semaine` char(1) NOT NULL,
+  `total` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `TotalSemaine`
+--
+
+INSERT INTO `TotalSemaine` (`id`, `semaine`, `total`) VALUES
+('01', '1', ''),
+('02', '2', ''),
+('03', '3', ''),
+('04', '4', '');
 
 -- --------------------------------------------------------
 

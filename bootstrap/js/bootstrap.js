@@ -714,7 +714,7 @@ if (typeof jQuery === 'undefined') {
             return complete.call(this)
 
         this.$element
-        [dimension](0)
+                [dimension](0)
                 .one('bsTransitionEnd', $.proxy(complete, this))
                 .emulateTransitionEnd(Collapse.TRANSITION_DURATION)
     }

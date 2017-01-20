@@ -23,6 +23,7 @@ Bdd::connecter();
 
 $id = $_REQUEST['id'];  // Non obligatoire mais plus propre
 $unChrg = ChargesDAO::getOneById($id);
+/* @var $unChrg Charges  */
 $nom = $unChrg->getNom();
 echo "
 <br><center>Voulez-vous vraiment supprimer la charge $nom ?

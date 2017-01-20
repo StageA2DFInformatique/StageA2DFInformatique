@@ -27,7 +27,7 @@ $cheque = $uneSynth->getCheque();
 
 $messageSynth = "$mois ($id)";            // Alimentation du message de l'en-tête
 $action = "validerModifierSynth";
-    
+
 echo "<form method='POST' action='cAccueil.php?'>
    <input type='hidden' value='$action' name='action'>
    <br>

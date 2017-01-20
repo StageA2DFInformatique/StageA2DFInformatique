@@ -38,6 +38,10 @@ echo "
       <td colspan='3'><strong><center>Synthese global du mois de $mois</center></strong></td>
    </tr>
    <tr class='ligneTabNonQuad'>
+      <td  width='50%'></td>
+      <td></td>
+   </tr>
+   <tr class='ligneTabNonQuad'>
       <td  width='50%'> Compte: </td>
       <td>&nbsp $compte €</td>
    </tr>
