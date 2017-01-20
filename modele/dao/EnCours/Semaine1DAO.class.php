@@ -2,7 +2,7 @@
 
 namespace modele\dao;
 
-use modele\metier\Semaine1;
+use modele\metier\EnCours\Semaine1;
 use PDO;
 
 /**
@@ -18,9 +18,9 @@ class Semaine1DAO implements IDAO {
         $type = $enreg[strtoupper('type')];
         $prix = $enreg[strtoupper('prix')];
 
-        $uneVente = new Semaine1($id, $designation, $type, $prix);
+        $uneVente1 = new Semaine1($id, $designation, $type, $prix);
 
-        return $uneVente;
+        return $uneVente1;
     }
 
     /**

@@ -14,7 +14,7 @@ require($repInclude . "_sommaire.inc.php");
 
 //Division principale
 echo '<div id="contenu">';
-echo '<h2><center>Saisie en cours</center></h2>';
+echo '<h2><center>Saisie durant la semaine n°2</center></h2>';
 echo '</div>';
 ?>
 <?php

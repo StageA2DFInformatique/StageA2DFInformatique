@@ -31,6 +31,12 @@ include ($repInclude . "connexionBDD.php");
 
                 <li class="smenu">
                     <a href="cSaisieEnCours.php" title="En cours">En cours</a>
+                    <ul>
+                        <li><a href="cSemaine1.php">Semaine n°1</a></li>
+                        <li><a href="cSemaine2.php">Semaine n°2</a></li>
+                        <li><a href="cSemaine3.php">Semaine n°3</a></li>
+                        <li><a href="cSemaine4.php">Semaine n°4</a></li>
+                    </ul>
                 </li>
                 <li class="smenu">
                     <a href="cSaisieTableauBord.php" title="Tableau de bord">Tableau de bord</a>
