@@ -22,14 +22,14 @@ Bdd::connecter();
 // SUPPRIMER LA VENTE OU LE DEPANNAGE SÉLECTIONNÉ(E)
 
 $id = $_REQUEST['id'];  // Non obligatoire mais plus propre
-$uneVente1 = Semaine1DAO::getOneById($id);
-/* @var $uneVente1 Semaine1  */
-$designation = $uneVente1->getDesignation();
-$prix = $uneVente1->getPrix();
+$uneVente = Semaine1DAO::getOneById($id);
+/* @var $uneVente Semaine1  */
+$designation = $uneVente->getDesignation();
+$prix = $uneVente->getPrix();
 echo "
-<br><center>Voulez-vous vraiment supprimer la vente ou le dépannage '$designation' d'une valeur de $prix ?
+<br><center>Voulez-vous vraiment supprimer la vente ou le dépannage '$designation' d'une valeur de $prix € ?
 <h3><br>
-<a href='cSemaine1.php?action=validerSupprimerVente1&id=$id'>Oui</a>
+<a href='cSemaine1.php?action=validerSupprimerVente&id=$id'>Oui</a>
 &nbsp; &nbsp; &nbsp; &nbsp;
 <a href='cSemaine1.php?'>Non</a></h3>
 </center>";

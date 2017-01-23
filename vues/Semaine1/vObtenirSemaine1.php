@@ -27,26 +27,26 @@ echo "
       <td colspan='4'><strong><center>Semaine n°1</center></strong></td>
    </tr>";
 
-$LesVentes1 = Semaine1DAO::getAll();
+$LesVentes = Semaine1DAO::getAll();
 // BOUCLE SUR LES CHARGES
-foreach ($LesVentes1 as $uneVente1) {
-    $id = $uneVente1->getId();
-    $designation = $uneVente1->getDesignation();
+foreach ($LesVentes as $uneVente) {
+    $id = $uneVente->getId();
+    $designation = $uneVente->getDesignation();
     echo "
         
 		<tr class='ligneTabNonQuad'>
          <td width='52%'>&nbsp $designation</td>
          
          <td width='16%' align='center'>
-         <a href='cSemaine1.php?action=detailVente1&id=$id'>
+         <a href='cSemaine1.php?action=detailVente&id=$id'>
                     <img src='./images/detail.png'title='Voir détail' />
         </a></td>  
                  <td width='16%' align='center'> 
-        <a href='cSemaine1.php?action=demanderModifierVente1&id=$id'>
+        <a href='cSemaine1.php?action=demanderModifierVente&id=$id'>
                     <img src='./images/modifier.png'title='Modifier' />
         </a></td>
          <td width='16%' align='center'> 
-        <a href='cSemaine1.php?action=demanderSupprimerVente1&id=$id'>
+        <a href='cSemaine1.php?action=demanderSupprimerVente&id=$id'>
                     <img src='./images/supprimer.png' title='Supprimer' />
         </a></td>
     </tr>";
@@ -54,7 +54,10 @@ foreach ($LesVentes1 as $uneVente1) {
 echo "
     </table>
     <br>
-    <a href = 'cSemaine1.php?action=demanderCreerVente1'>
-    Ajouter une vente ou un dépannage pour la semaine 1</a >";
+    <a href = 'cSemaine1.php?action=demanderCreerVente'>
+    Ajouter une vente ou un dépannage pour la semaine 1</a >
+    <br>
+        <a href = 'cSemaine1.php?action=demanderSupprimerTouteVente'>
+    Réinitialiser semaine N°1 </a >";
 require($repInclude . "_fin.inc.php");
 echo '</div>';

@@ -8,7 +8,6 @@ require($repInclude . "_entete.inc.html");
 require($repInclude . "_sommaire.inc.php");
 
 use modele\dao\SyntheseDAO;
-use modele\metier\Synthese;
 use modele\dao\Bdd;
 
 require_once __DIR__ . '/../../include/autoload.php';
@@ -17,7 +16,7 @@ Bdd::connecter();
 echo '<div id="contenu">';
 echo "<h2><center>Modification d'une Synthèse</center></h2>";
 
-// MODIFIER UN FOURNISSEUR
+// MODIFIER UNE SYNTHESE
 $uneSynth = SyntheseDAO::getOneById($id);
 $mois = $uneSynth->getMois();
 $compte = $uneSynth->getCompte();
@@ -25,7 +24,7 @@ $cb = $uneSynth->getCb();
 $espece = $uneSynth->getEspece();
 $cheque = $uneSynth->getCheque();
 
-$messageSynth = "$mois ($id)";            // Alimentation du message de l'en-tête
+$messageSynth = "$mois ($id)";        // Alimentation du message de l'en-tête
 $action = "validerModifierSynth";
 
 echo "<form method='POST' action='cAccueil.php?'>

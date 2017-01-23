@@ -1,61 +1,55 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace modele\metier;
 
 /**
- * Description of Semaine4
- *
- * @author Charly
+ * Description of Semaine1
+ * @author btssio
  */
 class Semaine4 {
 
-    private $id4;
-    private $designation4;
-    private $type4;
-    private $prix4;
-    function __construct($id4, $designation4, $type4, $prix4) {
-        $this->id4 = $id4;
-        $this->designation4 = $designation4;
-        $this->type4 = $type4;
-        $this->prix4 = $prix4;
-    }
-    function getId4() {
-        return $this->id4;
+    private $id;
+    private $designation;
+    private $type;
+    private $prix;
+
+    function __construct($id, $designation, $type, $prix) {
+        $this->id = $id;
+        $this->designation = $designation;
+        $this->type = $type;
+        $this->prix = $prix;
     }
 
-    function getDesignation4() {
-        return $this->designation4;
+    function getId() {
+        return $this->id;
     }
 
-    function getType4() {
-        return $this->type4;
+    function getDesignation() {
+        return $this->designation;
     }
 
-    function getPrix4() {
-        return $this->prix4;
+    function getType() {
+        return $this->type;
     }
 
-    function setId4($id4) {
-        $this->id4 = $id4;
+    function getPrix() {
+        return $this->prix;
     }
 
-    function setDesignation4($designation4) {
-        $this->designation4 = $designation4;
+    function setId($id) {
+        $this->id = $id;
     }
 
-    function setType4($type4) {
-        $this->type4 = $type4;
+    function setDesignation($designation) {
+        $this->designation = $designation;
     }
 
-    function setPrix4($prix4) {
-        $this->prix4 = $prix4;
+    function setType($type) {
+        $this->type = $type;
     }
 
+    function setPrix($prix) {
+        $this->prix = $prix;
+    }
 
 }

@@ -18,7 +18,7 @@ require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
 
-// Obtenir le tableau de synthese
+// Obtenir le tableau des syntheses
 
 $uneSynth = SyntheseDAO::getOneById($id);
 $mois = $uneSynth->getMois();

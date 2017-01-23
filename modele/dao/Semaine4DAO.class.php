@@ -6,21 +6,21 @@ use modele\metier\Semaine4;
 use PDO;
 
 /**
- * Description of Semaine1DAO
- * Classe métier : Semaine1
+ * Description of Semaine4DAO
+ * Classe métier : Semaine4
  * @author btssio
  */
 class Semaine4DAO implements IDAO {
 
     protected static function enregVersMetier($enreg) {
-        $id4 = $enreg['ID4'];
-        $designation4 = $enreg[strtoupper('designation4')];
-        $type4 = $enreg[strtoupper('type4')];
-        $prix4 = $enreg[strtoupper('prix4')];
+        $id = $enreg['ID'];
+        $designation = $enreg[strtoupper('designation')];
+        $type = $enreg[strtoupper('type')];
+        $prix = $enreg[strtoupper('prix')];
 
-        $uneVente4 = new Semaine4($id4, $designation4, $type4, $prix4);
+        $uneVente1 = new Semaine4($id, $designation, $type, $prix);
 
-        return $uneVente4;
+        return $uneVente1;
     }
 
     /**
@@ -28,10 +28,10 @@ class Semaine4DAO implements IDAO {
      */
     protected static function metierVersEnreg($objetMetier, $stmt) {
         // On utilise bindValue plutôt que bindParam pour éviter des variables intermédiaires
-        $stmt->bindValue(':id4', $objetMetier->getId4());
-        $stmt->bindValue(':designation4', $objetMetier->getDesignation4());
-        $stmt->bindValue(':type4', $objetMetier->getType4());
-        $stmt->bindValue(':prix4', $objetMetier->getPrix4());
+        $stmt->bindValue(':id', $objetMetier->getId());
+        $stmt->bindValue(':designation', $objetMetier->getDesignation());
+        $stmt->bindValue(':type', $objetMetier->getType());
+        $stmt->bindValue(':prix', $objetMetier->getPrix());
     }
 
     /**
@@ -40,7 +40,7 @@ class Semaine4DAO implements IDAO {
      * @return boolean =FALSE si l'opération échoue
      */
     public static function insert($objet) {
-        $requete = "INSERT INTO Semaine4 VALUES (:id4, :designation4, :type4, :prix4)";
+        $requete = "INSERT INTO Semaine4 VALUES (:id, :designation, :type, :prix)";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
         $ok = $stmt->execute();
@@ -53,21 +53,21 @@ class Semaine4DAO implements IDAO {
      * @param Semaine $objet objet métier à mettre à jour
      * @return boolean =FALSE si l'opération échoue
      */
-    public static function update($id4, $objet) {
+    public static function update($id, $objet) {
         $ok = false;
-        $requete = "UPDATE  Semaine4 SET DESIGNATION4=:designation4, TYPE4=:type4, PRIX4=:prix4 WHERE ID4=:id4";
+        $requete = "UPDATE  Semaine4 SET DESIGNATION=:designation, TYPE=:type, PRIX=:prix WHERE ID=:id";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
-        $stmt->bindParam(':id4', $id);
+        $stmt->bindParam(':id', $id);
         $ok = $stmt->execute();
         return ($ok && $stmt->rowCount() > 0);
     }
 
-    public static function delete($id4) {
+    public static function delete($id) {
         $ok = false;
-        $requete = "DELETE FROM Semaine1 WHERE ID4 = :id4";
+        $requete = "DELETE FROM Semaine4 WHERE ID = :id";
         $stmt = Bdd::getPdo()->prepare($requete);
-        $stmt->bindParam(':id4', $id4);
+        $stmt->bindParam(':id', $id);
         $ok = $stmt->execute();
         $ok = $ok && ($stmt->rowCount() > 0);
         return $ok;
@@ -86,11 +86,11 @@ class Semaine4DAO implements IDAO {
         return $lesObjets;
     }
 
-    public static function getOneById($id4) {
+    public static function getOneById($id) {
         $objetConstruit = null;
-        $requete = "SELECT * FROM Semaine4 WHERE ID4 = :id4";
+        $requete = "SELECT * FROM Semaine4 WHERE ID = :id";
         $stmt = Bdd::getPdo()->prepare($requete);
-        $stmt->bindParam(':id4', $id4);
+        $stmt->bindParam(':id', $id);
         $ok = $stmt->execute();
         // attention, $ok = true pour un select ne retournant aucune ligne
         if ($ok && $stmt->rowCount() > 0) {
@@ -104,12 +104,23 @@ class Semaine4DAO implements IDAO {
      * @param string $id identifiant de la Synthese à tester
      * @return boolean =true si l'id existe déjà, =false sinon
      */
-    public static function isAnExistingId($id4) {
-        $requete = "SELECT COUNT(*) FROM Semaine4 WHERE ID4=:id4";
+    public static function isAnExistingId($id) {
+        $requete = "SELECT COUNT(*) FROM Semaine4 WHERE ID=:id";
         $stmt = Bdd::getPdo()->prepare($requete);
-        $stmt->bindParam(':id4', $id4);
+        $stmt->bindParam(':id', $id);
         $stmt->execute();
         return $stmt->fetchColumn(0);
+    }
+
+//Supprimer toute les valeurs d'une table 
+
+    public static function deleteAll() {
+        $ok = false;
+        $requete = "DELETE FROM Semaine4";
+        $stmt = Bdd::getPdo()->prepare($requete);
+        $ok = $stmt->execute();
+        $ok = $ok && ($stmt->rowCount() > 0);
+        return $ok;
     }
 
 }

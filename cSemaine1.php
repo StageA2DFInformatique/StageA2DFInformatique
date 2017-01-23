@@ -11,7 +11,7 @@ require_once __DIR__ . '/include/autoload.php';
 Bdd::connecter();
 $repInclude = './include/';
 require($repInclude . "_init.inc.php");
-// 1ère étape: Affichage de la premiere semaine.
+// 1ère étape: Affichage de la première semaine.
 if (!isset($_REQUEST['action'])) {
     $_REQUEST['action'] = 'initial';
 }
@@ -21,55 +21,64 @@ $action = $_REQUEST['action'];
 // Aiguillage selon l'étape
 switch ($action) {
     case 'initial' :
-        include("vues//Semaine1/vObtenirSemaine1.php");
+        include("vues/Semaine1/vObtenirSemaine1.php");
         break;
 
-    case 'detailVente1':
+    case 'detailVente':
         $id = $_REQUEST['id'];
         include("vues/Semaine1/vObtenirDetailSemaine1.php");
         break;
 
-    case 'demanderSupprimerVente1':
+    case 'demanderSupprimerVente':
         $id = $_REQUEST['id'];
         include("vues/Semaine1/vSupprimerSemaine1.php");
         break;
 
-    case 'demanderCreerVente1':
+    case 'demanderSupprimerTouteVente':
+        include("vues/Semaine1/vSupprimerTout.php");
+        break;
+
+    case 'demanderCreerVente':
         include("vues/Semaine1/vCreerModifierSemaine1.php");
         break;
 
-    case 'demanderModifierVente1':
+    case 'demanderModifierVente':
         $id = $_REQUEST['id'];
         include("vues/Semaine1/vCreerModifierSemaine1.php");
         break;
 
-    case 'validerSupprimerVente1':
+    case 'validerSupprimerVente':
         $id = $_REQUEST['id'];
         Semaine1DAO::delete($id);
         include("vues/Semaine1/vObtenirSemaine1.php");
         break;
 
-    case 'validerCreerVente1':case 'validerModifierVente1':
+    case 'validerSupprimerTouteVente':
+        $uneVente = Semaine1DAO::deleteAll();
+        include("vues/Semaine1/vObtenirSemaine1.php");
+        break;
+
+    case 'validerCreerVente':case 'validerModifierVente':
         $id = $_REQUEST['id'];
         $designation = $_REQUEST['designation'];
         $type = $_REQUEST['type'];
         $prix = $_REQUEST['prix'];
 
 
-        if ($action == 'validerCreerVente1') {
-            verifierDonneesVente1C($id, $designation, $type, $prix);
+        if ($action == 'validerCreerVente') {
+            verifierDonneesVenteC($id, $designation, $type, $prix);
             if (nbErreurs() == 0) {
-                $uneVente1 = new Semaine1($id, $designation, $type, $prix);
-                Semaine1DAO::insert($uneVente1);
+                $uneVente = new Semaine1($id, $designation, $type, $prix);
+                Semaine1DAO::insert($uneVente);
                 include("vues/Semaine1/vObtenirSemaine1.php");
             } else {
                 include("vues/Semaine1/vCreerModifierSemaine1.php");
             }
         } else {
-            verifierDonneesVente1M($id, $designation, $type, $prix);
+            verifierDonneesVenteM($id, $designation, $type, $prix);
             if (nbErreurs() == 0) {
-                $uneVente1 = new Semaine1($id, $designation, $type, $prix);
-                Semaine1DAO::update($id, $uneVente1);
+                $uneVente = new Semaine1($id, $designation, $type, $prix);
+                Semaine1DAO::update($id, $uneVente);
                 include("vues/Semaine1/vObtenirSemaine1.php");
             } else {
                 include("vues/Semaine1/vCreerModifierSemaine1.php");
@@ -81,7 +90,7 @@ switch ($action) {
 // Fermeture de la connexion au serveur MySql
 Bdd::deconnecter();
 
-function verifierDonneesVente1C($id, $designation, $type, $prix) {
+function verifierDonneesVenteC($id, $designation, $type, $prix) {
     if ($id == "" || $designation == "" || $type == "" || $prix == "") {
         ajouterErreur('Chaque champ suivi du caractère * est obligatoire');
     }
@@ -99,7 +108,7 @@ function verifierDonneesVente1C($id, $designation, $type, $prix) {
     }
 }
 
-function verifierDonneesVente1M($id, $designation, $type, $prix) {
+function verifierDonneesVenteM($id, $designation, $type, $prix) {
     if ($id == "" || $designation == "" || $type == "" || $prix == "") {
         ajouterErreur('Chaque champ suivi du caractère * est obligatoire');
     }

@@ -9,7 +9,7 @@ require($repInclude . "_sommaire.inc.php");
 
 //Division principale
 echo '<div id="contenu">';
-echo "<h2><center>Détail des ventes et dépannage de la Semaine 1</center></h2>";
+echo "<h2><center>Détail des ventes et dépannage de la Semaine 2</center></h2>";
 
 use modele\dao\Semaine1DAO;
 use modele\dao\Bdd;
@@ -20,10 +20,10 @@ Bdd::connecter();
 
 // OBTENIR LE DÉTAIL DE LA VENTE SÉLECTIONNÉE
 
-$uneVente1 = Semaine1DAO::getOneById($id);
-$designation = $uneVente1->getDesignation();
-$type = $uneVente1->getType();
-$prix = $uneVente1->getPrix();
+$uneVente = Semaine1DAO::getOneById($id);
+$designation = $uneVente->getDesignation();
+$type = $uneVente->getType();
+$prix = $uneVente->getPrix();
 echo "
 <br>
 <table width='70%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>

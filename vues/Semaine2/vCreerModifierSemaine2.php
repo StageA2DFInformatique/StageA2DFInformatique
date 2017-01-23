@@ -23,33 +23,33 @@ Bdd::connecter();
 // S'il s'agit d'une création et qu'on ne "vient" pas de ce formulaire (on 
 // "vient" de ce formulaire uniquement s'il y avait une erreur), il faut définir 
 // les champs à vide sinon on affichera les valeurs précédemment saisies
-if ($action == 'demanderCreerVente2') {
-    $id2 = '';
-    $designation2 = '';
-    $type2 = 1;
-    $prix2 = '';
+if ($action == 'demanderCreerVente') {
+    $id = '';
+    $designation = '';
+    $type = 1;
+    $prix = '';
 }
 
 // S'il s'agit d'une modification et qu'on ne "vient" pas de ce formulaire, il
 // faut récupérer les données sinon on affichera les valeurs précédemment 
 // saisies
-if ($action == 'demanderModifierVente2') {
-    $uneVente2 = Semaine2DAO::getOneById($id2);
-    /* @var $uneVente2 Semaine2 */
-    $designation2 = $uneVente2->getDesignation2();
-    $type2 = $uneVente2->getType2();
-    $prix2 = $uneVente2->getPrix2();
+if ($action == 'demanderModifierVente') {
+    $uneVente = Semaine2DAO::getOneById($id);
+    /* @var $uneVente1 Semaine2 */
+    $designation = $uneVente->getDesignation();
+    $type = $uneVente->getType();
+    $prix = $uneVente->getPrix();
 }
 
 // Initialisations en fonction du mode (création ou modification) 
-if ($action == 'demanderCreerVente2' || $action == 'validerCreerVente2') {
+if ($action == 'demanderCreerVente' || $action == 'validerCreerVente') {
     $creation = true;
-    $messageVente2 = "Nouvelle vente ou nouveau dépannage";  // Alimentation du message de l'en-tête
-    $action = "validerCreerVente2";
+    $messageVente = "Nouvelle vente ou nouveau dépannage";  // Alimentation du message de l'en-tête
+    $action = "validerCreerVente";
 } else {
     $creation = false;
-    $messageVente2 = "$designation2 ($id2)";            // Alimentation du message de l'en-tête
-    $action = "validerModifierVente2";
+    $messageVente = "$designation ($id)";            // Alimentation du message de l'en-tête
+    $action = "validerModifierVente";
 }
 
 // Déclaration du tableau des types
@@ -61,7 +61,7 @@ echo "
       <table width='65%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
          
       <tr class='enTeteTabNonQuad'>
-         <td colspan='3'><strong><center>$messageVente2</center></strong></td>
+         <td colspan='3'><strong><center>$messageVente</center></strong></td>
       </tr>";
 
 // En cas de création, l'id est accessible sinon l'id est dans un champ
@@ -74,31 +74,31 @@ if ($creation) {
     echo '
          <tr class="ligneTabNonQuad">
             <td>&nbsp Id: </td>
-            <td><input type="text" value="' . $id2 . '" name="id" size ="30" 
-            maxlength="8"></td>
+            <td><input type="text" value="' . $id . '" name="id" size ="30" 
+            maxlength="2"></td>
          </tr>';
 } else {
     echo "
          <tr>
-            <td><input type='hidden' value='$id2' name='id'></td><td></td>
+            <td><input type='hidden' value='$id' name='id'></td><td></td>
          </tr>
             <br>";
 }
 echo '
       <tr class="ligneTabNonQuad">
          <td>&nbsp Designation: </td>
-         <td><input type="text" value="' . $designation2 . '" name="designation" size="30" 
-         maxlength="45"></td>
+         <td><input type="text" value="' . $designation . '" name="designation" size="30" 
+         maxlength="32"></td>
       </tr>
      
       <tr class="ligneTabNonQuad">
          <td>&nbsp Type*: </td>
          <td>';
-if ($type2 == 1) {
+if ($type == 1) {
     echo " 
-               <input type='radio' name='type2' value='Dépannage' checked>  
+               <input type='radio' name='type' value='Dépannage' checked>  
                Dépannage
-               <input type='radio' name='type2' value='Vente'>  Vente";
+               <input type='radio' name='type' value='Vente'>  Vente";
 } else {
     echo " 
                 <input type='radio' name='type' value='Dépannage'> 
@@ -109,8 +109,8 @@ if ($type2 == 1) {
 echo '
            <tr class="ligneTabNonQuad">
          <td>&nbsp Valeur: </td>
-         <td><input type="text" value="' . $prix2 . '" name="prix" size="30" 
-         maxlength="45"></td>
+         <td><input type="text" value="' . $prix . '" name="prix" size="30" 
+         maxlength="8"></td>
       </tr>';
       
 echo '</div>';

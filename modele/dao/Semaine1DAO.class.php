@@ -112,4 +112,15 @@ class Semaine1DAO implements IDAO {
         return $stmt->fetchColumn(0);
     }
 
+//Supprimer toute les valeurs d'une table 
+
+    public static function deleteAll() {
+        $ok = false;
+        $requete = "DELETE FROM Semaine1";
+        $stmt = Bdd::getPdo()->prepare($requete);
+        $ok = $stmt->execute();
+        $ok = $ok && ($stmt->rowCount() > 0);
+        return $ok;
+    }
+
 }

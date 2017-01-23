@@ -89,7 +89,12 @@ CREATE TABLE IF NOT EXISTS `Semaine1` (
 --
 
 INSERT INTO `Semaine1` (`id`, `designation`, `type`, `prix`) VALUES
-('01', '', '', '');
+('01', '', '', ''),
+('02', '', '', ''),
+('03', '', '', ''),
+('04', '', '', '');
+
+
 
 -- --------------------------------------------------------
 
@@ -98,18 +103,18 @@ INSERT INTO `Semaine1` (`id`, `designation`, `type`, `prix`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `Semaine2` (
-  `id2` char(2) NOT NULL,
-  `designation2` varchar(32) NOT NULL,
-  `type2` varchar(16) NOT NULL,
-  `prix2` varchar(8) NOT NULL,
-  PRIMARY KEY (`id2`)
+  `id` char(2) NOT NULL,
+  `designation` varchar(32) NOT NULL,
+  `type` varchar(16) NOT NULL,
+  `prix` varchar(8) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `Semaine2`
 --
 
-INSERT INTO `Semaine2` (`id2`, `designation2`, `type2`, `prix2`) VALUES
+INSERT INTO `Semaine2` (`id`, `designation`, `type`, `prix`) VALUES
 ('01', '', '', '');
 
 -- --------------------------------------------------------
@@ -119,18 +124,18 @@ INSERT INTO `Semaine2` (`id2`, `designation2`, `type2`, `prix2`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `Semaine3` (
-  `id3` char(2) NOT NULL,
-  `designation3` varchar(32) NOT NULL,
-  `type3` varchar(16) NOT NULL,
-  `prix3` varchar(8) NOT NULL,
-  PRIMARY KEY (`id3`)
+  `id` char(2) NOT NULL,
+  `designation` varchar(32) NOT NULL,
+  `type` varchar(16) NOT NULL,
+  `prix` varchar(8) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `Semaine3`
 --
 
-INSERT INTO `Semaine3` (`id3`, `designation3`, `type3`, `prix3`) VALUES
+INSERT INTO `Semaine3` (`id`, `designation`, `type`, `prix`) VALUES
 ('01', '', '', '');
 
 
@@ -141,18 +146,18 @@ INSERT INTO `Semaine3` (`id3`, `designation3`, `type3`, `prix3`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `Semaine4` (
-  `id4` char(2) NOT NULL,
-  `designation4` varchar(32) NOT NULL,
-  `type4` varchar(16) NOT NULL,
-  `prix4` varchar(8) NOT NULL,
-  PRIMARY KEY (`id4`)
+  `id` char(2) NOT NULL,
+  `designation` varchar(32) NOT NULL,
+  `type` varchar(16) NOT NULL,
+  `prix` varchar(8) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `Semaine4`
 --
 
-INSERT INTO `Semaine4` (`id4`, `designation4`, `type4`, `prix4`) VALUES
+INSERT INTO `Semaine4` (`id`, `designation`, `type`, `prix`) VALUES
 ('01', '', '', '');
 
 -- --------------------------------------------------------

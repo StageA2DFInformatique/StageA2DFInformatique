@@ -6,16 +6,16 @@ use modele\metier\TotalSemaine;
 use PDO;
 
 /**
- * Description of ChargesDAO
- * Classe métier : Charges
+ * Description of TotalSemaineDAO
+ * Classe métier : TotalSemaine
  * @author btssio
  */
 class TotalSemaineDAO implements IDAO {
 
     protected static function enregVersMetier($enreg) {
         $id = $enreg['ID'];
-        $semaine = $enreg[strtoupper('description')];
-        $total = $enreg[strtoupper('description')];
+        $semaine = $enreg[strtoupper('semaine')];
+        $total = $enreg[strtoupper('total')];
 
         $unTotal = new TotalSemaine($id, $semaine, $total);
 
@@ -23,26 +23,24 @@ class TotalSemaineDAO implements IDAO {
     }
 
     /**
-     * Valorise les paramètre d'une requête préparée avec l'état d'un objet Charges
-     * @param type $objetMetier un Charges
+     * Valorise les paramètre d'une requête préparée avec l'état d'un objet TotalSemaine
+     * @param type $objetMetier un TotalSemaine
      * @param type $stmt requête préparée
      */
     protected static function metierVersEnreg($objetMetier, $stmt) {
         // On utilise bindValue plutôt que bindParam pour éviter des variables intermédiaires
         $stmt->bindValue(':id', $objetMetier->getId());
-        $stmt->bindValue(':nom', $objetMetier->getNom());
-        $stmt->bindValue(':description', $objetMetier->getDescription());
-        $stmt->bindValue(':numContrat', $objetMetier->getNumContrat());
-        $stmt->bindValue(':numTel', $objetMetier->getNumTel());
+        $stmt->bindValue(':semaine', $objetMetier->getSemaine());
+        $stmt->bindValue(':total', $objetMetier->getTotal());
     }
 
     /**
      * Insérer un nouvel enregistrement dans la table à partir de l'état d'un objet métier
-     * @param Charges $objet objet métier à insérer
+     * @param TotalSemaine $objet objet métier à insérer
      * @return boolean =FALSE si l'opérationn échoue
      */
     public static function insert($objet) {
-        $requete = "INSERT INTO Charges VALUES (:id, :nom, :description, :numContrat, :numTel)";
+        $requete = "INSERT INTO TotalSemaine VALUES (:id, :semaine, :total)";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
         $ok = $stmt->execute();
@@ -52,13 +50,13 @@ class TotalSemaineDAO implements IDAO {
     /**
      * Mettre à jour enregistrement dans la table à partir de l'état d'un objet métier
      * @param string identifiant de l'enregistrement à mettre à jour
-     * @param Charges $objet objet métier à mettre à jour
+     * @param TotalSemaine $objet objet métier à mettre à jour
      * @return boolean =FALSE si l'opération échoue
      */
     public static function update($id, $objet) {
         $ok = false;
-        $requete = "UPDATE  Charges SET NOM=:nom, DESCRIPTION=:description, 
-                NUMCONTRAT=:numContrat, NUMTEL=:numTel WHERE ID=:id";
+        $requete = "UPDATE  TotalSemaine SET SEMAINE=:semaine, TOTAL=:total, 
+                WHERE ID=:id";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
         $stmt->bindParam(':id', $id);
@@ -68,7 +66,7 @@ class TotalSemaineDAO implements IDAO {
 
     public static function delete($id) {
         $ok = false;
-        $requete = "DELETE FROM Charges WHERE ID = :id";
+        $requete = "DELETE FROM TotalSemaine WHERE ID = :id";
         $stmt = Bdd::getPdo()->prepare($requete);
         $stmt->bindParam(':id', $id);
         $ok = $stmt->execute();
@@ -78,7 +76,7 @@ class TotalSemaineDAO implements IDAO {
 
     public static function getAll() {
         $lesObjets = array();
-        $requete = "SELECT * FROM Charges";
+        $requete = "SELECT * FROM TotalSemaine";
         $stmt = Bdd::getPdo()->prepare($requete);
         $ok = $stmt->execute();
         if ($ok) {
@@ -91,7 +89,7 @@ class TotalSemaineDAO implements IDAO {
 
     public static function getOneById($id) {
         $objetConstruit = null;
-        $requete = "SELECT * FROM Charges WHERE ID = :id";
+        $requete = "SELECT * FROM TotalSemaine WHERE ID = :id";
         $stmt = Bdd::getPdo()->prepare($requete);
         $stmt->bindParam(':id', $id);
         $ok = $stmt->execute();
@@ -108,39 +106,10 @@ class TotalSemaineDAO implements IDAO {
      * @return boolean =true si l'id existe déjà, =false sinon
      */
     public static function isAnExistingId($id) {
-        $requete = "SELECT COUNT(*) FROM Charges WHERE ID=:id";
+        $requete = "SELECT COUNT(*) FROM TotalSemaine WHERE ID=:id";
         $stmt = Bdd::getPdo()->prepare($requete);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         return $stmt->fetchColumn(0);
     }
-
-    /**
-     * Permet de vérifier s'il existe ou non une charge portant déjà le même nom dans la BD
-     * En mode modification, l'enregistrement en cours de modification est bien entendu exclu du test
-     * @param boolean $estModeCreation =true si le test est fait en mode création, =false en mode modification
-     * @param string $id identifiant de la charge à tester
-     * @param string $nom nom du Charges à tester
-     * @return boolean =true si le nom existe déjà, =false sinon
-     */
-    public static function isAnExistingName($estModeCreation, $id, $nom) {
-        $nom = str_replace("'", "''", $nom);
-        // S'il s'agit d'une création, on vérifie juste la non existence du nom sinon
-        // on vérifie la non existence d'une autre charge (id!='$id') portant 
-        // le même nom
-        if ($estModeCreation) {
-            $requete = "SELECT COUNT(*) FROM Charges WHERE NOM=:nom";
-            $stmt = Bdd::getPdo()->prepare($requete);
-            $stmt->bindParam(':nom', $nom);
-            $stmt->execute();
-        } else {
-            $requete = "SELECT COUNT(*) FROM Charges WHERE NOM=:nom AND ID<>:id";
-            $stmt = Bdd::getPdo()->prepare($requete);
-            $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':nom', $nom);
-            $stmt->execute();
-        }
-        return $stmt->fetchColumn(0);
-    }
-
 }
