@@ -89,10 +89,10 @@ CREATE TABLE IF NOT EXISTS `Semaine1` (
 --
 
 INSERT INTO `Semaine1` (`id`, `designation`, `type`, `prix`) VALUES
-('01', '', '', ''),
-('02', '', '', ''),
-('03', '', '', ''),
-('04', '', '', '');
+('01', 'Test', 'Vente', '499.99'),
+('02', 'Test', 'Dépannage', '49.9'),
+('03', 'Test', 'Vente', '654.9'),
+('04', 'Test', 'Dépannage', '49.9');
 
 
 

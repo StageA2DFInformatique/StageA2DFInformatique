@@ -116,7 +116,7 @@ class Semaine2DAO implements IDAO {
 
     public static function deleteAll() {
         $ok = false;
-        $requete = "DELETE FROM Semaine3";
+        $requete = "DELETE FROM Semaine2";
         $stmt = Bdd::getPdo()->prepare($requete);
         $ok = $stmt->execute();
         $ok = $ok && ($stmt->rowCount() > 0);
