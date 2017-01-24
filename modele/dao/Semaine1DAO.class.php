@@ -18,9 +18,9 @@ class Semaine1DAO implements IDAO {
         $type = $enreg[strtoupper('type')];
         $prix = $enreg[strtoupper('prix')];
 
-        $uneVente1 = new Semaine1($id, $designation, $type, $prix);
+        $uneVente = new Semaine1($id, $designation, $type, $prix);
 
-        return $uneVente1;
+        return $uneVente;
     }
 
     /**

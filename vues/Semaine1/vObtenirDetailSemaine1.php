@@ -9,7 +9,7 @@ require($repInclude . "_sommaire.inc.php");
 
 //Division principale
 echo '<div id="contenu">';
-echo "<h2><center>Détail des ventes et dépannage de la Semaine 2</center></h2>";
+echo "<h2><center>Détail des ventes et dépannage de la Semaine 1</center></h2>";
 
 use modele\dao\Semaine1DAO;
 use modele\dao\Bdd;

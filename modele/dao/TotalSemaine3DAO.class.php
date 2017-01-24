@@ -2,45 +2,43 @@
 
 namespace modele\dao;
 
-use modele\metier\TotalSemaine;
+use modele\metier\TotalSemaine3;
 use PDO;
 
 /**
- * Description of TotalSemaineDAO
- * Classe métier : TotalSemaine
+ * Description of TotalSemaine3DAO
+ * Classe métier : TotalSemaine3
  * @author btssio
  */
-class TotalSemaineDAO implements IDAO {
+class TotalSemaine3DAO implements IDAO {
 
     protected static function enregVersMetier($enreg) {
         $id = $enreg['ID'];
-        $semaine = $enreg[strtoupper('semaine')];
         $total = $enreg[strtoupper('total')];
 
-        $unTotal = new TotalSemaine($id, $semaine, $total);
+        $unTotal = new TotalSemaine3($id, $total);
 
         return $unTotal;
     }
 
     /**
-     * Valorise les paramètre d'une requête préparée avec l'état d'un objet TotalSemaine
-     * @param type $objetMetier un TotalSemaine
+     * Valorise les paramètre d'une requête préparée avec l'état d'un objet TotalSemaine3
+     * @param type $objetMetier un TotalSemaine3
      * @param type $stmt requête préparée
      */
     protected static function metierVersEnreg($objetMetier, $stmt) {
         // On utilise bindValue plutôt que bindParam pour éviter des variables intermédiaires
         $stmt->bindValue(':id', $objetMetier->getId());
-        $stmt->bindValue(':semaine', $objetMetier->getSemaine());
         $stmt->bindValue(':total', $objetMetier->getTotal());
     }
 
     /**
      * Insérer un nouvel enregistrement dans la table à partir de l'état d'un objet métier
-     * @param TotalSemaine $objet objet métier à insérer
+     * @param TotalSemaine3 $objet objet métier à insérer
      * @return boolean =FALSE si l'opérationn échoue
      */
     public static function insert($objet) {
-        $requete = "INSERT INTO TotalSemaine VALUES (:id, :semaine, :total)";
+        $requete = "INSERT INTO TotalSemaine3 VALUES (:id, :total)";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
         $ok = $stmt->execute();
@@ -50,12 +48,12 @@ class TotalSemaineDAO implements IDAO {
     /**
      * Mettre à jour enregistrement dans la table à partir de l'état d'un objet métier
      * @param string identifiant de l'enregistrement à mettre à jour
-     * @param TotalSemaine $objet objet métier à mettre à jour
+     * @param TotalSemaine3 $objet objet métier à mettre à jour
      * @return boolean =FALSE si l'opération échoue
      */
     public static function update($id, $objet) {
         $ok = false;
-        $requete = "UPDATE  TotalSemaine SET SEMAINE=:semaine, TOTAL=:total, 
+        $requete = "UPDATE  TotalSemaine3 SET TOTAL=:total, 
                 WHERE ID=:id";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
@@ -66,7 +64,7 @@ class TotalSemaineDAO implements IDAO {
 
     public static function delete($id) {
         $ok = false;
-        $requete = "DELETE FROM TotalSemaine WHERE ID = :id";
+        $requete = "DELETE FROM TotalSemaine3 WHERE ID = :id";
         $stmt = Bdd::getPdo()->prepare($requete);
         $stmt->bindParam(':id', $id);
         $ok = $stmt->execute();
@@ -76,7 +74,7 @@ class TotalSemaineDAO implements IDAO {
 
     public static function getAll() {
         $lesObjets = array();
-        $requete = "SELECT * FROM TotalSemaine";
+        $requete = "SELECT * FROM TotalSemaine3";
         $stmt = Bdd::getPdo()->prepare($requete);
         $ok = $stmt->execute();
         if ($ok) {
@@ -89,7 +87,7 @@ class TotalSemaineDAO implements IDAO {
 
     public static function getOneById($id) {
         $objetConstruit = null;
-        $requete = "SELECT * FROM TotalSemaine WHERE ID = :id";
+        $requete = "SELECT * FROM TotalSemaine3 WHERE ID = :id";
         $stmt = Bdd::getPdo()->prepare($requete);
         $stmt->bindParam(':id', $id);
         $ok = $stmt->execute();
@@ -106,7 +104,7 @@ class TotalSemaineDAO implements IDAO {
      * @return boolean =true si l'id existe déjà, =false sinon
      */
     public static function isAnExistingId($id) {
-        $requete = "SELECT COUNT(*) FROM TotalSemaine WHERE ID=:id";
+        $requete = "SELECT COUNT(*) FROM TotalSemaine3 WHERE ID=:id";
         $stmt = Bdd::getPdo()->prepare($requete);
         $stmt->bindParam(':id', $id);
         $stmt->execute();

@@ -4,7 +4,9 @@
  * Contrôleur : SaisieEncours/Semaine1
  */
 use modele\dao\Semaine1DAO;
+use modele\dao\TotalSemaine1DAO;
 use modele\metier\Semaine1;
+use modele\metier\TotalSemaine1;
 use modele\dao\Bdd;
 
 require_once __DIR__ . '/include/autoload.php';
@@ -57,7 +59,12 @@ switch ($action) {
         $uneVente = Semaine1DAO::deleteAll();
         include("vues/Semaine1/vObtenirSemaine1.php");
         break;
-
+    
+    case 'demanderVoirTotalSemaine1':
+        $unTotal = TotalSemaine1DAO::getAll();
+        include("vues/Semaine1/vTotalSemaine1.php");
+        break;
+    
     case 'validerCreerVente':case 'validerModifierVente':
         $id = $_REQUEST['id'];
         $designation = $_REQUEST['designation'];

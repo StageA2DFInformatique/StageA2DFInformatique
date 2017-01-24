@@ -13,21 +13,15 @@ namespace modele\metier;
  *
  * @author Charly
  */
-class TotalSemaine {
+class TotalSemaine3 {
 private $id;
-private $semaine;
 private $total;
-function __construct($id, $semaine, $total) {
+function __construct($id, $total) {
     $this->id = $id;
-    $this->semaine = $semaine;
     $this->total = $total;
 }
 function getId() {
     return $this->id;
-}
-
-function getSemaine() {
-    return $this->semaine;
 }
 
 function getTotal() {
@@ -36,10 +30,6 @@ function getTotal() {
 
 function setId($id) {
     $this->id = $id;
-}
-
-function setSemaine($semaine) {
-    $this->semaine = $semaine;
 }
 
 function setTotal($total) {

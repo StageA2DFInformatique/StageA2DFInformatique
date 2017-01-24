@@ -35,7 +35,7 @@ if ($action == 'demanderCreerVente') {
 // saisies
 if ($action == 'demanderModifierVente') {
     $uneVente = Semaine1DAO::getOneById($id);
-    /* @var $uneVente1 Semaine1 */
+    /* @var $uneVente Semaine1 */
     $designation = $uneVente->getDesignation();
     $type = $uneVente->getType();
     $prix = $uneVente->getPrix();
