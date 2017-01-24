@@ -56,6 +56,16 @@ switch ($action) {
         } else {
             include("vues/AccueilSynthese/vModifierSynthese.php");
         }
+        
+        break;
+        verifierDonneesTotalM($id, $total);
+        if (nbErreurs() == 0) {
+            $unTotal = new TotalSemaine1($id,$prix);
+            TotalSemaine1DAO::update($id, $total);
+            include("vues/Semaine1/vObtenirSemaine1.php");
+        } else {
+            include("vues/Semaine1/vTotalSemaine1.php");
+        }
         break;
 }
 

@@ -20,7 +20,7 @@ Bdd::connecter();
 
 // OBTENIR LE DÉTAIL DE LA VENTE SÉLECTIONNÉE
 
-$unTotal = TotalSemaine1DAO::getAll();
+$unTotal = TotalSemaine1DAO::update($id, $total);
 $total = $unTotal->getTotal();
 echo "
 <br>

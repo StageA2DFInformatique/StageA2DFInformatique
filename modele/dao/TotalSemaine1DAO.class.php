@@ -30,18 +30,15 @@ class TotalSemaine1DAO {
         $stmt->bindValue(':id', $objetMetier->getId());
         $stmt->bindValue(':total', $objetMetier->getTotal());
     }
-
-    public static function getAll() {
-        $lesObjets = array();
-        $requete = "INSERT INTO TotalSemaine1 (total) SELECT SUM(prix) FROM Semaine1";
+/**
+     * Mettre à jour enregistrement dans la table à partir de l'état d'un objet métier */
+    public static function update($id, $objet) {
+        $ok = false;
+        $requete = "UPDATE  TotalSemaine1 SET TOTAL=:total WHERE ID=:id";
         $stmt = Bdd::getPdo()->prepare($requete);
+        self::metierVersEnreg($objet, $stmt);
+        $stmt->bindParam(':id', $id);
         $ok = $stmt->execute();
-        if ($ok) {
-            while ($enreg = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $lesObjets[] = self::enregVersMetier($enreg);
-            }
-        }
-        return $lesObjets;
+        return ($ok && $stmt->rowCount() > 0);
     }
-
 }

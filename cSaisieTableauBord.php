@@ -15,6 +15,7 @@ require($repInclude . "_sommaire.inc.php");
 //Division principale
 echo '<div id="contenu">';
 echo "<h2><center>Tableau de Bord</center></h2>";
+echo 'A venir';
 echo '</div>';
 ?>
 <?php
