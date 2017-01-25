@@ -12,6 +12,10 @@ echo '<div id="contenu">';
 echo "<h2><center>Tableau de Synthèse globale</center></h2>";
 
 use modele\dao\SyntheseDAO;
+use modele\dao\TotalSemaine1DAO;
+use modele\dao\TotalSemaine2DAO;
+use modele\dao\TotalSemaine3DAO;
+use modele\dao\TotalSemaine4DAO;
 use modele\dao\Bdd;
 
 require_once __DIR__ . '/../../include/autoload.php';
@@ -29,6 +33,8 @@ $cheque = $uneSynth->getCheque();
 $totalFinMois = $uneSynth->getTotalFinMois();
 $totalMoisPlusUn = $uneSynth->getTotalMoisPlusUn();
 $caMoisHt = $uneSynth->getCaMoisHt();
+
+$totalFinMois += TotalSemaine1DAO::superSum() + TotalSemaine2DAO::superSum() + TotalSemaine3DAO::superSum() + TotalSemaine4DAO::superSum();
 
 echo "
 <br>
