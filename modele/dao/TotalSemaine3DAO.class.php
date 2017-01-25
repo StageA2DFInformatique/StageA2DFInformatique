@@ -53,13 +53,19 @@ class TotalSemaine3DAO implements IDAO {
      */
     public static function update($id, $objet) {
         $ok = false;
-        $requete = "UPDATE  TotalSemaine3 SET TOTAL=:total, 
-                WHERE ID=:id";
+        $requete = "UPDATE  TotalSemaine3 SET TOTAL=:total WHERE ID=:id";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
-        $stmt->bindParam(':id', $id);
         $ok = $stmt->execute();
         return ($ok && $stmt->rowCount() > 0);
+    }
+    
+    public static function superSum() {
+        $requete = "SELECT SUM(prix) FROM `Semaine3` ";
+        $stmt = Bdd::getPdo()->prepare($requete);
+        $ok = $stmt->execute();
+        return $stmt->fetchColumn(0);
+
     }
 
     public static function delete($id) {

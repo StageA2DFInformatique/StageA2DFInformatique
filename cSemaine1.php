@@ -48,7 +48,11 @@ switch ($action) {
         $id = $_REQUEST['id'];
         include("vues/Semaine1/vCreerModifierSemaine1.php");
         break;
-
+    
+    case 'totalSemaine1':
+        include("vues/Semaine1/vTotalSemaine1.php");
+        break;
+    
     case 'validerSupprimerVente':
         $id = $_REQUEST['id'];
         Semaine1DAO::delete($id);

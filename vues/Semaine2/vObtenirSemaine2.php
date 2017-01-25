@@ -58,6 +58,9 @@ echo "
     Ajouter une vente ou un dépannage pour la semaine 2</a >
     <br>
         <a href = 'cSemaine2.php?action=demanderSupprimerTouteVente'>
-    Réinitialiser semaine N°2 </a >";
+    Réinitialiser semaine N°2 </a ><br>
+    
+    <a href = 'cSemaine2.php?action=totalSemaine2'>
+    Voir le total de la semaine N°2 </a >";
 require($repInclude . "_fin.inc.php");
 echo '</div>';
