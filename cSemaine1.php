@@ -60,12 +60,6 @@ switch ($action) {
         include("vues/Semaine1/vObtenirSemaine1.php");
         break;
 
-//    case 'demanderVoirTotalSemaine1':
-//        $id = $_REQUEST['id'];
-//        $unTotal = TotalSemaine1DAO::update($id, $total);
-//        include("vues/Semaine1/vTotalSemaine1.php");
-//        break;
-
     case 'validerCreerVente':case 'validerModifierVente':
         $id = $_REQUEST['id'];
         $designation = $_REQUEST['designation'];
