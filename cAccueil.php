@@ -34,12 +34,6 @@ switch ($action) {
         include("vues/AccueilSynthese/vModifierSynthese.php");
         break;
 
-    case 'validerSupprimerSynth':
-        $id = $_REQUEST['id'];
-        FournisseursDAO::delete($id);
-        include("vues/AccueilSynthese/vObtenirSynthese.php");
-        break;
-
     case 'validerModifierSynth':
         $id = $_REQUEST['id'];
         $compte = $_REQUEST['compte'];
@@ -47,6 +41,7 @@ switch ($action) {
         $espece = $_REQUEST['espece'];
         $cheque = $_REQUEST['cheque'];
         $mois = $_REQUEST['mois'];
+
 
         verifierDonneesSynthM($id, $mois, $compte, $cb, $espece, $cheque);
         if (nbErreurs() == 0) {
@@ -56,11 +51,11 @@ switch ($action) {
         } else {
             include("vues/AccueilSynthese/vModifierSynthese.php");
         }
-        
+
         break;
         verifierDonneesTotalM($id, $total);
         if (nbErreurs() == 0) {
-            $unTotal = new TotalSemaine1($id,$prix);
+            $unTotal = new TotalSemaine1($id, $prix);
             TotalSemaine1DAO::update($id, $total);
             include("vues/Semaine1/vObtenirSemaine1.php");
         } else {
