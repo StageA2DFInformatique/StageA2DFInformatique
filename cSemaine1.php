@@ -4,9 +4,7 @@
  * Contrôleur : SaisieEncours/Semaine1
  */
 use modele\dao\Semaine1DAO;
-use modele\dao\TotalSemaine1DAO;
 use modele\metier\Semaine1;
-use modele\metier\TotalSemaine1;
 use modele\dao\Bdd;
 
 require_once __DIR__ . '/include/autoload.php';

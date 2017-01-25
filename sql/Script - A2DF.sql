@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 24 Janvier 2017 à 10:28
+-- Généré le: Mer 25 Janvier 2017 à 16:11
 -- Version du serveur: 5.5.43-0ubuntu0.14.04.1
 -- Version de PHP: 5.5.9-1ubuntu4.9
 
@@ -84,16 +84,6 @@ CREATE TABLE IF NOT EXISTS `Semaine1` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Contenu de la table `Semaine1`
---
-
-INSERT INTO `Semaine1` (`id`, `designation`, `type`, `prix`) VALUES
-('01', 'Test', 'Vente', '499.99'),
-('02', 'Test', 'Dépannage', '49.9'),
-('03', 'Test', 'Vente', '654.9'),
-('04', 'Test', 'Dépannage', '49.9');
-
 -- --------------------------------------------------------
 
 --
@@ -107,16 +97,6 @@ CREATE TABLE IF NOT EXISTS `Semaine2` (
   `prix` varchar(8) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `Semaine2`
---
-
-INSERT INTO `Semaine2` (`id`, `designation`, `type`, `prix`) VALUES
-('01', 'Test', 'Vente', '499.99'),
-('02', 'Test', 'Dépannage', '49.9'),
-('03', 'Test', 'Vente', '654.9'),
-('04', 'Test', 'Dépannage', '49.9');
 
 -- --------------------------------------------------------
 
@@ -132,16 +112,6 @@ CREATE TABLE IF NOT EXISTS `Semaine3` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Contenu de la table `Semaine3`
---
-
-INSERT INTO `Semaine3` (`id`, `designation`, `type`, `prix`) VALUES
-('01', 'Test', 'Vente', '499.99'),
-('02', 'Test', 'Dépannage', '49.9'),
-('03', 'Test', 'Vente', '654.9'),
-('04', 'Test', 'Dépannage', '49.9');
-
 -- --------------------------------------------------------
 
 --
@@ -155,16 +125,6 @@ CREATE TABLE IF NOT EXISTS `Semaine4` (
   `prix` varchar(8) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `Semaine4`
---
-
-INSERT INTO `Semaine4` (`id`, `designation`, `type`, `prix`) VALUES
-('01', 'Test', 'Vente', '499.99'),
-('02', 'Test', 'Dépannage', '49.9'),
-('03', 'Test', 'Vente', '654.9'),
-('04', 'Test', 'Dépannage', '49.9');
 
 -- --------------------------------------------------------
 
@@ -190,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `Synthese` (
 --
 
 INSERT INTO `Synthese` (`id`, `mois`, `compte`, `cb`, `espece`, `cheque`, `totalFinMois`, `totalMoisPlusUn`, `caMoisHt`) VALUES
-('01', 'Janvier', '54', '8', '87', '7', '156', '156', '0'),
+('01', 'Janvier', '54', '8', '45', '7', '114', '115', '0'),
 ('02', 'Février', '', '', '', '', '', '', ''),
 ('03', 'Mars', '', '', '', '', '', '', ''),
 ('04', 'Avril', '', '', '', '', '', '', ''),
@@ -220,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `TotalSemaine1` (
 --
 
 INSERT INTO `TotalSemaine1` (`id`, `total`) VALUES
-('01', '');
+('1', '0');
 
 -- --------------------------------------------------------
 
@@ -239,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `TotalSemaine2` (
 --
 
 INSERT INTO `TotalSemaine2` (`id`, `total`) VALUES
-('01', '');
+('1', '0');
 
 -- --------------------------------------------------------
 
@@ -258,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `TotalSemaine3` (
 --
 
 INSERT INTO `TotalSemaine3` (`id`, `total`) VALUES
-('01', '');
+('1', '0');
 
 -- --------------------------------------------------------
 
@@ -277,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `TotalSemaine4` (
 --
 
 INSERT INTO `TotalSemaine4` (`id`, `total`) VALUES
-('01', '');
+('1', '0');
 
 -- --------------------------------------------------------
 

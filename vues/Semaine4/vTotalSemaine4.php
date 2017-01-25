@@ -11,7 +11,7 @@ require($repInclude . "_sommaire.inc.php");
 
 //Division principale
 echo '<div id="contenu">';
-echo "<h2><center>Rentrée d'argents de la semaine n°4</center></h2>";
+echo "<h2><center>Rentrées d'argents de la semaine n°4</center></h2>";
 
 use modele\dao\TotalSemaine4DAO;
 use modele\dao\Bdd;
@@ -34,15 +34,15 @@ echo "
 <table width='70%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
    
    <tr class='enTeteTabNonQuad'>
-      <td colspan='3'><strong><center>&nbsp Total de la semaine n°4</center></strong></td>
+      <td colspan='3'><strong><center>Semaine n°4</center></strong></td>
    </tr>
       <tr class='ligneTabNonQuad'>
       <td  width='50%'></td>
       <td></td>
    </tr>
       <tr class='ligneTabNonQuad'>
-      <td  width='30%'>&nbsp Type : </td>
-      <td>&nbsp $unTotal</td>
+      <td  width='30%'>&nbsp Total : </td>
+      <td>&nbsp $unTotal €</td>
    </tr>
 </table>
 <br>
