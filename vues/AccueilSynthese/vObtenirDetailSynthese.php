@@ -12,6 +12,7 @@ echo '<div id="contenu">';
 echo "<h2><center>Tableau de Synthèse globale</center></h2>";
 
 use modele\dao\SyntheseDAO;
+use modele\metier\Synthese;
 use modele\dao\TotalSemaine1DAO;
 use modele\dao\TotalSemaine2DAO;
 use modele\dao\TotalSemaine3DAO;
@@ -33,8 +34,9 @@ $totalFinMois = $uneSynth->getTotalFinMois();
 $totalMoisPlusUn = $uneSynth->getTotalMoisPlusUn();
 $caMoisHt = $uneSynth->getCaMoisHt();
 
-$totalFinMois += TotalSemaine1DAO::superSum() + TotalSemaine2DAO::superSum() + TotalSemaine3DAO::superSum() + TotalSemaine4DAO::superSum();
-$totalMoisPlusUn += TotalSemaine1DAO::superSum() + TotalSemaine2DAO::superSum() + TotalSemaine3DAO::superSum() + TotalSemaine4DAO::superSum();
+$totalFinMois = $mois + $compte + $cb + $espece + $cheque + TotalSemaine1DAO::superSum() + TotalSemaine2DAO::superSum() + TotalSemaine3DAO::superSum() + TotalSemaine4DAO::superSum();
+$totalMoisPlusUn = $mois + $compte + $cb + $espece + $cheque + TotalSemaine1DAO::superSum() + TotalSemaine2DAO::superSum() + TotalSemaine3DAO::superSum() + TotalSemaine4DAO::superSum();
+$uneSynth = new Synthese($id, $mois, $compte, $cb, $espece, $cheque, $totalFinMois, $totalMoisPlusUn, $caMoisHt);
 
 SyntheseDAO::update($id, $uneSynth);
 
