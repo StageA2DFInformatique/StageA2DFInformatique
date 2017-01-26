@@ -23,7 +23,6 @@ Bdd::connecter();
 
 
 // Obtenir le tableau des syntheses
-
 $uneSynth = SyntheseDAO::getOneById($id);
 $mois = $uneSynth->getMois();
 $compte = $uneSynth->getCompte();
@@ -35,6 +34,10 @@ $totalMoisPlusUn = $uneSynth->getTotalMoisPlusUn();
 $caMoisHt = $uneSynth->getCaMoisHt();
 
 $totalFinMois += TotalSemaine1DAO::superSum() + TotalSemaine2DAO::superSum() + TotalSemaine3DAO::superSum() + TotalSemaine4DAO::superSum();
+$totalMoisPlusUn += TotalSemaine1DAO::superSum() + TotalSemaine2DAO::superSum() + TotalSemaine3DAO::superSum() + TotalSemaine4DAO::superSum();
+
+SyntheseDAO::update($id, $uneSynth);
+
 
 echo "
 <br>
@@ -88,4 +91,3 @@ echo "
 </table>
 <br>
 <a href='cAccueil.php'>Retour</a>";
-
