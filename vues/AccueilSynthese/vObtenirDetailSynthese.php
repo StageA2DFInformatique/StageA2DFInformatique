@@ -17,6 +17,7 @@ use modele\dao\TotalSemaine1DAO;
 use modele\dao\TotalSemaine2DAO;
 use modele\dao\TotalSemaine3DAO;
 use modele\dao\TotalSemaine4DAO;
+use modele\dao\TotalSemaine5DAO;
 use modele\dao\Bdd;
 
 require_once __DIR__ . '/../../include/autoload.php';
@@ -32,14 +33,12 @@ $espece = $uneSynth->getEspece();
 $cheque = $uneSynth->getCheque();
 $totalFinMois = $uneSynth->getTotalFinMois();
 $totalMoisPlusUn = $uneSynth->getTotalMoisPlusUn();
-$caMoisHt = $uneSynth->getCaMoisHt();
 
 $totalFinMois = $mois + $compte + $cb + $espece + $cheque + TotalSemaine1DAO::superSum() + TotalSemaine2DAO::superSum() + TotalSemaine3DAO::superSum() + TotalSemaine4DAO::superSum();
-$totalMoisPlusUn = $mois + $compte + $cb + $espece + $cheque + TotalSemaine1DAO::superSum() + TotalSemaine2DAO::superSum() + TotalSemaine3DAO::superSum() + TotalSemaine4DAO::superSum();
-$uneSynth = new Synthese($id, $mois, $compte, $cb, $espece, $cheque, $totalFinMois, $totalMoisPlusUn, $caMoisHt);
+$totalMoisPlusUn = TotalSemaine5DAO::superSum();
+$uneSynth = new Synthese($id, $mois, $compte, $cb, $espece, $cheque, $totalFinMois, $totalMoisPlusUn);
 
 SyntheseDAO::update($id, $uneSynth);
-
 
 echo "
 <br>
@@ -83,13 +82,6 @@ echo "
       <td  width='50%'> Total sur un mois +1: </td>
       <td>&nbsp $totalMoisPlusUn €</td>
    </tr>
-      </tr>
-      <tr class='ligneTabNonQuad'>
-      <td  width='50%'> Chiffre d'affaire du mois (HT): </td>
-      <td>&nbsp $caMoisHt €</td>
-   </tr>
-   
-   
 </table>
 <br>
 <a href='cAccueil.php'>Retour</a>";

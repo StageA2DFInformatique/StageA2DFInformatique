@@ -141,7 +141,6 @@ CREATE TABLE IF NOT EXISTS `Synthese` (
   `cheque` varchar(8) NOT NULL,
   `totalFinMois` varchar(8) NOT NULL,
   `totalMoisPlusUn` varchar(8) NOT NULL,
-  `caMoisHt` varchar(8) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -149,19 +148,19 @@ CREATE TABLE IF NOT EXISTS `Synthese` (
 -- Contenu de la table `Synthese`
 --
 
-INSERT INTO `Synthese` (`id`, `mois`, `compte`, `cb`, `espece`, `cheque`, `totalFinMois`, `totalMoisPlusUn`, `caMoisHt`) VALUES
-('01', 'Janvier', '54', '8', '45', '7', '114', '115', '0'),
-('02', 'Février', '', '', '', '', '', '', ''),
-('03', 'Mars', '', '', '', '', '', '', ''),
-('04', 'Avril', '', '', '', '', '', '', ''),
-('05', 'Mai', '', '', '', '', '', '', ''),
-('06', 'Juin', '', '', '', '', '', '', ''),
-('07', 'Juillet', '', '', '', '', '', '', ''),
-('08', 'Aout', '', '', '', '', '', '', ''),
-('09', 'Septembre', '', '', '', '', '', '', ''),
-('10', 'Octobre', '', '', '', '', '', '', ''),
-('11', 'Novembre', '', '', '', '', '', '', ''),
-('12', 'Décembre', '', '', '', '', '', '', '');
+INSERT INTO `Synthese` (`id`, `mois`, `compte`, `cb`, `espece`, `cheque`, `totalFinMois`, `totalMoisPlusUn`) VALUES
+('01', 'Octobre', '54', '8', '45', '7', '114', '115'),
+('02', 'Novembre', '', '', '', '', '', ''),
+('03', 'Décembre', '', '', '', '', '', ''),
+('04', 'Janvier', '', '', '', '', '', ''),
+('05', 'Février', '', '', '', '', '', ''),
+('06', 'Mars', '', '', '', '', '', ''),
+('07', 'Avril', '', '', '', '', '', ''),
+('08', 'Mai', '', '', '', '', '', ''),
+('09', 'Juin', '', '', '', '', '', ''),
+('10', 'Juillet', '', '', '', '', '', ''),
+('11', 'Aout', '', '', '', '', '', ''),
+('12', 'Septembre', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 

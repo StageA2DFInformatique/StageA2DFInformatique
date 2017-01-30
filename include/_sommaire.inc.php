@@ -36,6 +36,7 @@ include ($repInclude . "connexionBDD.php");
                         <li><a href="cSemaine2.php">Semaine n°2</a></li>
                         <li><a href="cSemaine3.php">Semaine n°3</a></li>
                         <li><a href="cSemaine4.php">Semaine n°4</a></li>
+                        <li><a href="cSemaine5.php">Semaine n°5</a></li>
                     </ul>
                 </li>
                 <li class="smenu">

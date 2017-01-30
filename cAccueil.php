@@ -45,7 +45,7 @@ switch ($action) {
 
         verifierDonneesSynthM($id, $mois, $compte, $cb, $espece, $cheque);
         if (nbErreurs() == 0) {
-            $uneSynth = new Synthese($id, $mois, $compte, $cb, $espece,$cheque, $mois + $compte + $cb + $espece + $cheque, $mois + $compte + $cb + $espece + $cheque + 1, 0);
+            $uneSynth = new Synthese($id, $mois, $compte, $cb, $espece, $cheque, $mois + $compte + $cb + $espece + $cheque, $mois + $compte + $cb + $espece + $cheque+1);
             SyntheseDAO::update($id, $uneSynth);
             include("vues/AccueilSynthese/vObtenirSynthese.php");
         } else {

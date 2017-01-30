@@ -47,13 +47,7 @@ class Synthese {
      * @var string
      */
     private $totalMoisPlusUn;
-
-    /**
-     * @var string
-     */
-    private $caMoisHt;
-
-    function __construct($id, $mois, $compte, $cb, $espece, $cheque, $totalFinMois, $totalMoisPlusUn, $caMoisHt) {
+    function __construct($id, $mois, $compte, $cb, $espece, $cheque, $totalFinMois, $totalMoisPlusUn) {
         $this->id = $id;
         $this->mois = $mois;
         $this->compte = $compte;
@@ -62,9 +56,7 @@ class Synthese {
         $this->cheque = $cheque;
         $this->totalFinMois = $totalFinMois;
         $this->totalMoisPlusUn = $totalMoisPlusUn;
-        $this->caMoisHt = $caMoisHt;
     }
-
     function getId() {
         return $this->id;
     }
@@ -95,10 +87,6 @@ class Synthese {
 
     function getTotalMoisPlusUn() {
         return $this->totalMoisPlusUn;
-    }
-
-    function getCaMoisHt() {
-        return $this->caMoisHt;
     }
 
     function setId($id) {
@@ -133,8 +121,5 @@ class Synthese {
         $this->totalMoisPlusUn = $totalMoisPlusUn;
     }
 
-    function setCaMoisHt($caMoisHt) {
-        $this->caMoisHt = $caMoisHt;
-    }
 
 }
