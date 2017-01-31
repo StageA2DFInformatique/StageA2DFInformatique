@@ -92,7 +92,7 @@ echo '
       </tr>
      
       <tr class="ligneTabNonQuad">
-         <td>&nbsp Type*: </td>
+         <td>&nbsp Type: </td>
          <td>';
 if ($type == 1) {
     echo " 

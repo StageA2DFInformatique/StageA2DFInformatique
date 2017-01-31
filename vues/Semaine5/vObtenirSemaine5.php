@@ -21,7 +21,7 @@ Bdd::connecter();
 // AFFICHER L'ENSEMBLE DES VENTE ET DEPANNAGE DE LA SEMAINE N°5
 echo "
 <br>
-<table width='55%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
+<table width='75%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
 
    <tr class='enTeteTabNonQuad'>
       <td colspan='5'><strong><center>Semaine n°5</center></strong></td>
@@ -32,35 +32,24 @@ $LesVentes = Semaine5DAO::getAll();
 foreach ($LesVentes as $uneVente) {
     $id = $uneVente->getId();
     $designation = $uneVente->getDesignation();
+    $type= $uneVente->getType();
+    $prix=$uneVente->getPrix();
     echo "
-        
-		<tr class='ligneTabNonQuad'>
-         <td width='52%'>&nbsp $designation</td>
-         
-         <td width='16%' align='center'>
-         <a href='cSemaine5.php?action=detailVente&id=$id'>
-                    <img src='./images/detail.png'title='Voir détail' />
-        </a></td>  
-                 <td width='16%' align='center'> 
-        <a href='cSemaine5.php?action=demanderModifierVente&id=$id'>
-                    <img src='./images/modifier.png'title='Modifier' />
-        </a></td>
-         <td width='16%' align='center'> 
-        <a href='cSemaine5.php?action=demanderSupprimerVente&id=$id'>
-                    <img src='./images/supprimer.png' title='Supprimer' />
-        </a></td>
+    <tr class='ligneTabNonQuad'>
+        <td width='40%'><strong><center> $designation </center></strong></td>
+        <td width='10%'>&nbsp $type &nbsp</td> 
+        <td width='5%'>&nbsp $prix € &nbsp</td> 
+        <td width='1%' align='center'><a href='cSemaine5.php?action=demanderModifierVente&id=$id'><img src='./images/modifier.png'title='Modifier' /></a>
+        <td width='1%' align='center'><a href='cSemaine5.php?action=demanderSupprimerVente&id=$id'><img src='./images/supprimer.png' title='Supprimer' /></a>
     </tr>";
 }
 echo "
     </table>
     <br>
     <a href = 'cSemaine5.php?action=demanderCreerVente'>
-    Ajouter une vente ou un dépannage pour la semaine 5</a >
+    Ajouter une vente ou un dépannage</a >
     <br>
-        <a href = 'cSemaine5.php?action=demanderSupprimerTouteVente'>
-    Réinitialiser semaine N°5 </a ><br>
-    
     <a href = 'cSemaine5.php?action=totalSemaine5'>
-    Voir le total de la semaine N°5 </a >";
+    Voir le total de la semaine</a >";
 require($repInclude . "_fin.inc.php");
 echo '</div>';

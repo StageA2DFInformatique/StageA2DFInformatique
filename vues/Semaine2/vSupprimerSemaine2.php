@@ -26,8 +26,9 @@ $uneVente = Semaine2DAO::getOneById($id);
 /* @var $uneVente Semaine2  */
 $designation = $uneVente->getDesignation();
 $prix = $uneVente->getPrix();
+$type= $uneVente ->getType();
 echo "
-<br><center>Voulez-vous vraiment supprimer la vente ou le dépannage '$designation' d'une valeur de $prix €?
+<br><center>Voulez-vous vraiment supprimer le / la $type '$designation' d'une valeur de $prix € ?
 <h3><br>
 <a href='cSemaine2.php?action=validerSupprimerVente&id=$id'>Oui</a>
 &nbsp; &nbsp; &nbsp; &nbsp;

@@ -25,7 +25,7 @@ echo "
 <table width='85%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
 
    <tr class='enTeteTabNonQuad'>
-      <td colspan='4'><strong><center>Synthèses</center></strong></td>
+      <td colspan='3'><strong><center>Synthèses</center></strong></td>
    </tr>";
 
 $lesSynthese = SyntheseDAO::getAll();

@@ -11,7 +11,7 @@ require($repInclude . "_sommaire.inc.php");
 
 //Division principale
 echo '<div id="contenu">';
-echo "<h2><center>Rentrées d'argents de la semaine n°3</center></h2>";
+echo "<h2><center>Rentrées d'argents</center></h2>";
 
 use modele\dao\TotalSemaine3DAO;
 use modele\dao\Bdd;
