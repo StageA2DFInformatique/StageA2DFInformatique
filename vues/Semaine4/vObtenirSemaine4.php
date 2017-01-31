@@ -36,9 +36,10 @@ foreach ($LesVentes as $uneVente) {
     $prix=$uneVente->getPrix();
     echo "
     <tr class='ligneTabNonQuad'>
+        <td width='5%'>&nbsp<strong>Id: </strong>$id</td> 
         <td width='40%'><strong><center> $designation </center></strong></td>
-        <td width='10%'>&nbsp $type &nbsp</td> 
-        <td width='5%'>&nbsp $prix € &nbsp</td> 
+        <td width='10%'>&nbsp $type </td> 
+        <td width='5%'>&nbsp $prix € </td> 
         <td width='1%' align='center'><a href='cSemaine4.php?action=demanderModifierVente&id=$id'><img src='./images/modifier.png'title='Modifier' /></a>
         <td width='1%' align='center'><a href='cSemaine4.php?action=demanderSupprimerVente&id=$id'><img src='./images/supprimer.png' title='Supprimer' /></a>
     </tr>";
