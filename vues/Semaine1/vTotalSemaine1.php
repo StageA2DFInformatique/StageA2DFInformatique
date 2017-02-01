@@ -19,9 +19,6 @@ use modele\dao\Bdd;
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
-
-// OBTENIR LE DÉTAIL DE LA VENTE SÉLECTIONNÉE
-
 $id=1;
 $unTotal = TotalSemaine1DAO::superSum();
 if($unTotal==''){

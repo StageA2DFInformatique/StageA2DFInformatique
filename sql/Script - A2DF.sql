@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 25 Janvier 2017 à 16:11
+-- Généré le: Mer 01 Février 2017 à 16:31
 -- Version du serveur: 5.5.43-0ubuntu0.14.04.1
 -- Version de PHP: 5.5.9-1ubuntu4.9
 
@@ -73,6 +73,21 @@ INSERT INTO `Fournisseurs` (`id`, `nom`, `adresseRue`, `codePostal`, `ville`, `t
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `Operation`
+--
+
+CREATE TABLE IF NOT EXISTS `Operation` (
+  `id` char(8) NOT NULL,
+  `designation` varchar(45) NOT NULL,
+  `prix` varchar(8) NOT NULL,
+  `idType` char(1) NOT NULL,
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `Semaine1`
 --
 
@@ -83,6 +98,29 @@ CREATE TABLE IF NOT EXISTS `Semaine1` (
   `prix` varchar(8) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `Semaine1`
+--
+
+INSERT INTO `Semaine1` (`id`, `designation`, `type`, `prix`) VALUES
+('10', 'Ordi', 'Vente', '52'),
+('11', 'Ordi', 'Vente', '52'),
+('12', 'Ordi', 'Vente', '52'),
+('13', 'Ordi', 'Vente', '52'),
+('14', 'Ordi', 'Vente', '52'),
+('15', 'Ordi', 'Vente', '52'),
+('16', 'Ordi', 'Vente', '52'),
+('17', 'Ordi', 'Vente', '52'),
+('18', 'Ordi', 'Vente', '52'),
+('19', 'Ordi', 'Vente', '52'),
+('20', 'Ordi', 'Vente', '52'),
+('21', 'Ordi', 'Vente', '52'),
+('22', 'Ordi', 'Vente', '52'),
+('23', 'Ordi', 'Vente', '52'),
+('25', 'Ordi', 'Vente', '52'),
+('26', 'Ordi', 'Vente', '52'),
+('27', 'Tablette', 'Vente', '350');
 
 -- --------------------------------------------------------
 
@@ -98,6 +136,27 @@ CREATE TABLE IF NOT EXISTS `Semaine2` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Contenu de la table `Semaine2`
+--
+
+INSERT INTO `Semaine2` (`id`, `designation`, `type`, `prix`) VALUES
+('01', 'Tablette', 'Dépannage', '50'),
+('02', 'Tour d''ordi', 'Vente', '350'),
+('03', 'Ordi portable', 'Dépannage', '50'),
+('04', 'Ordi portable', 'Dépannage', '50'),
+('05', 'Tour d''ordi', 'Vente', '800'),
+('07', 'Pb virus', 'Dépannage', '50'),
+('08', 'Autre', 'Vente', '500'),
+('09', 'Ordi portable', 'Dépannage', '50'),
+('10', 'Imprimante', 'Vente', '50'),
+('11', 'Ordi portable', 'Dépannage', '50'),
+('12', 'Ordi portable', 'Dépannage', '50'),
+('13', 'Ordi portable', 'Vente', '500'),
+('14', 'Tablette', 'Vente', '250'),
+('15', 'Imprimante', 'Vente', '70'),
+('16', 'Autre', 'Vente', '490.9');
+
 -- --------------------------------------------------------
 
 --
@@ -112,6 +171,29 @@ CREATE TABLE IF NOT EXISTS `Semaine3` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Contenu de la table `Semaine3`
+--
+
+INSERT INTO `Semaine3` (`id`, `designation`, `type`, `prix`) VALUES
+('10', 'Ordi', 'Vente', '52'),
+('11', 'Ordi', 'Vente', '52'),
+('12', 'Ordi', 'Vente', '52'),
+('13', 'Ordi', 'Vente', '52'),
+('14', 'Ordi', 'Vente', '52'),
+('15', 'Ordi', 'Vente', '52'),
+('16', 'Ordi', 'Vente', '52'),
+('17', 'Ordi', 'Vente', '52'),
+('18', 'Ordi', 'Vente', '52'),
+('19', 'Ordi', 'Vente', '52'),
+('20', 'Ordi', 'Vente', '52'),
+('21', 'Ordi', 'Vente', '52'),
+('22', 'Ordi', 'Vente', '52'),
+('23', 'Ordi', 'Vente', '52'),
+('25', 'Ordi', 'Vente', '52'),
+('26', 'Ordi', 'Vente', '52'),
+('27', 'Tablette', 'Vente', '350');
+
 -- --------------------------------------------------------
 
 --
@@ -125,6 +207,69 @@ CREATE TABLE IF NOT EXISTS `Semaine4` (
   `prix` varchar(8) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `Semaine4`
+--
+
+INSERT INTO `Semaine4` (`id`, `designation`, `type`, `prix`) VALUES
+('10', 'Ordi', 'Vente', '52'),
+('11', 'Ordi', 'Vente', '52'),
+('12', 'Ordi', 'Vente', '52'),
+('13', 'Ordi', 'Vente', '52'),
+('14', 'Ordi', 'Vente', '52'),
+('15', 'Ordi', 'Vente', '52'),
+('16', 'Ordi', 'Vente', '52'),
+('17', 'Ordi', 'Vente', '52'),
+('18', 'Ordi', 'Vente', '52'),
+('19', 'Ordi', 'Vente', '52'),
+('20', 'Ordi', 'Vente', '52'),
+('21', 'Ordi', 'Vente', '52'),
+('22', 'Ordi', 'Vente', '52'),
+('23', 'Ordi', 'Vente', '52'),
+('25', 'Ordi', 'Vente', '52'),
+('26', 'Ordi', 'Vente', '52'),
+('27', 'Tablette', 'Vente', '350');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Semaine5`
+--
+
+CREATE TABLE IF NOT EXISTS `Semaine5` (
+  `id` char(2) NOT NULL,
+  `designation` varchar(32) NOT NULL,
+  `type` varchar(16) NOT NULL,
+  `prix` varchar(8) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `Semaine5`
+--
+
+INSERT INTO `Semaine5` (`id`, `designation`, `type`, `prix`) VALUES
+('03', 'Tablette', 'Dépannage', '87'),
+('04', 'Test', 'Vente', '505'),
+('10', 'Ordi', 'Vente', '52'),
+('11', 'Ordi', 'Vente', '52'),
+('12', 'Ordi', 'Vente', '52'),
+('13', 'Ordi', 'Vente', '52'),
+('14', 'Ordi', 'Vente', '52'),
+('15', 'Ordi', 'Vente', '52'),
+('16', 'Ordi', 'Vente', '52'),
+('17', 'Ordi', 'Vente', '52'),
+('18', 'Ordi', 'Vente', '52'),
+('19', 'Ordi', 'Vente', '52'),
+('20', 'Ordi', 'Vente', '52'),
+('21', 'Ordi', 'Vente', '52'),
+('22', 'Ordi', 'Vente', '52'),
+('23', 'Ordi', 'Vente', '52'),
+('24', '5fghfg', 'Dépannage', '54'),
+('25', 'Ordi', 'Vente', '52'),
+('26', 'Ordi', 'Vente', '52'),
+('27', 'Tablette', 'Vente', '350');
 
 -- --------------------------------------------------------
 
@@ -149,10 +294,10 @@ CREATE TABLE IF NOT EXISTS `Synthese` (
 --
 
 INSERT INTO `Synthese` (`id`, `mois`, `compte`, `cb`, `espece`, `cheque`, `totalFinMois`, `totalMoisPlusUn`) VALUES
-('01', 'Octobre', '54', '8', '45', '7', '114', '115'),
-('02', 'Novembre', '', '', '', '', '', ''),
-('03', 'Décembre', '', '', '', '', '', ''),
-('04', 'Janvier', '', '', '', '', '', ''),
+('01', 'Octobre', '500', '250', '150', '200', '8006.9', '1828'),
+('02', 'Novembre', '', '', '', '', '2785', '592'),
+('03', 'Décembre', '', '', '', '', '2285', '2285'),
+('04', 'Janvier', '', '', '', '', '2285', '2285'),
 ('05', 'Février', '', '', '', '', '', ''),
 ('06', 'Mars', '', '', '', '', '', ''),
 ('07', 'Avril', '', '', '', '', '', ''),
@@ -160,7 +305,7 @@ INSERT INTO `Synthese` (`id`, `mois`, `compte`, `cb`, `espece`, `cheque`, `total
 ('09', 'Juin', '', '', '', '', '', ''),
 ('10', 'Juillet', '', '', '', '', '', ''),
 ('11', 'Aout', '', '', '', '', '', ''),
-('12', 'Septembre', '', '', '', '', '', '');
+('12', 'Septembre', '', '', '', '', '3286', '592');
 
 -- --------------------------------------------------------
 
@@ -179,7 +324,7 @@ CREATE TABLE IF NOT EXISTS `TotalSemaine1` (
 --
 
 INSERT INTO `TotalSemaine1` (`id`, `total`) VALUES
-('1', '0');
+('1', '1182');
 
 -- --------------------------------------------------------
 
@@ -198,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `TotalSemaine2` (
 --
 
 INSERT INTO `TotalSemaine2` (`id`, `total`) VALUES
-('1', '0');
+('1', '3360.9');
 
 -- --------------------------------------------------------
 
@@ -217,7 +362,7 @@ CREATE TABLE IF NOT EXISTS `TotalSemaine3` (
 --
 
 INSERT INTO `TotalSemaine3` (`id`, `total`) VALUES
-('1', '0');
+('1', '1182');
 
 -- --------------------------------------------------------
 
@@ -236,7 +381,38 @@ CREATE TABLE IF NOT EXISTS `TotalSemaine4` (
 --
 
 INSERT INTO `TotalSemaine4` (`id`, `total`) VALUES
-('1', '0');
+('1', '1182');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `TotalSemaine5`
+--
+
+CREATE TABLE IF NOT EXISTS `TotalSemaine5` (
+  `id` char(2) NOT NULL,
+  `total` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `TotalSemaine5`
+--
+
+INSERT INTO `TotalSemaine5` (`id`, `total`) VALUES
+('1', '1828');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Type`
+--
+
+CREATE TABLE IF NOT EXISTS `Type` (
+  `idType` char(1) NOT NULL,
+  `type` varchar(10) NOT NULL,
+  PRIMARY KEY (`idType`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
