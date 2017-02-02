@@ -29,7 +29,7 @@ if ($action == 'demanderCreerChrg') {
     $description = '';
     $numContrat = '';
     $numTel = '';
-    $date=1;
+    $date = 1;
 }
 
 // S'il s'agit d'une modification et qu'on ne "vient" pas de ce formulaire, il
@@ -101,6 +101,11 @@ echo '
          <td><input type="text" value="' . $numContrat . '" name="numContrat" size="30" 
          maxlength="16"></td>
       </tr>
+            <tr class="ligneTabNonQuad">
+         <td>&nbsp Num Tel: </td>
+         <td><input type="text" value="' . $numTel . '" name="numTel" size="30" 
+         maxlength="10"></td>
+      </tr>
       
       <tr class="ligneTabNonQuad">
          <td>&nbsp A payer: </td>
@@ -114,7 +119,7 @@ if ($date == 1) {
     echo " 
                 <input type='radio' name='date' value='avant le 12'> 
                 Avant le 12
-                <input type='radio' name='date' value='après le 12' checked> Après le 12'";
+                <input type='radio' name='date' value='après le 12' checked> Après le 12";
 }
 
 echo '</tr>';

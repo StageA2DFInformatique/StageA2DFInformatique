@@ -47,6 +47,7 @@ class Synthese {
      * @var string
      */
     private $totalMoisPlusUn;
+
     function __construct($id, $mois, $compte, $cb, $espece, $cheque, $totalFinMois, $totalMoisPlusUn) {
         $this->id = $id;
         $this->mois = $mois;
@@ -57,6 +58,7 @@ class Synthese {
         $this->totalFinMois = $totalFinMois;
         $this->totalMoisPlusUn = $totalMoisPlusUn;
     }
+
     function getId() {
         return $this->id;
     }
@@ -120,6 +122,5 @@ class Synthese {
     function setTotalMoisPlusUn($totalMoisPlusUn) {
         $this->totalMoisPlusUn = $totalMoisPlusUn;
     }
-
 
 }

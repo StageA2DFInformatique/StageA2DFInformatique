@@ -52,7 +52,7 @@ switch ($action) {
         Semaine3DAO::delete($id);
         include("vues/Semaine3/vObtenirSemaine3.php");
         break;
-    
+
     case 'totalSemaine3':
         include("vues/Semaine3/vTotalSemaine3.php");
         break;

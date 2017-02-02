@@ -26,7 +26,7 @@ $uneVente = Semaine5DAO::getOneById($id);
 /* @var $uneVente Semaine5  */
 $designation = $uneVente->getDesignation();
 $prix = $uneVente->getPrix();
-$type= $uneVente ->getType();
+$type = $uneVente->getType();
 echo "
 <br><center>Voulez-vous vraiment supprimer le / la $type '$designation' d'une valeur de $prix € ?
 <h3><br>

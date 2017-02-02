@@ -112,7 +112,7 @@ echo '
          <td><input type="text" value="' . $prix . '" name="prix" size="30" 
          maxlength="8"></td>
       </tr>';
-      
+
 echo '</div>';
 echo "<br>
    <table align='right' cellspacing='15' cellpadding='0'>

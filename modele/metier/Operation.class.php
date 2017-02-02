@@ -12,57 +12,59 @@
  * @author btssio
  */
 class Operation {
-private $id;
-private $idType;
-private $designation;
-private $date;
-private $prix;
-function __construct($id, $idType, $designation, $date, $prix) {
-    $this->id = $id;
-    $this->idType = $idType;
-    $this->designation = $designation;
-    $this->date = $date;
-    $this->prix = $prix;
-}
-function getId() {
-    return $this->id;
-}
 
-function getIdType() {
-    return $this->idType;
-}
+    private $id;
+    private $idType;
+    private $designation;
+    private $date;
+    private $prix;
 
-function getDesignation() {
-    return $this->designation;
-}
+    function __construct($id, $idType, $designation, $date, $prix) {
+        $this->id = $id;
+        $this->idType = $idType;
+        $this->designation = $designation;
+        $this->date = $date;
+        $this->prix = $prix;
+    }
 
-function getDate() {
-    return $this->date;
-}
+    function getId() {
+        return $this->id;
+    }
 
-function getPrix() {
-    return $this->prix;
-}
+    function getIdType() {
+        return $this->idType;
+    }
 
-function setId($id) {
-    $this->id = $id;
-}
+    function getDesignation() {
+        return $this->designation;
+    }
 
-function setIdType($idType) {
-    $this->idType = $idType;
-}
+    function getDate() {
+        return $this->date;
+    }
 
-function setDesignation($designation) {
-    $this->designation = $designation;
-}
+    function getPrix() {
+        return $this->prix;
+    }
 
-function setDate($date) {
-    $this->date = $date;
-}
+    function setId($id) {
+        $this->id = $id;
+    }
 
-function setPrix($prix) {
-    $this->prix = $prix;
-}
+    function setIdType($idType) {
+        $this->idType = $idType;
+    }
 
+    function setDesignation($designation) {
+        $this->designation = $designation;
+    }
+
+    function setDate($date) {
+        $this->date = $date;
+    }
+
+    function setPrix($prix) {
+        $this->prix = $prix;
+    }
 
 }

@@ -26,13 +26,13 @@ $nom = $unChrg->getNom();
 $description = $unChrg->getDescription();
 $numContrat = $unChrg->getNumContrat();
 $numTel = $unChrg->getNumTel();
-$date= $unChrg->getDate();
+$date = $unChrg->getDate();
 echo "
 <br>
 <table width='70%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
    
    <tr class='enTeteTabNonQuad'>
-      <td colspan='3'><strong><center>$nom</center></strong></td>
+      <td colspan='3'><strong><center>$nom ($id)</center></strong></td>
    </tr>
       <tr class='ligneTabNonQuad'>
       <td  width='50%'></td>

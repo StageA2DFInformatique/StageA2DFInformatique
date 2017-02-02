@@ -18,13 +18,13 @@ use modele\dao\Bdd;
 
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
-$id=1;
+$id = 1;
 $unTotal = TotalSemaine5DAO::superSum();
-if($unTotal==''){
-    $unTotal=0;
+if ($unTotal == '') {
+    $unTotal = 0;
 }
-$tester= new TotalSemaine5 ($id, $unTotal);
-TotalSemaine5DAO::update($id,$tester);
+$tester = new TotalSemaine5($id, $unTotal);
+TotalSemaine5DAO::update($id, $tester);
 
 // AFFICHER L'ENSEMBLE DES VENTE ET DEPANNAGE DE LA SEMAINE N°5
 echo "
@@ -34,25 +34,19 @@ echo "
    <tr class='enTeteTabNonQuad'>
       <td colspan='6'><strong><center>Semaine n°5</center></strong></td>
    </tr>";
- echo "
+echo "
     &nbsp&nbsp<a href = 'cSemaine5.php?action=demanderCreerVente'><img src='./images/add.png'title='Ajouter une vente ou un dépannage' /></a >
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    <strong> Total = $unTotal € </strong>";
-    
+    &nbsp&nbsp<strong> Total = $unTotal € </strong>";
+
 
 $LesVentes = Semaine5DAO::getAll();
 // BOUCLE SUR LES CHARGES
 foreach ($LesVentes as $uneVente) {
     $id = $uneVente->getId();
     $designation = $uneVente->getDesignation();
-    $type= $uneVente->getType();
-    $prix=$uneVente->getPrix();
-   
+    $type = $uneVente->getType();
+    $prix = $uneVente->getPrix();
+
     echo "
     <tr class='ligneTabNonQuad'>
         <td width='5%'>&nbsp<strong>Id: </strong>$id</td> 

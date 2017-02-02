@@ -19,13 +19,13 @@ use modele\dao\Bdd;
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
-$id=1;
+$id = 1;
 $unTotal = TotalSemaine1DAO::superSum();
-if($unTotal==''){
-    $unTotal=0;
+if ($unTotal == '') {
+    $unTotal = 0;
 }
-$tester= new TotalSemaine1 ($id, $unTotal);
-TotalSemaine1DAO::update($id,$tester);
+$tester = new TotalSemaine1($id, $unTotal);
+TotalSemaine1DAO::update($id, $tester);
 
 echo "
 <br>

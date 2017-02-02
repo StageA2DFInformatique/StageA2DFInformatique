@@ -57,7 +57,7 @@ switch ($action) {
         $uneVente = Semaine4DAO::deleteAll();
         include("vues/Semaine4/vObtenirSemaine4.php");
         break;
-    
+
     case 'totalSemaine4':
         include("vues/Semaine4/vTotalSemaine4.php");
         break;

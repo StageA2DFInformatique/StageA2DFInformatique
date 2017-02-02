@@ -59,13 +59,12 @@ class TotalSemaine4DAO implements IDAO {
         $ok = $stmt->execute();
         return ($ok && $stmt->rowCount() > 0);
     }
-    
+
     public static function superSum() {
         $requete = "SELECT SUM(prix) FROM `Semaine4` ";
         $stmt = Bdd::getPdo()->prepare($requete);
         $ok = $stmt->execute();
         return $stmt->fetchColumn(0);
-
     }
 
     public static function delete($id) {
@@ -116,4 +115,5 @@ class TotalSemaine4DAO implements IDAO {
         $stmt->execute();
         return $stmt->fetchColumn(0);
     }
+
 }

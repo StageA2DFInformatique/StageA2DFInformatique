@@ -15,10 +15,12 @@ class Type {
 
     private $idType;
     private $type;
+
     function __construct($idType, $type) {
         $this->idType = $idType;
         $this->type = $type;
     }
+
     function getIdType() {
         return $this->idType;
     }
@@ -34,6 +36,5 @@ class Type {
     function setType($type) {
         $this->type = $type;
     }
-
 
 }

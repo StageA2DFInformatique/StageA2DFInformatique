@@ -119,4 +119,5 @@ class ChargesDAO implements IDAO {
         $stmt->execute();
         return $stmt->fetchColumn(0);
     }
+
 }

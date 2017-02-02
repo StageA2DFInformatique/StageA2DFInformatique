@@ -21,13 +21,13 @@ Bdd::connecter();
 
 
 // OBTENIR LE DÉTAIL DE LA VENTE SÉLECTIONNÉE
-$id=1;
+$id = 1;
 $unTotal = TotalSemaine2DAO::superSum();
-if($unTotal==''){
-    $unTotal=0;
+if ($unTotal == '') {
+    $unTotal = 0;
 }
-$tester= new TotalSemaine2 ($id, $unTotal);
-TotalSemaine2DAO::update($id,$tester);
+$tester = new TotalSemaine2($id, $unTotal);
+TotalSemaine2DAO::update($id, $tester);
 
 echo "
 <br>

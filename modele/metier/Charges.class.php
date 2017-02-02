@@ -37,6 +37,7 @@ class Charges {
      * @var string
      */
     private $date;
+
     function __construct($id, $nom, $description, $numContrat, $numTel, $date) {
         $this->id = $id;
         $this->nom = $nom;
@@ -45,6 +46,7 @@ class Charges {
         $this->numTel = $numTel;
         $this->date = $date;
     }
+
     function getId() {
         return $this->id;
     }
@@ -92,6 +94,5 @@ class Charges {
     function setDate($date) {
         $this->date = $date;
     }
-
 
 }
