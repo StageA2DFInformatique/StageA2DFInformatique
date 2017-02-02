@@ -37,7 +37,7 @@ foreach ($lesFournisseurs as $unFournisseur) {
     $nom = $unFournisseur->getNom();
     echo "
 		<tr class='ligneTabNonQuad'>
-         <td width='52%'>$nom</td>
+         <td width='52%'><strong>&nbsp $nom</strong></td>
          
          <td width='16%' align='center'> 
         <a href='cGestionFournisseurs.php?action=detailFourni&id=$id'>

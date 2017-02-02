@@ -39,7 +39,7 @@ foreach ($lesCharges as $unCharge) {
     echo "
          <tr class='ligneTabNonQuad'>
         <td width='20%'>&nbsp<strong>$nom </strong></td> 
-        <td width='20%'> A payer $date </td>
+        <td width='20%'>&nbsp A payer $date </td>
         <td width='1%' align='center'><a href='cGestionCharges.php?action=detailChrg&id=$id'><img src='./images/detail.png'title='Voir détails' /></a>
         <td width='1%' align='center'><a href='cGestionCharges.php?action=demanderModifierChrg&id=$id'><img src='./images/modifier.png'title='Modifier' /></a>
         <td width='1%' align='center'><a href='cGestionCharges.php?action=demanderSupprimerChrg&id=$id'><img src='./images/supprimer.png' title='Supprimer' /></a>

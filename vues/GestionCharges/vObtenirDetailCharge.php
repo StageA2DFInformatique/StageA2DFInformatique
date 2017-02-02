@@ -52,4 +52,3 @@ echo "
 </table>
 <br>
 <a href='cGestionCharges.php'>Retour</a>";
-

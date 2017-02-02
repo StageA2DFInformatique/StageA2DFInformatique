@@ -58,7 +58,6 @@ switch ($action) {
         $numTel = $_REQUEST['numTel'];
         $date = $_REQUEST['date'];
 
-
         if ($action == 'validerCreerChrg') {
             verifierDonneesChrgC($id, $nom, $description, $numContrat, $numTel, $date);
             if (nbErreurs() == 0) {

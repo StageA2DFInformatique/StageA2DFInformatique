@@ -71,7 +71,7 @@ if ($creation) {
     // tel qu'il a été saisi) 
     echo '
          <tr class="ligneTabNonQuad">
-            <td> Id: </td>
+            <td>&nbsp Id: </td>
             <td><input type="text" value="' . $id . '" name="id" size ="30" 
             maxlength="8"></td>
          </tr>
@@ -85,44 +85,39 @@ if ($creation) {
 }
 echo '
       <tr class="ligneTabNonQuad">
-         <td> Nom: </td>
+         <td>&nbsp Nom: </td>
          <td><input type="text" value="' . $nom . '" name="nom" size="30" 
          maxlength="45"></td>
       </tr>
       <br>
             <tr class="ligneTabNonQuad">
-         <td> Description: </td>
+         <td>&nbsp Description: </td>
          <td><input type="text" value="' . $description . '" name="description" size="30" 
          maxlength="45"></td>
       </tr>
-      <br>
-            <tr class="ligneTabNonQuad">
-         <td> N° Contrat: </td>
+      
+      <tr class="ligneTabNonQuad">
+         <td>&nbsp N° Contrat: </td>
          <td><input type="text" value="' . $numContrat . '" name="numContrat" size="30" 
          maxlength="16"></td>
       </tr>
-      <br>
-            <tr class="ligneTabNonQuad">
-         <td> N° Tel: </td>
-         <td><input type="text" value="' . $numTel . '" name="numTel" size="30" 
-         maxlength="10"></td>
-      </tr> 
-     
+      
       <tr class="ligneTabNonQuad">
-         <td>&nbsp A payer : </td>
+         <td>&nbsp A payer: </td>
          <td>';
 if ($date == 1) {
     echo " 
-               <input type='radio' name='type' value='Avant le 16' checked>  
-               Avant le 16 
-               <input type='radio' name='type' value='Après le 16'>  Après le 16";
+               <input type='radio' name='date' value='avant le 12' checked>  
+               Avant le 12
+               <input type='radio' name='date' value='après le 12'>  Après le 12";
 } else {
     echo " 
-                <input type='radio' name='type' value='Avant le 16'> 
-                Avant le 16
-                <input type='radio' name='type' value='Après le 16' checked> Après le 16";
+                <input type='radio' name='date' value='avant le 12'> 
+                Avant le 12
+                <input type='radio' name='date' value='après le 12' checked> Après le 12'";
 }
-    
+
+echo '</tr>';
 echo '</div>';
 echo "<br>
    <table align='right' cellspacing='15' cellpadding='0'>
