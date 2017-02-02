@@ -2,7 +2,7 @@
 
 namespace modele\dao;
 
-use modele\metier\Charges;
+use modele\metier\Operation;
 use PDO;
 
 /**
@@ -10,44 +10,41 @@ use PDO;
  * Classe métier : Charges
  * @author btssio
  */
-class ChargesDAO implements IDAO {
+class OperationDAO implements IDAO {
 
     protected static function enregVersMetier($enreg) {
         $id = $enreg['ID'];
-        $nom = $enreg['NOM'];
-        $description = $enreg[strtoupper('description')];
-        $numContrat = $enreg[strtoupper('numContrat')];
-        $numTel = $enreg[strtoupper('numTel')];
+        $idType = $enreg['idType'];
+        $designation = $enreg[strtoupper('designation')];
         $date = $enreg[strtoupper('date')];
+        $prix = $enreg[strtoupper('prix')];
 
+        $uneOpe = new Operation($id, $idType, $designation, $date, $prix);
 
-        $unChrg = new Charges($id, $nom, $description, $numContrat, $numTel, $date);
-
-        return $unChrg;
+        return $uneOpe;
     }
 
     /**
-     * Valorise les paramètre d'une requête préparée avec l'état d'un objet Charges
-     * @param type $objetMetier un Charges
+     * Valorise les paramètre d'une requête préparée avec l'état d'un objet Operation
+     * @param type $objetMetier un Operation
      * @param type $stmt requête préparée
      */
     protected static function metierVersEnreg($objetMetier, $stmt) {
         // On utilise bindValue plutôt que bindParam pour éviter des variables intermédiaires
         $stmt->bindValue(':id', $objetMetier->getId());
-        $stmt->bindValue(':nom', $objetMetier->getNom());
-        $stmt->bindValue(':description', $objetMetier->getDescription());
-        $stmt->bindValue(':numContrat', $objetMetier->getNumContrat());
-        $stmt->bindValue(':numTel', $objetMetier->getNumTel());
-        $stmt->bindValue(':date', $objetMetier->getDate());
+        $stmt->bindValue(':$idType', $objetMetier->getIdType());
+        $stmt->bindValue(':$designation', $objetMetier->getDesignation());
+        $stmt->bindValue(':$date', $objetMetier->getDate());
+        $stmt->bindValue(':$prix', $objetMetier->getPrix());
     }
 
     /**
      * Insérer un nouvel enregistrement dans la table à partir de l'état d'un objet métier
-     * @param Charges $objet objet métier à insérer
+     * @param Operation $objet objet métier à insérer
      * @return boolean =FALSE si l'opérationn échoue
      */
     public static function insert($objet) {
-        $requete = "INSERT INTO Charges VALUES (:id, :nom, :description, :numContrat, :numTel, :date)";
+        $requete = "INSERT INTO Operation VALUES (:id, :idType, :designation, :date, :prix)";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
         $ok = $stmt->execute();
@@ -57,13 +54,13 @@ class ChargesDAO implements IDAO {
     /**
      * Mettre à jour enregistrement dans la table à partir de l'état d'un objet métier
      * @param string identifiant de l'enregistrement à mettre à jour
-     * @param Charges $objet objet métier à mettre à jour
+     * @param Operation $objet objet métier à mettre à jour
      * @return boolean =FALSE si l'opération échoue
      */
     public static function update($id, $objet) {
         $ok = false;
-        $requete = "UPDATE  Charges SET NOM=:nom, DESCRIPTION=:description, 
-                NUMCONTRAT=:numContrat, NUMTEL=:numTel, DATE=:date WHERE ID=:id";
+        $requete = "UPDATE  Operation SET IDTYPE=:idType, DESIGNATION=:designation, 
+                DATE=:date, PRIX=:prix WHERE ID=:id";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
         $stmt->bindParam(':id', $id);
@@ -73,7 +70,7 @@ class ChargesDAO implements IDAO {
 
     public static function delete($id) {
         $ok = false;
-        $requete = "DELETE FROM Charges WHERE ID = :id";
+        $requete = "DELETE FROM Operation WHERE ID = :id";
         $stmt = Bdd::getPdo()->prepare($requete);
         $stmt->bindParam(':id', $id);
         $ok = $stmt->execute();
@@ -83,7 +80,7 @@ class ChargesDAO implements IDAO {
 
     public static function getAll() {
         $lesObjets = array();
-        $requete = "SELECT * FROM Charges";
+        $requete = "SELECT * FROM Operation";
         $stmt = Bdd::getPdo()->prepare($requete);
         $ok = $stmt->execute();
         if ($ok) {
@@ -96,7 +93,7 @@ class ChargesDAO implements IDAO {
 
     public static function getOneById($id) {
         $objetConstruit = null;
-        $requete = "SELECT * FROM Charges WHERE ID = :id";
+        $requete = "SELECT * FROM Operation WHERE ID = :id";
         $stmt = Bdd::getPdo()->prepare($requete);
         $stmt->bindParam(':id', $id);
         $ok = $stmt->execute();
@@ -108,15 +105,16 @@ class ChargesDAO implements IDAO {
     }
 
     /**
-     * Permet de vérifier s'il existe ou non une Charge ayant déjà le même identifiant dans la BD
-     * @param string $id identifiant de la charge à tester
+     * Permet de vérifier s'il existe ou non une Operation ayant déjà le même identifiant dans la BD
+     * @param string $id identifiant de la Operation à tester
      * @return boolean =true si l'id existe déjà, =false sinon
      */
     public static function isAnExistingId($id) {
-        $requete = "SELECT COUNT(*) FROM Charges WHERE ID=:id";
+        $requete = "SELECT COUNT(*) FROM Operation WHERE ID=:id";
         $stmt = Bdd::getPdo()->prepare($requete);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         return $stmt->fetchColumn(0);
     }
+
 }

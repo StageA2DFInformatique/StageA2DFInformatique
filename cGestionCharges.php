@@ -56,21 +56,22 @@ switch ($action) {
         $description = $_REQUEST['description'];
         $numContrat = $_REQUEST['numContrat'];
         $numTel = $_REQUEST['numTel'];
+        $date = $_REQUEST['date'];
 
 
         if ($action == 'validerCreerChrg') {
-            verifierDonneesChrgC($id, $nom, $description, $numContrat, $numTel);
+            verifierDonneesChrgC($id, $nom, $description, $numContrat, $numTel, $date);
             if (nbErreurs() == 0) {
-                $unChrg = new Charges($id, $nom, $description, $numContrat, $numTel);
+                $unChrg = new Charges($id, $nom, $description, $numContrat, $numTel, $date);
                 ChargesDAO::insert($unChrg);
                 include("vues/GestionCharges/vObtenirCharge.php");
             } else {
                 include("vues/GestionCharges/vCreerModifierCharge.php");
             }
         } else {
-            verifierDonneesChrgM($id, $nom, $description, $numContrat, $numTel);
+            verifierDonneesChrgM($id, $nom, $description, $numContrat, $numTel, $date);
             if (nbErreurs() == 0) {
-                $unChrg = new Charges($id, $nom, $description, $numContrat, $numTel);
+                $unChrg = new Charges($id, $nom, $description, $numContrat, $numTel, $date);
                 ChargesDAO::update($id, $unChrg);
                 include("vues/GestionCharges/vObtenirCharge.php");
             } else {
@@ -82,33 +83,3 @@ switch ($action) {
 
 // Fermeture de la connexion au serveur MySql
 Bdd::deconnecter();
-
-function verifierDonneesChrgC($id, $nom, $description, $numContrat, $numTel) {
-    if ($id == "" || $nom == "" || $description == "" || $numContrat == "" || $numTel == "") {
-        ajouterErreur('Chaque champ suivi du caractère * est obligatoire');
-    }
-    if ($id != "") {
-        // Si l'id est constitué d'autres caractères que de lettres non accentuées 
-        // et de chiffres, une erreur est générée
-        if (!estChiffresOuEtLettres($id)) {
-            ajouterErreur
-                    ("L'identifiant doit comporter uniquement des lettres non accentuées et des chiffres");
-        } else {
-            if (ChargesDAO::isAnExistingId($id)) {
-                ajouterErreur("La charge $id existe déjà");
-            }
-        }
-    }
-    if ($nom != "" && ChargesDAO::isAnExistingName(true, $id, $nom)) {
-        ajouterErreur("La charge $nom existe déjà");
-    }
-}
-
-function verifierDonneesChrgM($id, $nom, $description, $numContrat, $numTel) {
-    if ($id == "" || $nom == "" || $description == "" || $numContrat == "" || $numTel == "") {
-        ajouterErreur('Chaque champ suivi du caractère * est obligatoire');
-    }
-    if ($nom != "" && ChargesDAO::isAnExistingName(false, $id, $nom)) {
-        ajouterErreur("La charge $nom existe déjà");
-    }
-}

@@ -29,6 +29,7 @@ if ($action == 'demanderCreerChrg') {
     $description = '';
     $numContrat = '';
     $numTel = '';
+    $date=1;
 }
 
 // S'il s'agit d'une modification et qu'on ne "vient" pas de ce formulaire, il
@@ -41,6 +42,7 @@ if ($action == 'demanderModifierChrg') {
     $description = $unChrg->getDescription();
     $numContrat = $unChrg->getNumContrat();
     $numTel = $unChrg->getNumTel();
+    $date = $unChrg->getDate();
 }
 
 // Initialisations en fonction du mode (création ou modification) 
@@ -69,7 +71,7 @@ if ($creation) {
     // tel qu'il a été saisi) 
     echo '
          <tr class="ligneTabNonQuad">
-            <td> Id*: </td>
+            <td> Id: </td>
             <td><input type="text" value="' . $id . '" name="id" size ="30" 
             maxlength="8"></td>
          </tr>
@@ -83,29 +85,44 @@ if ($creation) {
 }
 echo '
       <tr class="ligneTabNonQuad">
-         <td> Nom*: </td>
+         <td> Nom: </td>
          <td><input type="text" value="' . $nom . '" name="nom" size="30" 
          maxlength="45"></td>
       </tr>
       <br>
             <tr class="ligneTabNonQuad">
-         <td> Description*: </td>
+         <td> Description: </td>
          <td><input type="text" value="' . $description . '" name="description" size="30" 
          maxlength="45"></td>
       </tr>
       <br>
             <tr class="ligneTabNonQuad">
-         <td> N° Contrat*: </td>
+         <td> N° Contrat: </td>
          <td><input type="text" value="' . $numContrat . '" name="numContrat" size="30" 
          maxlength="16"></td>
       </tr>
       <br>
             <tr class="ligneTabNonQuad">
-         <td> N° Tel*: </td>
+         <td> N° Tel: </td>
          <td><input type="text" value="' . $numTel . '" name="numTel" size="30" 
          maxlength="10"></td>
-      </tr>
-      <br>';
+      </tr> 
+     
+      <tr class="ligneTabNonQuad">
+         <td>&nbsp A payer : </td>
+         <td>';
+if ($date == 1) {
+    echo " 
+               <input type='radio' name='type' value='Avant le 16' checked>  
+               Avant le 16 
+               <input type='radio' name='type' value='Après le 16'>  Après le 16";
+} else {
+    echo " 
+                <input type='radio' name='type' value='Avant le 16'> 
+                Avant le 16
+                <input type='radio' name='type' value='Après le 16' checked> Après le 16";
+}
+    
 echo '</div>';
 echo "<br>
    <table align='right' cellspacing='15' cellpadding='0'>

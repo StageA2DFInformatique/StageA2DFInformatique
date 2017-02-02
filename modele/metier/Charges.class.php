@@ -33,14 +33,18 @@ class Charges {
      */
     private $numTel;
 
-    function __construct($id, $nom, $description, $numContrat, $numTel) {
+    /**
+     * @var string
+     */
+    private $date;
+    function __construct($id, $nom, $description, $numContrat, $numTel, $date) {
         $this->id = $id;
         $this->nom = $nom;
         $this->description = $description;
         $this->numContrat = $numContrat;
         $this->numTel = $numTel;
+        $this->date = $date;
     }
-
     function getId() {
         return $this->id;
     }
@@ -59,6 +63,10 @@ class Charges {
 
     function getNumTel() {
         return $this->numTel;
+    }
+
+    function getDate() {
+        return $this->date;
     }
 
     function setId($id) {
@@ -80,5 +88,10 @@ class Charges {
     function setNumTel($numTel) {
         $this->numTel = $numTel;
     }
+
+    function setDate($date) {
+        $this->date = $date;
+    }
+
 
 }

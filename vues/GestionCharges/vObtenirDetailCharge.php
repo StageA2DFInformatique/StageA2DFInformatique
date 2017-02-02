@@ -26,6 +26,7 @@ $nom = $unChrg->getNom();
 $description = $unChrg->getDescription();
 $numContrat = $unChrg->getNumContrat();
 $numTel = $unChrg->getNumTel();
+$date= $unChrg->getDate();
 echo "
 <br>
 <table width='70%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
@@ -48,7 +49,6 @@ echo "
       <tr class='ligneTabNonQuad'>
       <td  width='30%'>&nbsp N° Tel: </td>
       <td>&nbsp$numTel</td>
-   </tr>
 </table>
 <br>
 <a href='cGestionCharges.php'>Retour</a>";
