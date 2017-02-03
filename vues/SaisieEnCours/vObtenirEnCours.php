@@ -9,24 +9,24 @@ require($repInclude . "_sommaire.inc.php");
 
 //Division principale
 echo '<div id="contenu">';
-echo "<h2><center>Saisie durant la semaine n°1</center></h2>";
+echo "<h2><center>Saisie en cours</center></h2>";
 
 use modele\dao\EnCoursDAO;
-use modele\dao\TotalSemaine1DAO;
-use modele\metier\TotalSemaine1;
+use modele\dao\TotalEnCoursDAO;
+use modele\metier\TotalEnCours;
 use modele\dao\Bdd;
 
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 $id = 1;
-$unTotal = TotalSemaine1DAO::superSum();
+$unTotal = TotalEnCoursDAO::superSum();
 if ($unTotal == '') {
     $unTotal = 0;
 }
-$tester = new TotalSemaine1($id, $unTotal);
-TotalSemaine1DAO::update($id, $tester);
+$tester = new TotalEnCours($id, $unTotal);
+TotalEnCoursDAO::update($id, $tester);
 
-// AFFICHER L'ENSEMBLE DES VENTE ET DEPANNAGE DE LA SEMAINE N°1
+// AFFICHER L'ENSEMBLE DES VENTE ET DEPANNAGE
 echo "
 <br>
 <table width='100%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
