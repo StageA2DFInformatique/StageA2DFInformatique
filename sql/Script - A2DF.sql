@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 01 Février 2017 à 16:31
+-- Généré le: Ven 03 Février 2017 à 13:07
 -- Version du serveur: 5.5.43-0ubuntu0.14.04.1
 -- Version de PHP: 5.5.9-1ubuntu4.9
 
@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `Charges` (
   `description` varchar(45) NOT NULL,
   `numContrat` varchar(16) NOT NULL,
   `numTel` varchar(10) NOT NULL,
+  `date` varchar(16) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -39,9 +40,10 @@ CREATE TABLE IF NOT EXISTS `Charges` (
 -- Contenu de la table `Charges`
 --
 
-INSERT INTO `Charges` (`id`, `nom`, `description`, `numContrat`, `numTel`) VALUES
-('03507844', 'JeSuisUneCharge', 'JeSuisUneDescription', '0123456789101112', '0123456788'),
-('0350785A', 'ChargeTest', 'DescriptionTest', '054564145E789SQ4', '0978451574');
+INSERT INTO `Charges` (`id`, `nom`, `description`, `numContrat`, `numTel`, `date`) VALUES
+('03507844', 'JeSuisUneCharge', 'JeSuisUneDescription', '0123456789101112', '0123456788', 'après le 12'),
+('0350785A', 'ChargeTest', 'DescriptionTest', '054564145E789SQ4', '0978451576', 'avant le 12'),
+('45645641', 'Ordi asus', 'JeSuisUneDescription', '0123456789101112', '0123456788', 'après le 12');
 
 -- --------------------------------------------------------
 
@@ -73,17 +75,25 @@ INSERT INTO `Fournisseurs` (`id`, `nom`, `adresseRue`, `codePostal`, `ville`, `t
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Operation`
+-- Structure de la table `Operations`
 --
 
-CREATE TABLE IF NOT EXISTS `Operation` (
+CREATE TABLE IF NOT EXISTS `Operations` (
   `id` char(8) NOT NULL,
   `designation` varchar(45) NOT NULL,
   `prix` varchar(8) NOT NULL,
-  `idType` char(1) NOT NULL,
+  `type` varchar(10) NOT NULL,
   `date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `Operations`
+--
+
+INSERT INTO `Operations` (`id`, `designation`, `prix`, `type`, `date`) VALUES
+('00000001', 'Ordinateur', '490.9', 'Vente', '2017-02-01'),
+('00000002', 'Tablette', '49.9', 'Dépannage', '2017-02-01');
 
 -- --------------------------------------------------------
 
@@ -112,14 +122,12 @@ INSERT INTO `Semaine1` (`id`, `designation`, `type`, `prix`) VALUES
 ('15', 'Ordi', 'Vente', '52'),
 ('16', 'Ordi', 'Vente', '52'),
 ('17', 'Ordi', 'Vente', '52'),
-('18', 'Ordi', 'Vente', '52'),
 ('19', 'Ordi', 'Vente', '52'),
 ('20', 'Ordi', 'Vente', '52'),
 ('21', 'Ordi', 'Vente', '52'),
 ('22', 'Ordi', 'Vente', '52'),
 ('23', 'Ordi', 'Vente', '52'),
 ('25', 'Ordi', 'Vente', '52'),
-('26', 'Ordi', 'Vente', '52'),
 ('27', 'Tablette', 'Vente', '350');
 
 -- --------------------------------------------------------
@@ -254,9 +262,7 @@ INSERT INTO `Semaine5` (`id`, `designation`, `type`, `prix`) VALUES
 ('04', 'Test', 'Vente', '505'),
 ('10', 'Ordi', 'Vente', '52'),
 ('11', 'Ordi', 'Vente', '52'),
-('12', 'Ordi', 'Vente', '52'),
 ('13', 'Ordi', 'Vente', '52'),
-('14', 'Ordi', 'Vente', '52'),
 ('15', 'Ordi', 'Vente', '52'),
 ('16', 'Ordi', 'Vente', '52'),
 ('17', 'Ordi', 'Vente', '52'),
@@ -269,7 +275,7 @@ INSERT INTO `Semaine5` (`id`, `designation`, `type`, `prix`) VALUES
 ('24', '5fghfg', 'Dépannage', '54'),
 ('25', 'Ordi', 'Vente', '52'),
 ('26', 'Ordi', 'Vente', '52'),
-('27', 'Tablette', 'Vente', '350');
+('65', 'Tablette', 'Vente', '12');
 
 -- --------------------------------------------------------
 
@@ -294,9 +300,9 @@ CREATE TABLE IF NOT EXISTS `Synthese` (
 --
 
 INSERT INTO `Synthese` (`id`, `mois`, `compte`, `cb`, `espece`, `cheque`, `totalFinMois`, `totalMoisPlusUn`) VALUES
-('01', 'Octobre', '500', '250', '150', '200', '8006.9', '1828'),
-('02', 'Novembre', '', '', '', '', '2785', '592'),
-('03', 'Décembre', '', '', '', '', '2285', '2285'),
+('01', 'Octobre', '500', '250', '150', '200', '7902.9', '1386'),
+('02', 'Novembre', '', '', '', '', '6906.9', '1386'),
+('03', 'Décembre', '', '', '', '', '6906.9', '1386'),
 ('04', 'Janvier', '', '', '', '', '2285', '2285'),
 ('05', 'Février', '', '', '', '', '', ''),
 ('06', 'Mars', '', '', '', '', '', ''),
@@ -305,7 +311,27 @@ INSERT INTO `Synthese` (`id`, `mois`, `compte`, `cb`, `espece`, `cheque`, `total
 ('09', 'Juin', '', '', '', '', '', ''),
 ('10', 'Juillet', '', '', '', '', '', ''),
 ('11', 'Aout', '', '', '', '', '', ''),
-('12', 'Septembre', '', '', '', '', '3286', '592');
+('12', 'Septembre', '', '', '', '', '6906.9', '1386');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `TotalEnCours`
+--
+
+CREATE TABLE IF NOT EXISTS `TotalEnCours` (
+  `id` char(2) NOT NULL,
+  `total` varchar(32) NOT NULL,
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `TotalEnCours`
+--
+
+INSERT INTO `TotalEnCours` (`id`, `total`, `date`) VALUES
+('1', '540.8', '2017-02-03');
 
 -- --------------------------------------------------------
 
@@ -324,7 +350,7 @@ CREATE TABLE IF NOT EXISTS `TotalSemaine1` (
 --
 
 INSERT INTO `TotalSemaine1` (`id`, `total`) VALUES
-('1', '1182');
+('1', '1078');
 
 -- --------------------------------------------------------
 
@@ -400,19 +426,7 @@ CREATE TABLE IF NOT EXISTS `TotalSemaine5` (
 --
 
 INSERT INTO `TotalSemaine5` (`id`, `total`) VALUES
-('1', '1828');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `Type`
---
-
-CREATE TABLE IF NOT EXISTS `Type` (
-  `idType` char(1) NOT NULL,
-  `type` varchar(10) NOT NULL,
-  PRIMARY KEY (`idType`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+('1', '1386');
 
 -- --------------------------------------------------------
 

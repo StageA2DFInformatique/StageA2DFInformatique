@@ -1,5 +1,7 @@
 <?php
 
+namespace modele\metier;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,14 +20,13 @@ class EnCours {
     private $prix;
     private $type;
     private $date;
-
-    function __construct($id, $designation, $prix, $type) {
+    function __construct($id, $designation, $prix, $type, $date) {
         $this->id = $id;
         $this->designation = $designation;
         $this->prix = $prix;
         $this->type = $type;
+        $this->date = $date;
     }
-
     function getId() {
         return $this->id;
     }
@@ -65,5 +66,6 @@ class EnCours {
     function setDate($date) {
         $this->date = $date;
     }
+
 
 }

@@ -15,6 +15,7 @@ class SyntheseDAO implements IDAO {
     protected static function enregVersMetier($enreg) {
         $id = $enreg['ID'];
         $mois = $enreg[strtoupper('mois')];
+        $annee = $enreg[strtoupper('annee')];
         $compte = $enreg[strtoupper('compte')];
         $cb = $enreg[strtoupper('cb')];
         $espece = $enreg[strtoupper('espece')];
@@ -22,7 +23,7 @@ class SyntheseDAO implements IDAO {
         $totalFinMois = $enreg[strtoupper('totalFinMois')];
         $totalMoisPlusUn = $enreg[strtoupper('totalMoisPlusUn')];
 
-        $uneSynth = new Synthese($id, $mois, $compte, $cb, $espece, $cheque, $totalFinMois, $totalMoisPlusUn);
+        $uneSynth = new Synthese($id, $mois, $annee, $compte, $cb, $espece, $cheque, $totalFinMois, $totalMoisPlusUn);
 
         return $uneSynth;
     }
@@ -33,6 +34,7 @@ class SyntheseDAO implements IDAO {
         // On utilise bindValue plutôt que bindParam pour éviter des variables intermédiaires
         $stmt->bindValue(':id', $objetMetier->getId());
         $stmt->bindValue(':mois', $objetMetier->getMois());
+        $stmt->bindValue(':annee', $objetMetier->getAnnee());
         $stmt->bindValue(':compte', $objetMetier->getCompte());
         $stmt->bindValue(':cb', $objetMetier->getCb());
         $stmt->bindValue(':espece', $objetMetier->getEspece());
@@ -44,7 +46,7 @@ class SyntheseDAO implements IDAO {
     /* Insérer un nouvel enregistrement dans la table à partir de l'état d'un objet métier */
 
     public static function insert($objet) {
-        $requete = "INSERT INTO Synthese VALUES (:id, :mois, :compte, :cb, :espece, :cheque, :totalFinMois, :totalMoisPlusUn)";
+        $requete = "INSERT INTO Synthese VALUES (:id, :mois, :annee, :compte, :cb, :espece, :cheque, :totalFinMois, :totalMoisPlusUn)";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
         $ok = $stmt->execute();
@@ -55,7 +57,7 @@ class SyntheseDAO implements IDAO {
      * Mettre à jour enregistrement dans la table à partir de l'état d'un objet métier */
     public static function update($id, $objet) {
         $ok = false;
-        $requete = "UPDATE  Synthese SET MOIS=:mois, COMPTE=:compte, CB=:cb,
+        $requete = "UPDATE  Synthese SET MOIS=:mois, ANNEE=:annee, COMPTE=:compte, CB=:cb,
            ESPECE=:espece, CHEQUE=:cheque, TOTALFINMOIS=:totalFinMois,
            TOTALMOISPLUSUN=:totalMoisPlusUn WHERE ID=:id";
         $stmt = Bdd::getPdo()->prepare($requete);

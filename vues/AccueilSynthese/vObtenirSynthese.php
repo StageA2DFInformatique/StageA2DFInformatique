@@ -22,10 +22,10 @@ Bdd::connecter();
 
 echo "
 <br>
-<table width='85%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
+<table width='100%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
 
    <tr class='enTeteTabNonQuad'>
-      <td colspan='3'><strong><center>Synthèses</center></strong></td>
+      <td colspan='4'><strong><center>Synthèses</center></strong></td>
    </tr>";
 
 $lesSynthese = SyntheseDAO::getAll();
@@ -33,15 +33,19 @@ $lesSynthese = SyntheseDAO::getAll();
 foreach ($lesSynthese as $laSynthese) {
     $id = $laSynthese->getId();
     $mois = $laSynthese->getMois();
+    $annee = $laSynthese->getAnnee();
+    $totalFinMois = $laSynthese->getTotalFinMois();
     echo "
 		<tr class='ligneTabNonQuad'>
-         <td width='50%'>&nbsp Synthèse du mois de $mois</td>
+         <td width='40%'>&nbsp Synthèse du mois de <strong>$mois $annee</strong></td>
+             
+         <td width='35%'>&nbsp <strong>Chiffre d'affaire du mois = </strong> $totalFinMois €</td>
          
-         <td width='16%' align='center'> 
+         <td width='10%' align='center'> 
          <a href='cAccueil.php?action=detailSynth&id=$id'>
                     <img src='./images/detail.png'title='Voir détail' />
         </a></td>  
-                 <td width='16%' align='center'> 
+                 <td width='10%' align='center'> 
         <a href='cAccueil.php?action=demanderModifierSynth&id=$id'>
                     <img src='./images/modifier.png'title='Modifier' />
         </a></td>

@@ -28,7 +28,7 @@ if ($action == 'demanderCreerOpe') {
     $designation = '';
     $type = 1;
     $prix = '';
-    $date='';
+    $date = '';
 }
 
 // S'il s'agit d'une modification et qu'on ne "vient" pas de ce formulaire, il
@@ -40,7 +40,7 @@ if ($action == 'demanderModifierOpe') {
     $designation = $uneOpe->getDesignation();
     $type = $uneOpe->getType();
     $prix = $uneOpe->getPrix();
-    $date = $uneOpe->getOpe();
+    $date = $uneOpe->getDate();
 }
 
 // Initialisations en fonction du mode (création ou modification) 
@@ -92,13 +92,7 @@ echo '
          <td><input type="text" value="' . $designation . '" name="designation" size="30" 
          maxlength="32"></td>
       </tr>
-      
-      <tr class="ligneTabNonQuad">
-         <td>&nbsp Designation: </td>
-         <td><input type="text" value="' . $date . '" name="designation" size="30" 
-         maxlength="32"></td>
-      </tr>
-     
+    
       <tr class="ligneTabNonQuad">
          <td>&nbsp Type: </td>
          <td>';

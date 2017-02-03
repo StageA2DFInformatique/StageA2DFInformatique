@@ -14,6 +14,7 @@ echo "<h2><center>Saisie en cours</center></h2>";
 use modele\dao\EnCoursDAO;
 use modele\dao\TotalEnCoursDAO;
 use modele\metier\TotalEnCours;
+use modele\metier\EnCours;
 use modele\dao\Bdd;
 
 require_once __DIR__ . '/../../include/autoload.php';
@@ -46,11 +47,11 @@ foreach ($lesOpes as $uneOpe) {
     $designation = $uneOpe->getDesignation();
     $type = $uneOpe->getType();
     $prix = $uneOpe->getPrix();
-    $date= $uneOpe->getDate();
+    $date = $uneOpe->getDate();
 
     echo "
     <tr class='ligneTabNonQuad'>
-        <td width='10%'>&nbsp<strong>Id: </strong>$id </td> 
+        
         <td width='40%'><strong><center> $designation </center></strong></td>
         <td width='10%'>&nbsp $type </td> 
         <td width='8%'>&nbsp $prix € </td> 

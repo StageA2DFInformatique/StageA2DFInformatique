@@ -15,7 +15,7 @@ class TotalEnCoursDAO implements IDAO {
     protected static function enregVersMetier($enreg) {
         $id = $enreg['ID'];
         $total = $enreg[strtoupper('total')];
-        
+
         $unTotal = new TotalEnCours($id, $total);
 
         return $unTotal;

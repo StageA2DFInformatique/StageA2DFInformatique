@@ -27,6 +27,7 @@ Bdd::connecter();
 // Obtenir le tableau des syntheses
 $uneSynth = SyntheseDAO::getOneById($id);
 $mois = $uneSynth->getMois();
+$annee = $uneSynth->getAnnee();
 $compte = $uneSynth->getCompte();
 $cb = $uneSynth->getCb();
 $espece = $uneSynth->getEspece();
@@ -36,7 +37,7 @@ $totalMoisPlusUn = $uneSynth->getTotalMoisPlusUn();
 
 $totalFinMois = $mois + $compte + $cb + $espece + $cheque + TotalSemaine1DAO::superSum() + TotalSemaine2DAO::superSum() + TotalSemaine3DAO::superSum() + TotalSemaine4DAO::superSum();
 $totalMoisPlusUn = TotalSemaine5DAO::superSum();
-$uneSynth = new Synthese($id, $mois, $compte, $cb, $espece, $cheque, $totalFinMois, $totalMoisPlusUn);
+$uneSynth = new Synthese($id, $mois, $annee, $compte, $cb, $espece, $cheque, $totalFinMois, $totalMoisPlusUn);
 
 SyntheseDAO::update($id, $uneSynth);
 
@@ -45,26 +46,26 @@ echo "
 <table width='100%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
    
    <tr class='enTeteTabNonQuad'>
-      <td colspan='3'><strong><center>Synthese global du mois de $mois</center></strong></td>
+      <td colspan='3'><strong><center>Synthese global du mois de $mois $annee</center></strong></td>
    </tr>
    <tr class='ligneTabNonQuad'>
       <td  width='50%'></td>
       <td></td>
    </tr>
    <tr class='ligneTabNonQuad'>
-      <td  width='50%'> Compte: </td>
+      <td  width='50%'>&nbsp  Compte: </td>
       <td>&nbsp $compte €</td>
    </tr>
       <tr class='ligneTabNonQuad'>
-      <td  width='50%'> Carte banquaire: </td>
+      <td  width='50%'>&nbsp  Carte banquaire: </td>
       <td>&nbsp $cb €</td>
    </tr>
       <tr class='ligneTabNonQuad'>
-      <td  width='50%'> Espèce: </td>
+      <td  width='50%'>&nbsp  Espèce: </td>
       <td>&nbsp $espece €</td>
    </tr>
       <tr class='ligneTabNonQuad'>
-      <td  width='50%'> Chèque: </td>
+      <td  width='50%'>&nbsp  Chèque: </td>
       <td>&nbsp $cheque €</td>
    </tr>
       </tr>
@@ -74,12 +75,12 @@ echo "
    </tr>
       </tr>
       <tr class='ligneTabNonQuad'>
-      <td  width='50%'> Total en fin de mois: </td>
+      <td  width='50%'>&nbsp  Chiffre d'affaire du mois  </td>
       <td>&nbsp $totalFinMois €</td>
    </tr>
       </tr>
       <tr class='ligneTabNonQuad'>
-      <td  width='50%'> Total sur un mois +1: </td>
+      <td  width='50%'>&nbsp  Total sur un mois +1: </td>
       <td>&nbsp $totalMoisPlusUn €</td>
    </tr>
 </table>

@@ -20,10 +20,10 @@ class EnCoursDAO implements IDAO {
         $date = $enreg[strtoupper('date')];
 
         $uneOpe = new EnCours($id, $designation, $prix, $type, $date);
-                
 
         return $uneOpe;
     }
+
     /**
      * Valorise les paramètre d'une requête préparée avec l'état d'un objet EnCours
      * @param type $objetMetier une EnCours
@@ -32,7 +32,7 @@ class EnCoursDAO implements IDAO {
     protected static function metierVersEnreg($objetMetier, $stmt) {
         // On utilise bindValue plutôt que bindParam pour éviter des variables intermédiaires
         $stmt->bindValue(':id', $objetMetier->getId());
-        $stmt->bindValue(':designation', $objetMetier->getesignation());
+        $stmt->bindValue(':designation', $objetMetier->getDesignation());
         $stmt->bindValue(':prix', $objetMetier->getPrix());
         $stmt->bindValue(':type', $objetMetier->getType());
         $stmt->bindValue(':date', $objetMetier->getDate());

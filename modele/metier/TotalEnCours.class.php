@@ -11,10 +11,12 @@ class TotalEnCours {
 
     private $id;
     private $total;
+
     function __construct($id, $total) {
         $this->id = $id;
         $this->total = $total;
     }
+
     function getId() {
         return $this->id;
     }
@@ -30,6 +32,5 @@ class TotalEnCours {
     function setTotal($total) {
         $this->total = $total;
     }
-
 
 }

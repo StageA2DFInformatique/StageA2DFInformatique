@@ -19,37 +19,23 @@ echo "<h2><center>Modification d'une Synthèse</center></h2>";
 // MODIFIER UNE SYNTHESE
 $uneSynth = SyntheseDAO::getOneById($id);
 $mois = $uneSynth->getMois();
+$annee = $uneSynth->getAnnee();
 $compte = $uneSynth->getCompte();
 $cb = $uneSynth->getCb();
 $espece = $uneSynth->getEspece();
 $cheque = $uneSynth->getCheque();
 
-$messageSynth = "$mois ($id)";        // Alimentation du message de l'en-tête
+$messageSynth = "$mois $annee";        // Alimentation du message de l'en-tête
 $action = "validerModifierSynth";
 
 echo "<form method='POST' action='cAccueil.php?'>
    <input type='hidden' value='$action' name='action'>
-   <br>
    <table width='100%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
    
       <tr class='enTeteTabNonQuad'>
-         <td colspan='3'><strong><center>$messageSynth</center></strong></td>
+         <td colspan='2'><strong><center>$messageSynth</center></strong></td>
       </tr>";
 
-// l'id est accessible sinon l'id est dans un champ caché               
-// On utilise les guillemets comme délimiteur de champ dans l'echo afin
-// de ne pas perdre les éventuelles quotes saisies (même si les quotes
-// ne sont pas acceptées dans l'id, on a le souci de ré-afficher l'id
-// tel qu'il a été saisi) 
-echo '
-     <tr>
-        <td><input type=\'hidden\' value="' . $id . '" name="id" size ="30" 
-        maxlength="8"></td>
-     </tr>';
-echo "
-     <tr>
-        <td><input type='hidden' value='$mois' name='mois'></td><td></td>
-     </tr>";
 echo '
       <tr class="ligneTabNonQuad">
          <td>&nbsp Compte: </td>

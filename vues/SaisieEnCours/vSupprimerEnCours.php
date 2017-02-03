@@ -12,7 +12,7 @@ echo '<div id="contenu">';
 echo "<h2><center>Suppression d'une vente ou d'un dépannage</center></h2>";
 
 use modele\dao\EnCoursDAO;
-use modele\metier\Operation;
+use modele\metier\EnCours;
 use modele\dao\Bdd;
 
 require_once __DIR__ . '/../../include/autoload.php';
@@ -23,7 +23,7 @@ Bdd::connecter();
 
 $id = $_REQUEST['id'];  // Non obligatoire mais plus propre
 $uneOpe = EnCoursDAO::getOneById($id);
-/* @var $uneOpe Operation  */
+/* @var $uneOpe EnCours  */
 $designation = $uneOpe->getDesignation();
 $prix = $uneOpe->getPrix();
 $type = $uneOpe->getType();

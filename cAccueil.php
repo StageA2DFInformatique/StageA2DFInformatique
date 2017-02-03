@@ -41,11 +41,11 @@ switch ($action) {
         $espece = $_REQUEST['espece'];
         $cheque = $_REQUEST['cheque'];
         $mois = $_REQUEST['mois'];
+        $annee = $_REQUEST['annee'];
 
-
-        verifierDonneesSynthM($id, $mois, $compte, $cb, $espece, $cheque);
+        verifierDonneesSynthM($id, $mois,$annee, $compte, $cb, $espece, $cheque);
         if (nbErreurs() == 0) {
-            $uneSynth = new Synthese($id, $mois, $compte, $cb, $espece, $cheque, $mois + $compte + $cb + $espece + $cheque, $mois + $compte + $cb + $espece + $cheque + 1);
+            $uneSynth = new Synthese($id, $mois,$annee, $compte, $cb, $espece, $cheque, $mois + $compte + $cb + $espece + $cheque, $mois + $compte + $cb + $espece + $cheque + 1);
             SyntheseDAO::update($id, $uneSynth);
             include("vues/AccueilSynthese/vObtenirSynthese.php");
         } else {

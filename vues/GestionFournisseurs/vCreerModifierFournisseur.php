@@ -75,7 +75,7 @@ if ($creation) {
     // tel qu'il a été saisi) 
     echo '
          <tr class="ligneTabNonQuad">
-            <td>&nbsp Id*: </td>
+            <td>&nbsp Id: </td>
             <td><input type="text" value="' . $id . '" name="id" size ="30" 
             maxlength="8"></td>
          </tr>';
@@ -87,41 +87,41 @@ if ($creation) {
 }
 echo '
       <tr class="ligneTabNonQuad">
-         <td>&nbsp Nom*: </td>
+         <td>&nbsp Nom: </td>
          <td><input type="text" value="' . $nom . '" name="nom" size="30" 
          maxlength="45"></td>
       </tr>
             <tr class="ligneTabNonQuad">
-         <td>&nbsp Adresse*: </td>
+         <td>&nbsp Adresse: </td>
          <td><input type="text" value="' . $adresseRue . '" name="adresseRue" 
          size="30" maxlength="45"></td>
       </tr>
       <tr class="ligneTabNonQuad">
-         <td>&nbsp Code postal*: </td>
+         <td>&nbsp Code postal: </td>
          <td><input type="text" value="' . $codePostal . '" name="codePostal" 
          size="30" maxlength="5"></td>
       </tr>
       <br>
       <tr class="ligneTabNonQuad">
-         <td>&nbsp Ville*:</td>
+         <td>&nbsp Ville:</td>
          <td><input type="text" value="' . $ville . '" name="ville" size="30" 
          maxlength="35"></td>
       </tr>
       <br>
       <tr class="ligneTabNonQuad">
-         <td>&nbsp Téléphone*: </td>
+         <td>&nbsp Téléphone: </td>
          <td><input type="text" value="' . $tel . '" name="tel" size ="30"
          maxlength="10"></td>
       </tr>
       <br>
       <tr class="ligneTabNonQuad">
-         <td>&nbsp E-mail*:</td>
+         <td>&nbsp E-mail:</td>
          <td><input type="text" value="' . $adresseElectronique . '" name=
          "adresseElectronique" size ="30" maxlength="70"></td>
       </tr>
       <br>
      <tr class="ligneTabNonQuad">
-         <td>&nbsp Paiement (sous cb de jours)*: </td>
+         <td>&nbsp Paiement (sous cb de jours): </td>
          <td><input type="text" value="' . $paiement . '" name="paiement" size ="30"
          maxlength="5"></td>
       </tr>

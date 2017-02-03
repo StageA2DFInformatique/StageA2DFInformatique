@@ -1,10 +1,7 @@
 <?php
 
-/**
- * Contrôleur : SaisieEncours/Operations
- */
-use modele\dao\OperationsDAO;
-use modele\metier\Operations;
+use modele\dao\EnCoursDAO;
+use modele\metier\EnCours;
 use modele\dao\Bdd;
 
 require_once __DIR__ . '/include/autoload.php';
@@ -40,12 +37,12 @@ switch ($action) {
 
     case 'validerSupprimerOpe':
         $id = $_REQUEST['id'];
-        OperationsDAO::delete($id);
+        EnCoursDAO::delete($id);
         include("vues/SaisieEnCours/vObtenirEnCours.php");
         break;
 
     case 'validerSupprimerTouteOpe':
-        $uneOpe = OperationsDAO::deleteAll();
+        $uneOpe = EnCoursDAO::deleteAll();
         include("vues/SaisieEnCours/vObtenirEnCours.php");
         break;
 
@@ -60,8 +57,8 @@ switch ($action) {
         if ($action == 'validerCreerOpe') {
             verifierDonneesOpeC($id, $designation, $prix, $type, $date);
             if (nbErreurs() == 0) {
-                $uneOpe = new Operations($id, $designation, $prix, $type, $date);
-                OperationsDAO::insert($uneOpe);
+                $uneOpe = new EnCoursDAO($id, $designation, $prix, $type, $date);
+                EnCoursDAO::insert($uneOpe);
                 include("vues/SaisieEnCours/vObtenirEnCours.php");
             } else {
                 include("vues/SaisieEnCours/vCreerModifierEnCours.php");
@@ -69,8 +66,8 @@ switch ($action) {
         } else {
             verifierDonneesOpeM($id, $designation, $prix, $type, $date);
             if (nbErreurs() == 0) {
-                $uneOpe = new Operations($id, $designation, $prix, $type, $date);
-                OperationsDAO::update($id, $uneOpe);
+                $uneOpe = new EnCoursDAO($id, $designation, $prix, $type, $date);
+                EnCoursDAO::update($id, $uneOpe);
                 include("vues/SaisieEnCours/vObtenirEnCours.php");
             } else {
                 include("vues/SaisieEnCours/vCreerModifierEnCours.php");
@@ -83,7 +80,7 @@ switch ($action) {
 Bdd::deconnecter();
 
 function verifierDonneesOpeC($id, $designation, $prix, $type, $date) {
-    if ($id == "" || $designation == "" ||$prix == ""|| $type == "" || $date=="") {
+    if ($id == "" || $designation == "" || $prix == "" || $type == "" || $date == "") {
         ajouterErreur('Chaque champ suivi du caractère * est obligatoire');
     }
     if ($id != "") {
@@ -93,14 +90,15 @@ function verifierDonneesOpeC($id, $designation, $prix, $type, $date) {
             ajouterErreur
                     ("L'identifiant doit comporter uniquement des lettres non accentuées et des chiffres");
         } else {
-            if (OperationsDAO::isAnExistingId($id)) {
+            if (EnCoursDAO::isAnExistingId($id)) {
                 ajouterErreur("La/Le $type $id existe déjà");
             }
         }
     }
 }
+
 function verifierDonneesOpeM($id, $designation, $prix, $type, $date) {
-    if ($id == "" || $designation == "" ||$prix == ""|| $type == "" || $date=="") {
+    if ($id == "" || $designation == "" || $prix == "" || $type == "" || $date == "") {
         ajouterErreur('Chaque champ suivi du caractère * est obligatoire');
     }
 }
