@@ -7,64 +7,63 @@
  */
 
 /**
- * Description of Operation
+ * Description of EnCours
  *
  * @author btssio
  */
-class Operation {
+class EnCours {
 
     private $id;
-    private $idType;
     private $designation;
-    private $date;
     private $prix;
+    private $type;
+    private $date;
 
-    function __construct($id, $idType, $designation, $date, $prix) {
+    function __construct($id, $designation, $prix, $type) {
         $this->id = $id;
-        $this->idType = $idType;
         $this->designation = $designation;
-        $this->date = $date;
         $this->prix = $prix;
+        $this->type = $type;
     }
 
     function getId() {
         return $this->id;
     }
 
-    function getIdType() {
-        return $this->idType;
-    }
-
     function getDesignation() {
         return $this->designation;
-    }
-
-    function getDate() {
-        return $this->date;
     }
 
     function getPrix() {
         return $this->prix;
     }
 
-    function setId($id) {
-        $this->id = $id;
+    function getType() {
+        return $this->type;
     }
 
-    function setIdType($idType) {
-        $this->idType = $idType;
+    function getDate() {
+        return $this->date;
+    }
+
+    function setId($id) {
+        $this->id = $id;
     }
 
     function setDesignation($designation) {
         $this->designation = $designation;
     }
 
-    function setDate($date) {
-        $this->date = $date;
-    }
-
     function setPrix($prix) {
         $this->prix = $prix;
+    }
+
+    function setType($type) {
+        $this->type = $type;
+    }
+
+    function setDate($date) {
+        $this->date = $date;
     }
 
 }

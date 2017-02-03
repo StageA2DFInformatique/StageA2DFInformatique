@@ -29,7 +29,7 @@ TotalSemaine5DAO::update($id, $tester);
 // AFFICHER L'ENSEMBLE DES VENTE ET DEPANNAGE DE LA SEMAINE N°5
 echo "
 <br>
-<table width='75%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
+<table width='100%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
 
    <tr class='enTeteTabNonQuad'>
       <td colspan='6'><strong><center>Semaine n°5</center></strong></td>
@@ -49,7 +49,7 @@ foreach ($LesVentes as $uneVente) {
 
     echo "
     <tr class='ligneTabNonQuad'>
-        <td width='5%'>&nbsp<strong>Id: </strong>$id</td> 
+        <td width='10%'>&nbsp<strong>Id: </strong>$id</td> 
         <td width='40%'><strong><center> $designation </center></strong></td>
         <td width='10%'>&nbsp $type </td> 
         <td width='8%'>&nbsp $prix € </td> 

@@ -24,7 +24,7 @@ Bdd::connecter();
 
 echo "
 <br>
-<table width='55%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
+<table width='100%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
 
    <tr class='enTeteTabNonQuad'>
       <td colspan='4'><strong><center>Fournisseurs</center></strong></td>

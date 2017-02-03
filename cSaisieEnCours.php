@@ -1,23 +1,106 @@
 <?php
 
+/**
+ * Contrôleur : SaisieEncours/Operations
+ */
+use modele\dao\OperationsDAO;
+use modele\metier\Operations;
+use modele\dao\Bdd;
+
+require_once __DIR__ . '/include/autoload.php';
+Bdd::connecter();
 $repInclude = './include/';
 require($repInclude . "_init.inc.php");
-
-// page inaccessible si visiteur non connecté
-if (!estVisiteurConnecte()) {
-    header("Location: cSeConnecter.php");
+// 1ère étape: Affichage de la première semaine.
+if (!isset($_REQUEST['action'])) {
+    $_REQUEST['action'] = 'initial';
 }
-require($repInclude . "_entete.inc.html");
-require($repInclude . "_sommaire.inc.php");
-?>
-<?php
 
-//Division principale
-echo '<div id="contenu">';
-echo '<h2><center>Saisie en cours</center></h2>';
-echo '</div>';
-?>
-<?php
+$action = $_REQUEST['action'];
 
-require($repInclude . "_fin.inc.php");
-?>
+// Aiguillage selon l'étape
+switch ($action) {
+    case 'initial' :
+        include("vues/SaisieEnCours/vObtenirEnCours.php");
+        break;
+
+    case 'demanderSupprimerOpe':
+        $id = $_REQUEST['id'];
+        include("vues/SaisieEnCours/vSupprimerEnCours.php");
+        break;
+
+    case 'demanderCreerOpe':
+        include("vues/SaisieEnCours/vCreerModifierEnCours.php");
+        break;
+
+    case 'demanderModifierOpe':
+        $id = $_REQUEST['id'];
+        include("vues/SaisieEnCours/vCreerModifierEnCours.php");
+        break;
+
+    case 'validerSupprimerOpe':
+        $id = $_REQUEST['id'];
+        OperationsDAO::delete($id);
+        include("vues/SaisieEnCours/vObtenirEnCours.php");
+        break;
+
+    case 'validerSupprimerTouteOpe':
+        $uneOpe = OperationsDAO::deleteAll();
+        include("vues/SaisieEnCours/vObtenirEnCours.php");
+        break;
+
+    case 'validerCreerOpe':case 'validerModifierOpe':
+        $id = $_REQUEST['id'];
+        $designation = $_REQUEST['designation'];
+        $prix = $_REQUEST['prix'];
+        $type = $_REQUEST['type'];
+        $date = $_REQUEST['date'];
+
+
+        if ($action == 'validerCreerOpe') {
+            verifierDonneesOpeC($id, $designation, $prix, $type, $date);
+            if (nbErreurs() == 0) {
+                $uneOpe = new Operations($id, $designation, $prix, $type, $date);
+                OperationsDAO::insert($uneOpe);
+                include("vues/SaisieEnCours/vObtenirEnCours.php");
+            } else {
+                include("vues/SaisieEnCours/vCreerModifierEnCours.php");
+            }
+        } else {
+            verifierDonneesOpeM($id, $designation, $prix, $type, $date);
+            if (nbErreurs() == 0) {
+                $uneOpe = new Operations($id, $designation, $prix, $type, $date);
+                OperationsDAO::update($id, $uneOpe);
+                include("vues/SaisieEnCours/vObtenirEnCours.php");
+            } else {
+                include("vues/SaisieEnCours/vCreerModifierEnCours.php");
+            }
+        }
+        break;
+}
+
+// Fermeture de la connexion au serveur MySql
+Bdd::deconnecter();
+
+function verifierDonneesOpeC($id, $designation, $prix, $type, $date) {
+    if ($id == "" || $designation == "" ||$prix == ""|| $type == "" || $date=="") {
+        ajouterErreur('Chaque champ suivi du caractère * est obligatoire');
+    }
+    if ($id != "") {
+        // Si l'id est constitué d'autres caractères que de lettres non accentuées 
+        // et de chiffres, une erreur est générée
+        if (!estChiffresOuEtLettres($id)) {
+            ajouterErreur
+                    ("L'identifiant doit comporter uniquement des lettres non accentuées et des chiffres");
+        } else {
+            if (OperationsDAO::isAnExistingId($id)) {
+                ajouterErreur("La/Le $type $id existe déjà");
+            }
+        }
+    }
+}
+function verifierDonneesOpeM($id, $designation, $prix, $type, $date) {
+    if ($id == "" || $designation == "" ||$prix == ""|| $type == "" || $date=="") {
+        ajouterErreur('Chaque champ suivi du caractère * est obligatoire');
+    }
+}
