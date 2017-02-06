@@ -36,6 +36,10 @@ echo "<form method='POST' action='cAccueil.php?'>
       </tr>";
 
 echo '
+     <input type="hidden" value="' . $id . '" name="id" >
+         
+     <input type="hidden" value="' . $date . '" name="date">
+         
       <tr class="ligneTabNonQuad">
          <td>&nbsp Compte: </td>
          <td><input type="text" value="' . $compte . '" name="compte" size="30" 

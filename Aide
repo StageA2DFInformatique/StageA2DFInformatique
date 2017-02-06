@@ -1,0 +1,7 @@
+<?php
+                    $aujourdhui = getdate();
+                    $mois = $aujourdhui['mon'];
+                    $jour = $aujourdhui['mday'];
+                    $annee = $aujourdhui['year'];
+                    echo "<h3> $jour/$mois/$annee</h3>";
+                    ?>

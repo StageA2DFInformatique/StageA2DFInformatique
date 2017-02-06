@@ -18,7 +18,7 @@ require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
 
-// AFFICHER LE TABLEAU DE SYNTHESE
+// AFFICHER LE TABLEAU DES SYNTHESES
 
 echo "
 <br>
