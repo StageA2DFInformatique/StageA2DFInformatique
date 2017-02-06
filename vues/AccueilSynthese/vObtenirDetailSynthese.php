@@ -26,8 +26,7 @@ Bdd::connecter();
 
 // Obtenir le tableau des syntheses
 $uneSynth = SyntheseDAO::getOneById($id);
-$mois = $uneSynth->getMois();
-$annee = $uneSynth->getAnnee();
+$date = $uneSynth->getDate();
 $compte = $uneSynth->getCompte();
 $cb = $uneSynth->getCb();
 $espece = $uneSynth->getEspece();
@@ -35,9 +34,9 @@ $cheque = $uneSynth->getCheque();
 $totalFinMois = $uneSynth->getTotalFinMois();
 $totalMoisPlusUn = $uneSynth->getTotalMoisPlusUn();
 
-$totalFinMois = $mois + $compte + $cb + $espece + $cheque + TotalSemaine1DAO::superSum() + TotalSemaine2DAO::superSum() + TotalSemaine3DAO::superSum() + TotalSemaine4DAO::superSum();
+$totalFinMois = $compte + $cb + $espece + $cheque + TotalSemaine1DAO::superSum() + TotalSemaine2DAO::superSum() + TotalSemaine3DAO::superSum() + TotalSemaine4DAO::superSum();
 $totalMoisPlusUn = TotalSemaine5DAO::superSum();
-$uneSynth = new Synthese($id, $mois, $annee, $compte, $cb, $espece, $cheque, $totalFinMois, $totalMoisPlusUn);
+$uneSynth = new Synthese($id, $date, $compte, $cb, $espece, $cheque, $totalFinMois, $totalMoisPlusUn);
 
 SyntheseDAO::update($id, $uneSynth);
 
@@ -46,7 +45,7 @@ echo "
 <table width='100%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
    
    <tr class='enTeteTabNonQuad'>
-      <td colspan='3'><strong><center>Synthese global du mois de $mois $annee</center></strong></td>
+      <td colspan='3'><strong><center>Synthese global du $date</center></strong></td>
    </tr>
    <tr class='ligneTabNonQuad'>
       <td  width='50%'></td>

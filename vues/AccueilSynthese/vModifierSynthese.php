@@ -18,14 +18,13 @@ echo "<h2><center>Modification d'une Synthèse</center></h2>";
 
 // MODIFIER UNE SYNTHESE
 $uneSynth = SyntheseDAO::getOneById($id);
-$mois = $uneSynth->getMois();
-$annee = $uneSynth->getAnnee();
+$date = $uneSynth->getDate();
 $compte = $uneSynth->getCompte();
 $cb = $uneSynth->getCb();
 $espece = $uneSynth->getEspece();
 $cheque = $uneSynth->getCheque();
 
-$messageSynth = "$mois $annee";        // Alimentation du message de l'en-tête
+$messageSynth = "Synthese de $date";        // Alimentation du message de l'en-tête
 $action = "validerModifierSynth";
 
 echo "<form method='POST' action='cAccueil.php?'>

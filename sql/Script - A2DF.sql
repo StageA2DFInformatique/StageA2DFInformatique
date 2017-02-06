@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 03 Février 2017 à 13:07
+-- Généré le: Ven 03 Février 2017 à 16:34
 -- Version du serveur: 5.5.43-0ubuntu0.14.04.1
 -- Version de PHP: 5.5.9-1ubuntu4.9
 
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `Operations` (
   `designation` varchar(45) NOT NULL,
   `prix` varchar(8) NOT NULL,
   `type` varchar(10) NOT NULL,
-  `date` date DEFAULT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -286,6 +286,7 @@ INSERT INTO `Semaine5` (`id`, `designation`, `type`, `prix`) VALUES
 CREATE TABLE IF NOT EXISTS `Synthese` (
   `id` char(2) NOT NULL,
   `mois` varchar(9) NOT NULL,
+  `annee` char(4) NOT NULL,
   `compte` varchar(8) NOT NULL,
   `cb` varchar(8) NOT NULL,
   `espece` varchar(8) NOT NULL,
@@ -299,19 +300,19 @@ CREATE TABLE IF NOT EXISTS `Synthese` (
 -- Contenu de la table `Synthese`
 --
 
-INSERT INTO `Synthese` (`id`, `mois`, `compte`, `cb`, `espece`, `cheque`, `totalFinMois`, `totalMoisPlusUn`) VALUES
-('01', 'Octobre', '500', '250', '150', '200', '7902.9', '1386'),
-('02', 'Novembre', '', '', '', '', '6906.9', '1386'),
-('03', 'Décembre', '', '', '', '', '6906.9', '1386'),
-('04', 'Janvier', '', '', '', '', '2285', '2285'),
-('05', 'Février', '', '', '', '', '', ''),
-('06', 'Mars', '', '', '', '', '', ''),
-('07', 'Avril', '', '', '', '', '', ''),
-('08', 'Mai', '', '', '', '', '', ''),
-('09', 'Juin', '', '', '', '', '', ''),
-('10', 'Juillet', '', '', '', '', '', ''),
-('11', 'Aout', '', '', '', '', '', ''),
-('12', 'Septembre', '', '', '', '', '6906.9', '1386');
+INSERT INTO `Synthese` (`id`, `mois`, `annee`, `compte`, `cb`, `espece`, `cheque`, `totalFinMois`, `totalMoisPlusUn`) VALUES
+('01', 'Octobre', '2017', '250', '150', '200', '7902.9', '15305.8', '1386'),
+('02', 'Novembre', '2017', '', '', '', '', '6802.9', '1386'),
+('03', 'Décembre', '2017', '', '', '', '', '6906.9', '1386'),
+('04', 'Janvier', '2017', '', '', '', '', '6802.9', '1386'),
+('05', 'Février', '2017', '', '', '', '', '6802.9', '1386'),
+('06', 'Mars', '2017', '', '', '', '', '6802.9', '1386'),
+('07', 'Avril', '2017', '', '', '', '', '6802.9', '1386'),
+('08', 'Mai', '2017', '', '', '', '', '6802.9', '1386'),
+('09', 'Juin', '2017', '', '', '', '', '6802.9', '1386'),
+('10', 'Juillet', '2017', '', '', '', '', '6802.9', '1386'),
+('11', 'Aout', '2017', '', '', '', '', '6802.9', '1386'),
+('12', 'Septembre', '2017', '', '', '', '', '6802.9', '1386');
 
 -- --------------------------------------------------------
 

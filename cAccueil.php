@@ -36,16 +36,15 @@ switch ($action) {
 
     case 'validerModifierSynth':
         $id = $_REQUEST['id'];
+        $date = $_REQUEST['date'];
         $compte = $_REQUEST['compte'];
         $cb = $_REQUEST['cb'];
         $espece = $_REQUEST['espece'];
         $cheque = $_REQUEST['cheque'];
-        $mois = $_REQUEST['mois'];
-        $annee = $_REQUEST['annee'];
 
-        verifierDonneesSynthM($id, $mois,$annee, $compte, $cb, $espece, $cheque);
+        verifierDonneesSynthM($id, $date, $compte, $cb, $espece, $cheque);
         if (nbErreurs() == 0) {
-            $uneSynth = new Synthese($id, $mois,$annee, $compte, $cb, $espece, $cheque, $mois + $compte + $cb + $espece + $cheque, $mois + $compte + $cb + $espece + $cheque + 1);
+            $uneSynth = new Synthese($id, $date, $compte, $cb, $espece, $cheque, $compte + $cb + $espece + $cheque, $compte + $cb + $espece + $cheque + 1);
             SyntheseDAO::update($id, $uneSynth);
             include("vues/AccueilSynthese/vObtenirSynthese.php");
         } else {

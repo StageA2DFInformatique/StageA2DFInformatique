@@ -32,12 +32,11 @@ $lesSynthese = SyntheseDAO::getAll();
 // BOUCLE SUR LES SYNTHESES
 foreach ($lesSynthese as $laSynthese) {
     $id = $laSynthese->getId();
-    $mois = $laSynthese->getMois();
-    $annee = $laSynthese->getAnnee();
+    $date = $laSynthese->getDate();
     $totalFinMois = $laSynthese->getTotalFinMois();
     echo "
 		<tr class='ligneTabNonQuad'>
-         <td width='40%'>&nbsp Synthèse du mois de <strong>$mois $annee</strong></td>
+         <td width='40%'>&nbsp Synthèse de $date</strong></td>
              
          <td width='35%'>&nbsp <strong>Chiffre d'affaire du mois = </strong> $totalFinMois €</td>
          
