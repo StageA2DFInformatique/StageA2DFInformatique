@@ -38,7 +38,7 @@ require($repInclude . "_sommaire.inc.php");
 ?>
 <!-- Division pour le contenu principal -->
 <div id="contenu">
-    <h2>Identifiez - vous</h2>
+    <h2><center><strong>Identifiez - vous</strong></center></h2>
     <?php
     if ($etape == "validerConnexion") {
         if (nbErreurs($tabErreurs) > 0) {
@@ -51,11 +51,11 @@ require($repInclude . "_sommaire.inc.php");
             <div class="linkAccueil">
                 <input type="hidden" name="etape" id="etape" value="validerConnexion" />
                 <p>
-                    <label for="txtLogin" accesskey="n">Login* : </label>
+                    <label for="txtLogin" accesskey="n">Login : </label>
                     <input type="text" id="txtLogin" name="txtLogin" maxlength="40" size="40" value="" title="Entrez votre login" />
                 </p>
                 <p>
-                    <label for="txtMdp" accesskey="m">Mot de passe* : </label>
+                    <label for="txtMdp" accesskey="m">Mot de passe : </label>
                     <input type="password" id="txtMdp" name="txtMdp" maxlength="40" size="40" value=""  title="Entrez votre mot de passe"/>
                 </p>
             </div>

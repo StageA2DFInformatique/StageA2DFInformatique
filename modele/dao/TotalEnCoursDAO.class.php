@@ -61,7 +61,7 @@ class TotalEnCoursDAO implements IDAO {
     }
 
     public static function superSum() {
-        $requete = "SELECT SUM(prix) FROM `Operations` ";
+        $requete = "SELECT SUM(prix) FROM `Operations`";
         $stmt = Bdd::getPdo()->prepare($requete);
         $ok = $stmt->execute();
         return $stmt->fetchColumn(0);

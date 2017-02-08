@@ -9,23 +9,19 @@ require($repInclude . "_sommaire.inc.php");
 
 //Division principale
 echo '<div id="contenu">';
-echo "<h2><center>Saisie en cours</center></h2>";
+setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
+echo "<h2><center>Saisie au cours du mois de ". strftime("%B %Y") . "</center></h2>";
 
 use modele\dao\EnCoursDAO;
-use modele\dao\TotalEnCoursDAO;
-use modele\metier\TotalEnCours;
-use modele\metier\EnCours;
 use modele\dao\Bdd;
 
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 $id = 1;
-$unTotal = TotalEnCoursDAO::superSum();
+$unTotal = EnCoursDAO::superSum();
 if ($unTotal == '') {
     $unTotal = 0;
 }
-$tester = new TotalEnCours($id, $unTotal);
-TotalEnCoursDAO::update($id, $tester);
 
 // AFFICHER L'ENSEMBLE DES VENTE ET DEPANNAGE
 echo "

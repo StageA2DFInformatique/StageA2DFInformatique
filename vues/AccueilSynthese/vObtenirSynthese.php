@@ -13,7 +13,7 @@ echo "<h2><center>Accueil</center></h2>";
 
 use modele\dao\SyntheseDAO;
 use modele\dao\Bdd;
-
+use modele\dao\TotalEnCoursDAO;
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
@@ -32,8 +32,15 @@ $lesSynthese = SyntheseDAO::getAll();
 // BOUCLE SUR LES SYNTHESES
 foreach ($lesSynthese as $laSynthese) {
     $id = $laSynthese->getId();
-    $date = $laSynthese->getDate();
-    $totalFinMois = $laSynthese->getTotalFinMois();
+    $uneSynth = SyntheseDAO::getOneById($id);
+    $date = $uneSynth->getDate();
+    $compte = $uneSynth->getCompte();
+    $cb = $uneSynth->getCb();
+    $espece = $uneSynth->getEspece();
+    $cheque = $uneSynth->getCheque();
+    $totalFinMois = $uneSynth->getTotalFinMois();
+    $totalFinMois = $compte + $cb + $espece + $cheque + TotalEnCoursDAO::superSum();
+
     echo "
 		<tr class='ligneTabNonQuad'>
          <td width='40%'>&nbsp Synthèse de $date</strong></td>

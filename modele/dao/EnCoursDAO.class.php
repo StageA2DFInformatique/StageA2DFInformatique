@@ -116,5 +116,10 @@ class EnCoursDAO implements IDAO {
         $stmt->execute();
         return $stmt->fetchColumn(0);
     }
-
+    public static function superSum() {
+        $requete = "SELECT SUM(prix) FROM `Operations`";
+        $stmt = Bdd::getPdo()->prepare($requete);
+        $ok = $stmt->execute();
+        return $stmt->fetchColumn(0);
+    }
 }
