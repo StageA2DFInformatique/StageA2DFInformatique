@@ -65,10 +65,27 @@ echo "
       <tr class='enTeteTabNonQuad'>
          <td colspan='3'><strong><center>$messageOpe</center></strong></td>
       </tr>";
-
+// En cas de création, l'id est accessible sinon l'id est dans un champ
+// caché               
+if ($creation) {
+    // On utilise les guillemets comme délimiteur de champ dans l'echo afin
+    // de ne pas perdre les éventuelles quotes saisies (même si les quotes
+    // ne sont pas acceptées dans l'id, on a le souci de ré-afficher l'id
+    // tel qu'il a été saisi) 
+    echo '
+         <tr class="ligneTabNonQuad">
+            <td>&nbsp Id: </td>
+            <td><input type="text" value="' . $id . '" name="id" size ="30" 
+            maxlength="8"></td>
+         </tr>';
+} else {
+    echo "
+         <tr>
+            <td><input type='hidden' value='$id' name='id'></td><td></td>
+         </tr>";
+}
 
 echo '
-      <input type="hidden" value="' . $id . '" name="id" >
       <tr class="ligneTabNonQuad">
          <td>&nbsp Designation: </td>
          <td><input type="text" value="' . $designation . '" name="designation" size="30" 

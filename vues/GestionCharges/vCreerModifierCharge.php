@@ -52,7 +52,7 @@ if ($action == 'demanderCreerChrg' || $action == 'validerCreerChrg') {
     $action = "validerCreerChrg";
 } else {
     $creation = false;
-    $messageChrg = "$nom ($id)";            // Alimentation du message de l'en-tête
+    $messageChrg = "$nom";            // Alimentation du message de l'en-tête
     $action = "validerModifierChrg";
 }
 echo "<form method='POST' action='cGestionCharges.php?'>

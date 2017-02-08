@@ -26,7 +26,7 @@ class EnCoursDAO implements IDAO {
 
     /**
      * Valorise les paramètre d'une requête préparée avec l'état d'un objet EnCours
-     * @param type $objetMetier une EnCours
+     * @param type $objetMetier un EnCours
      * @param type $stmt requête préparée
      */
     protected static function metierVersEnreg($objetMetier, $stmt) {
@@ -40,8 +40,8 @@ class EnCoursDAO implements IDAO {
 
     /**
      * Insérer un nouvel enregistrement dans la table à partir de l'état d'un objet métier
-     * @param EnCours $objet objet métier à insérer
-     * @return boolean =FALSE si l'opération échoue
+     * @param Charges $objet objet métier à insérer
+     * @return boolean =FALSE si l'opérationn échoue
      */
     public static function insert($objet) {
         $requete = "INSERT INTO Operations VALUES (:id, :designation, :prix, :type, :date)";
@@ -54,7 +54,7 @@ class EnCoursDAO implements IDAO {
     /**
      * Mettre à jour enregistrement dans la table à partir de l'état d'un objet métier
      * @param string identifiant de l'enregistrement à mettre à jour
-     * @param EnCours $objet objet métier à mettre à jour
+     * @param Charges $objet objet métier à mettre à jour
      * @return boolean =FALSE si l'opération échoue
      */
     public static function update($id, $objet) {
@@ -105,8 +105,8 @@ class EnCoursDAO implements IDAO {
     }
 
     /**
-     * Permet de vérifier s'il existe ou non une EnCours ayant déjà le même identifiant dans la BD
-     * @param string $id identifiant de la EnCours à tester
+     * Permet de vérifier s'il existe ou non une Charge ayant déjà le même identifiant dans la BD
+     * @param string $id identifiant de la charge à tester
      * @return boolean =true si l'id existe déjà, =false sinon
      */
     public static function isAnExistingId($id) {
@@ -116,10 +116,12 @@ class EnCoursDAO implements IDAO {
         $stmt->execute();
         return $stmt->fetchColumn(0);
     }
+
     public static function superSum() {
         $requete = "SELECT SUM(prix) FROM `Operations`";
         $stmt = Bdd::getPdo()->prepare($requete);
         $ok = $stmt->execute();
         return $stmt->fetchColumn(0);
     }
+
 }

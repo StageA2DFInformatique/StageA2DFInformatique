@@ -12,8 +12,8 @@ echo '<div id="contenu">';
 echo "<h2><center>Accueil</center></h2>";
 
 use modele\dao\SyntheseDAO;
+use modele\dao\EnCoursDAO;
 use modele\dao\Bdd;
-use modele\dao\TotalEnCoursDAO;
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
@@ -39,7 +39,7 @@ foreach ($lesSynthese as $laSynthese) {
     $espece = $uneSynth->getEspece();
     $cheque = $uneSynth->getCheque();
     $totalFinMois = $uneSynth->getTotalFinMois();
-    $totalFinMois = $compte + $cb + $espece + $cheque + TotalEnCoursDAO::superSum();
+    $totalFinMois = $compte + $cb + $espece + $cheque + EnCoursDAO::superSum();
 
     echo "
 		<tr class='ligneTabNonQuad'>

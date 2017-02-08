@@ -32,7 +32,7 @@ echo "
 <table width='70%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
    
    <tr class='enTeteTabNonQuad'>
-      <td colspan='3'><strong><center>$nom ($id)</center></strong></td>
+      <td colspan='3'><strong><center>$nom</center></strong></td>
    </tr>
       <tr class='ligneTabNonQuad'>
       <td  width='50%'></td>

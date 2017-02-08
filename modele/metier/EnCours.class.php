@@ -20,6 +20,7 @@ class EnCours {
     private $prix;
     private $type;
     private $date;
+
     function __construct($id, $designation, $prix, $type, $date) {
         $this->id = $id;
         $this->designation = $designation;
@@ -27,6 +28,7 @@ class EnCours {
         $this->type = $type;
         $this->date = $date;
     }
+
     function getId() {
         return $this->id;
     }
@@ -66,6 +68,5 @@ class EnCours {
     function setDate($date) {
         $this->date = $date;
     }
-
 
 }

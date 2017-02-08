@@ -13,8 +13,7 @@ echo "<h2><center>Tableau de Synthèse globale</center></h2>";
 
 use modele\dao\SyntheseDAO;
 use modele\metier\Synthese;
-use modele\dao\TotalEnCoursDAO;
-use modele\dao\TotalSemaine5DAO;
+use modele\dao\EnCoursDAO;
 use modele\dao\Bdd;
 
 require_once __DIR__ . '/../../include/autoload.php';
@@ -31,8 +30,7 @@ $cheque = $uneSynth->getCheque();
 $totalFinMois = $uneSynth->getTotalFinMois();
 $totalMoisPlusUn = $uneSynth->getTotalMoisPlusUn();
 
-$totalFinMois = $compte + $cb + $espece + $cheque + TotalEnCoursDAO::superSum();
-$totalMoisPlusUn = TotalSemaine5DAO::superSum();
+$totalFinMois = $compte + $cb + $espece + $cheque + EnCoursDAO::superSum();
 $uneSynth = new Synthese($id, $date, $compte, $cb, $espece, $cheque, $totalFinMois, $totalMoisPlusUn);
 
 SyntheseDAO::update($id, $uneSynth);

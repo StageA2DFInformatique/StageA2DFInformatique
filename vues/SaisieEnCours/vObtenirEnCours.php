@@ -47,7 +47,6 @@ foreach ($lesOpes as $uneOpe) {
 
     echo "
     <tr class='ligneTabNonQuad'>
-        
         <td width='40%'><strong><center> $designation </center></strong></td>
         <td width='10%'>&nbsp $type </td> 
         <td width='8%'>&nbsp $prix € </td> 
