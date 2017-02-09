@@ -111,10 +111,16 @@ if ($type == 1) {
 }
 
 echo '
-           <tr class="ligneTabNonQuad">
+    
+      <tr class="ligneTabNonQuad">
          <td>&nbsp Valeur: </td>
          <td><input type="text" value="' . $prix . '" name="prix" size="30" 
          maxlength="8"></td>
+      </tr>
+            <tr class="ligneTabNonQuad">
+         <td>&nbsp Date: </td>
+         <td><input type="date" value="' . $date . '" name="date" size="30" 
+         maxlength="32"></td>
       </tr>';
 
 echo '</div>';

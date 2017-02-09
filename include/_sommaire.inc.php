@@ -14,8 +14,6 @@ include ($repInclude . "connexionBDD.php");
         <?php
         if (isset($_SESSION["loginUser"])) {
             $idUser = $_SESSION["idUser"];
-            $nom = $_SESSION['nomUser'];
-            $prenom = $_SESSION['prenomUser'];
             $login = $_SESSION['loginUser'];
         }
         ?>  

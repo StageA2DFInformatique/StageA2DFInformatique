@@ -6,9 +6,9 @@ use modele\metier\EnCours;
 use PDO;
 
 /**
- * Description of EnCoursDAO
- * Classe métier : EnCours
- * @author btssio
+ * Description of SyntheseDAO
+ * Classe métier : Synthese
+ * @author Charly
  */
 class EnCoursDAO implements IDAO {
 
@@ -24,11 +24,8 @@ class EnCoursDAO implements IDAO {
         return $uneOpe;
     }
 
-    /**
-     * Valorise les paramètre d'une requête préparée avec l'état d'un objet EnCours
-     * @param type $objetMetier un EnCours
-     * @param type $stmt requête préparée
-     */
+    /* Valorise les paramètre d'une requête préparée avec l'état d'un objet Synthese */
+
     protected static function metierVersEnreg($objetMetier, $stmt) {
         // On utilise bindValue plutôt que bindParam pour éviter des variables intermédiaires
         $stmt->bindValue(':id', $objetMetier->getId());
@@ -38,11 +35,8 @@ class EnCoursDAO implements IDAO {
         $stmt->bindValue(':date', $objetMetier->getDate());
     }
 
-    /**
-     * Insérer un nouvel enregistrement dans la table à partir de l'état d'un objet métier
-     * @param Charges $objet objet métier à insérer
-     * @return boolean =FALSE si l'opérationn échoue
-     */
+    /* Insérer un nouvel enregistrement dans la table à partir de l'état d'un objet métier */
+
     public static function insert($objet) {
         $requete = "INSERT INTO Operations VALUES (:id, :designation, :prix, :type, :date)";
         $stmt = Bdd::getPdo()->prepare($requete);
@@ -52,11 +46,7 @@ class EnCoursDAO implements IDAO {
     }
 
     /**
-     * Mettre à jour enregistrement dans la table à partir de l'état d'un objet métier
-     * @param string identifiant de l'enregistrement à mettre à jour
-     * @param Charges $objet objet métier à mettre à jour
-     * @return boolean =FALSE si l'opération échoue
-     */
+     * Mettre à jour enregistrement dans la table à partir de l'état d'un objet métier */
     public static function update($id, $objet) {
         $ok = false;
         $requete = "UPDATE  Operations SET DESIGNATION=:designation, PRIX=:prix, 
@@ -105,8 +95,8 @@ class EnCoursDAO implements IDAO {
     }
 
     /**
-     * Permet de vérifier s'il existe ou non une Charge ayant déjà le même identifiant dans la BD
-     * @param string $id identifiant de la charge à tester
+     * Permet de vérifier s'il existe ou non une Synthese ayant déjà le même identifiant dans la BD
+     * @param string id identifiant de la Synthese à tester
      * @return boolean =true si l'id existe déjà, =false sinon
      */
     public static function isAnExistingId($id) {

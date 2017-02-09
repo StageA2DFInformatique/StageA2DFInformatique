@@ -17,14 +17,14 @@ if ($etape == 'validerConnexion') { // un client demande à s'authentifier
     // acquisition des données envoyées, ici login et mot de passe
     $login = lireDonneePost("txtLogin");
     $mdp = lireDonneePost("txtMdp");
-    //ajout de la fontion sha1 qui prend en parametre le mot de passe non crypté saisit par l'utilisateur pour le crypter et le comparer a celui crypté dans la base de données
+    //ajout de la fontion sha1 qui prend en parametre le mot de passe non crypté saisit par l'utilisateur pour le crypter et le comparer à celui crypté dans la base de données
     $lgUser = verifierInfosConnexion($idConnexion, $login, sha1($mdp));
 
     // si l'id utilisateur a été trouvé, donc informations fournies sous forme de tableau
     $nbErreur = 0;
     if (is_array($lgUser)) {
         $lgUser = obtenirDetailVisiteur($idConnexion, $lgUser["id"]);
-        affecterInfosConnecte($lgUser["id"], $lgUser["login"], $lgUser['nom'], $lgUser['prenom']);
+        affecterInfosConnecte($lgUser["id"], $lgUser["login"]);
     } else {
         ajouterErreur($tabErreurs, "Pseudo et/ou mot de passe incorrects, veuillez réessayer s'il vous plait");
     }

@@ -57,7 +57,7 @@ switch ($action) {
         if ($action == 'validerCreerOpe') {
             verifierDonneesOpeC($id, $designation, $prix, $type, $date);
             if (nbErreurs() == 0) {
-                $uneOpe = new EnCoursDAO($id, $designation, $prix, $type, $date);
+                $uneOpe = new EnCours($id, $designation, $prix, $type, $date);
                 EnCoursDAO::insert($uneOpe);
                 include("vues/SaisieEnCours/vObtenirEnCours.php");
             } else {
@@ -66,7 +66,7 @@ switch ($action) {
         } else {
             verifierDonneesOpeM($id, $designation, $prix, $type, $date);
             if (nbErreurs() == 0) {
-                $uneOpe = new EnCoursDAO($id, $designation, $prix, $type, $date);
+                $uneOpe = new EnCours($id, $designation, $prix, $type, $date);
                 EnCoursDAO::update($id, $uneOpe);
                 include("vues/SaisieEnCours/vObtenirEnCours.php");
             } else {
