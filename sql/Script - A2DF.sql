@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 09 Février 2017 à 10:55
+-- Généré le: Ven 10 Février 2017 à 15:22
 -- Version du serveur: 5.5.43-0ubuntu0.14.04.1
 -- Version de PHP: 5.5.9-1ubuntu4.9
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `Charges` (
   `numTel` varchar(10) NOT NULL,
   `date` varchar(16) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `Charges`
@@ -43,8 +43,7 @@ CREATE TABLE IF NOT EXISTS `Charges` (
 INSERT INTO `Charges` (`id`, `nom`, `description`, `numContrat`, `numTel`, `date`) VALUES
 (1, 'JeSuisUneCharge', 'JeSuisUneDescription', '0123456789101112', '0123456788', 'après le 12'),
 (2, 'ChargeTest', 'DescriptionTest', '054564145E789SQ4', '0978451576', 'avant le 12'),
-(3, 'Ordi asus', 'JeSuisUneDescription', '0123456789101112', '0123456788', 'après le 12'),
-(4, 'Admin', '4547', '1274', '0632758978', 'après le 12');
+(3, 'Ordi asus', 'JeSuisUneDescription', '0123456789101112', '0123456788', 'après le 12');
 
 -- --------------------------------------------------------
 
@@ -62,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `Fournisseurs` (
   `adresseElectronique` varchar(70) DEFAULT NULL,
   `paiement` char(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `Fournisseurs`
@@ -70,8 +69,7 @@ CREATE TABLE IF NOT EXISTS `Fournisseurs` (
 
 INSERT INTO `Fournisseurs` (`id`, `nom`, `adresseRue`, `codePostal`, `ville`, `tel`, `adresseElectronique`, `paiement`) VALUES
 (1, 'FournisseurTest', '5rue hgfh Briand', '49876', 'st tropez', '0363036306', 'hfjkhdsf@ghfigif.fr', '548'),
-(2, 'FournisseurTest', '5rue hgfh Briand', '49876', 'st tropez', '0363036306', 'hfjkhdsf@ghfigif.fr', '548'),
-(4, 'Admin', 'gltuil', '44444', 'f', '0111111111', 'gjyuj@jyt.jhkhjk', '456');
+(2, 'FournisseurTest', '5rue hgfh Briand', '49876', 'st tropez', '0363036306', 'hfjkhdsf@ghfigif.fr', '548');
 
 -- --------------------------------------------------------
 
@@ -86,15 +84,19 @@ CREATE TABLE IF NOT EXISTS `Operations` (
   `type` varchar(10) NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=58 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=46550 ;
 
 --
 -- Contenu de la table `Operations`
 --
 
 INSERT INTO `Operations` (`id`, `designation`, `prix`, `type`, `date`) VALUES
-(1, 'Ordinateur Portable', '500', 'Vente', '2017-02-09'),
-(5, 'test', '490', 'Dépannage', '0000-00-00');
+(1, 'Ordinateur Portable', '500', 'Vente', '2017-02-08'),
+(2, 'test', '49.9', 'Dépannage', '2017-02-10'),
+(4, 'test', '490', 'Dépannage', '2017-02-09'),
+(3546, 'test', '490', 'Vente', '2017-02-10'),
+(46546, 'OrdiTest', '500', 'Vente', '2017-02-10'),
+(46548, 'fhbv', '54', 'Dépannage', '2017-02-10');
 
 -- --------------------------------------------------------
 
@@ -119,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `Synthese` (
 --
 
 INSERT INTO `Synthese` (`id`, `date`, `compte`, `cb`, `espece`, `cheque`, `totalFinMois`, `totalMoisPlusUn`) VALUES
-(1, '2017-02-01', '150', '200', '50', '50', '450', '451');
+(1, '2017-02-09', '150', '200', '50', '50', '2533.9', '0');
 
 -- --------------------------------------------------------
 
@@ -133,10 +135,6 @@ CREATE TABLE IF NOT EXISTS `Visiteur` (
   `prenom` char(30) DEFAULT NULL,
   `login` char(20) DEFAULT NULL,
   `mdp` char(40) DEFAULT NULL,
-  `adresse` char(30) DEFAULT NULL,
-  `cp` char(5) DEFAULT NULL,
-  `ville` char(30) DEFAULT NULL,
-  `dateEmbauche` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `id_3` (`id`),
@@ -148,8 +146,8 @@ CREATE TABLE IF NOT EXISTS `Visiteur` (
 -- Contenu de la table `Visiteur`
 --
 
-INSERT INTO `Visiteur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, `ville`, `dateEmbauche`) VALUES
-('', 'Admin', 'A2DF', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', '44330', 'Le Pallet', '0000-00-00');
+INSERT INTO `Visiteur` (`id`, `nom`, `prenom`, `login`, `mdp`) VALUES
+('1', 'BARAUD', 'François', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
