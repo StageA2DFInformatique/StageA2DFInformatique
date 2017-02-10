@@ -11,13 +11,11 @@ class Synthese {
     /**
      * @var string
      */
-    
     private $id;
-    
+
     /**
      * @var string
      */
-    
     private $date;
 
     /**
@@ -44,11 +42,12 @@ class Synthese {
      * @var string
      */
     private $totalFinMois;
-    
+
     /**
      * @var string
      */
     private $totalMoisPlusUn;
+
     function __construct($id, $date, $compte, $cb, $espece, $cheque, $totalFinMois, $totalMoisPlusUn) {
         $this->id = $id;
         $this->date = $date;
@@ -59,6 +58,7 @@ class Synthese {
         $this->totalFinMois = $totalFinMois;
         $this->totalMoisPlusUn = $totalMoisPlusUn;
     }
+
     function getId() {
         return $this->id;
     }
@@ -122,6 +122,5 @@ class Synthese {
     function setTotalMoisPlusUn($totalMoisPlusUn) {
         $this->totalMoisPlusUn = $totalMoisPlusUn;
     }
-
 
 }

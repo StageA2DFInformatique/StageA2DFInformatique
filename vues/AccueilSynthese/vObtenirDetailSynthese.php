@@ -31,6 +31,7 @@ $totalFinMois = $uneSynth->getTotalFinMois();
 $totalMoisPlusUn = $uneSynth->getTotalMoisPlusUn();
 
 $totalFinMois = $compte + $cb + $espece + $cheque + EnCoursDAO::superSum();
+
 $uneSynth = new Synthese($id, $date, $compte, $cb, $espece, $cheque, $totalFinMois, $totalMoisPlusUn);
 
 SyntheseDAO::update($id, $uneSynth);

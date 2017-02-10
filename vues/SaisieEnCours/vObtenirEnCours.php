@@ -10,7 +10,7 @@ require($repInclude . "_sommaire.inc.php");
 //Division principale
 echo '<div id="contenu">';
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
-echo "<h2><center>Saisie au cours du mois de ". strftime("%B %Y") . "</center></h2>";
+echo "<h2><center>Saisie au cours du mois de " . strftime("%B %Y") . "</center></h2>";
 
 use modele\dao\EnCoursDAO;
 use modele\dao\Bdd;

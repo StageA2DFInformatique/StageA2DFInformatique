@@ -14,6 +14,7 @@ echo "<h2><center>Accueil</center></h2>";
 use modele\dao\SyntheseDAO;
 use modele\dao\EnCoursDAO;
 use modele\dao\Bdd;
+
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 

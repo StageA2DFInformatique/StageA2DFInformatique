@@ -1,18 +1,6 @@
 <?php
 
 /**
- * Vérifie si une chaîne fournie est bien numérique entière positive.                     
- * 
- * Retrourne true si la valeur transmise $valeur ne contient pas d'autres 
- * caractères que des chiffres, false sinon.
- * @param string chaîne à vérifier
- * @return boolean succès ou échec
- */
-function estEntierPositif($valeur) {
-    return preg_match("/[^0-9]/", $valeur) == 0;
-}
-
-/**
  * Fournit la valeur d'une donnée transmise par la méthode get (url).                    
  * 
  * Retourne la valeur de la donnée portant le nom $nomDonnee reçue dans l'url, 
@@ -103,22 +91,6 @@ function toStringErreurs($tabErr) {
  */
 function filtrerChainePourNavig($str) {
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
-}
-
-// Si la valeur transmise ne contient pas d'autres caractères que des chiffres, 
-// la fonction retourne vrai
-function estEntier($valeur) {
-    return preg_match('/[^0-9]/', $valeur) != 1;
-}
-
-// Si la valeur transmise ne contient pas d'autres caractères que des chiffres  
-// et des lettres non accentuées, la fonction retourne vrai
-function estChiffresOuEtLettres($valeur) {
-    return preg_match('/[^a-zA-Z0-9]/', $valeur) != 1;
-}
-
-function estMail($valeur) {
-    return preg_match("/^[a-z0-9_\.-]+@([a-z0-9]+([\-]+[a-z0-9]+)*\.)+[a-z]{2,7}$/i", $valeur) != 1;
 }
 
 function razErreurs() {

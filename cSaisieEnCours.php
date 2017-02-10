@@ -86,13 +86,8 @@ function verifierDonneesOpeC($id, $designation, $prix, $type, $date) {
     if ($id != "") {
         // Si l'id est constitué d'autres caractères que de lettres non accentuées 
         // et de chiffres, une erreur est générée
-        if (!estChiffresOuEtLettres($id)) {
-            ajouterErreur
-                    ("L'identifiant doit comporter uniquement des lettres non accentuées et des chiffres");
-        } else {
-            if (EnCoursDAO::isAnExistingId($id)) {
-                ajouterErreur("La/Le $type $id existe déjà");
-            }
+        if (EnCoursDAO::isAnExistingId($id)) {
+            ajouterErreur("La/Le $type $id existe déjà");
         }
     }
 }

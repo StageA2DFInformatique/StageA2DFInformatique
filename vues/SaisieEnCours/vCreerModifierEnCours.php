@@ -17,7 +17,6 @@ use modele\dao\Bdd;
 
 require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
-setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 
 // CRÉER OU MODIFIER UNE VENTE OU UN DEPANNAGE
 // S'il s'agit d'une création et qu'on ne "vient" pas de ce formulaire (on 
@@ -28,7 +27,7 @@ if ($action == 'demanderCreerOpe') {
     $designation = '';
     $type = 1;
     $prix = '';
-    $date = '. strftime("%B %Y") . ';
+    $date = date("Y-m-d");
 }
 
 // S'il s'agit d'une modification et qu'on ne "vient" pas de ce formulaire, il
@@ -91,8 +90,7 @@ echo '
          <td><input type="text" value="' . $designation . '" name="designation" size="30" 
          maxlength="32"></td>
       </tr>
-
-     <input type="hidden" value="' . $date . '" name="date">
+      <input type="hidden" value="' . $date . '" name="date" >
       </tr>
     
       <tr class="ligneTabNonQuad">
@@ -111,16 +109,10 @@ if ($type == 1) {
 }
 
 echo '
-    
       <tr class="ligneTabNonQuad">
          <td>&nbsp Valeur: </td>
-         <td><input type="text" value="' . $prix . '" name="prix" size="30" 
-         maxlength="8"></td>
-      </tr>
-            <tr class="ligneTabNonQuad">
-         <td>&nbsp Date: </td>
-         <td><input type="date" value="' . $date . '" name="date" size="30" 
-         maxlength="32"></td>
+         <td><input type="text" value="' . $prix . '"name="prix" size="30" 
+         maxlength="8">€ </td>
       </tr>';
 
 echo '</div>';
