@@ -34,7 +34,9 @@ class FournisseursDAO implements IDAO {
      */
     protected static function metierVersEnreg($objetMetier, $stmt) {
         // On utilise bindValue plutôt que bindParam pour éviter des variables intermédiaires
-        $stmt->bindValue(':id', $objetMetier->getId());
+        if ($objetMetier->getId() != null) {
+            $stmt->bindValue(':id', $objetMetier->getId());
+        }
         $stmt->bindValue(':nom', $objetMetier->getNom());
         $stmt->bindValue(':rue', $objetMetier->getAdresse());
         $stmt->bindValue(':cdp', $objetMetier->getCdp());
@@ -50,7 +52,7 @@ class FournisseursDAO implements IDAO {
      * @return boolean =FALSE si l'opérationn échoue
      */
     public static function insert($objet) {
-        $requete = "INSERT INTO Fournisseurs VALUES (:id, :nom, :rue, :cdp, :ville, :tel, :email, :paiement)";
+        $requete = "INSERT INTO `Fournisseurs`(`nom`, `adresseRue`, `codePostal`, `ville`, `tel`, `adresseElectronique`, `paiement`) VALUES (:nom, :rue, :cdp, :ville, :tel, :email, :paiement)";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
         $ok = $stmt->execute();

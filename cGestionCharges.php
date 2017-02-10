@@ -51,7 +51,9 @@ switch ($action) {
         break;
 
     case 'validerCreerChrg':case 'validerModifierChrg':
-        $id = $_REQUEST['id'];
+        if (isset($_REQUEST['id'])) {
+            $id = $_REQUEST['id'];
+        }
         $nom = $_REQUEST['nom'];
         $description = $_REQUEST['description'];
         $numContrat = $_REQUEST['numContrat'];
@@ -59,9 +61,9 @@ switch ($action) {
         $date = $_REQUEST['date'];
 
         if ($action == 'validerCreerChrg') {
-            verifierDonneesChrgC($id, $nom, $description, $numContrat, $numTel, $date);
+            verifierDonneesChrgC($nom, $description, $numContrat, $numTel, $date);
             if (nbErreurs() == 0) {
-                $unChrg = new Charges($id, $nom, $description, $numContrat, $numTel, $date);
+                $unChrg = new Charges(null, $nom, $description, $numContrat, $numTel, $date);
                 ChargesDAO::insert($unChrg);
                 include("vues/GestionCharges/vObtenirCharge.php");
             } else {
@@ -82,22 +84,10 @@ switch ($action) {
 // Fermeture de la connexion au serveur MySql
 Bdd::deconnecter();
 
-function verifierDonneesChrgC($id, $nom, $description, $numContrat, $numTel, $date) {
-    if ($id == "" || $nom == "" || $description == "" || $numContrat == "" ||
+function verifierDonneesChrgC($nom, $description, $numContrat, $numTel, $date) {
+    if ($nom == "" || $description == "" || $numContrat == "" ||
             $numTel == "" || $date == "") {
         ajouterErreur('Chaque champ suivi du caractère * est obligatoire');
-    }
-    if ($id != "") {
-        // Si l'id est constitué d'autres caractères que de lettres non accentuées 
-        // et de chiffres, une erreur est générée
-        if (!estChiffresOuEtLettres($id)) {
-            ajouterErreur
-                    ("L'identifiant doit comporter uniquement des lettres non accentuées et des chiffres");
-        } else {
-            if (ChargesDAO::isAnExistingId($id)) {
-                ajouterErreur("La charge $id existe déjà");
-            }
-        }
     }
 }
 

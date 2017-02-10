@@ -28,7 +28,9 @@ class EnCoursDAO implements IDAO {
 
     protected static function metierVersEnreg($objetMetier, $stmt) {
         // On utilise bindValue plutôt que bindParam pour éviter des variables intermédiaires
-        $stmt->bindValue(':id', $objetMetier->getId());
+        if ($objetMetier->getId() != null) {
+            $stmt->bindValue(':id', $objetMetier->getId());
+        }
         $stmt->bindValue(':designation', $objetMetier->getDesignation());
         $stmt->bindValue(':prix', $objetMetier->getPrix());
         $stmt->bindValue(':type', $objetMetier->getType());
@@ -38,7 +40,7 @@ class EnCoursDAO implements IDAO {
     /* Insérer un nouvel enregistrement dans la table à partir de l'état d'un objet métier */
 
     public static function insert($objet) {
-        $requete = "INSERT INTO Operations VALUES (:id, :designation, :prix, :type, :date)";
+        $requete = "INSERT INTO Operations (`designation`, `prix`, `type`, `date`) VALUES (:designation, :prix, :type, :date)";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
         $ok = $stmt->execute();

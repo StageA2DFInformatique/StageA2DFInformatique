@@ -41,13 +41,10 @@ switch ($action) {
         include("vues/SaisieEnCours/vObtenirEnCours.php");
         break;
 
-    case 'validerSupprimerTouteOpe':
-        $uneOpe = EnCoursDAO::deleteAll();
-        include("vues/SaisieEnCours/vObtenirEnCours.php");
-        break;
-
     case 'validerCreerOpe':case 'validerModifierOpe':
-        $id = $_REQUEST['id'];
+        if (isset($_REQUEST['id'])) {
+            $id = $_REQUEST['id'];
+        }
         $designation = $_REQUEST['designation'];
         $prix = $_REQUEST['prix'];
         $type = $_REQUEST['type'];
@@ -55,9 +52,9 @@ switch ($action) {
 
 
         if ($action == 'validerCreerOpe') {
-            verifierDonneesOpeC($id, $designation, $prix, $type, $date);
+            verifierDonneesOpeC($designation, $prix, $type, $date);
             if (nbErreurs() == 0) {
-                $uneOpe = new EnCours($id, $designation, $prix, $type, $date);
+                $uneOpe = new EnCours(null, $designation, $prix, $type, $date);
                 EnCoursDAO::insert($uneOpe);
                 include("vues/SaisieEnCours/vObtenirEnCours.php");
             } else {
@@ -79,16 +76,9 @@ switch ($action) {
 // Fermeture de la connexion au serveur MySql
 Bdd::deconnecter();
 
-function verifierDonneesOpeC($id, $designation, $prix, $type, $date) {
-    if ($id == "" || $designation == "" || $prix == "" || $type == "" || $date == "") {
+function verifierDonneesOpeC($designation, $prix, $type, $date) {
+    if ($designation == "" || $prix == "" || $type == "" || $date == "") {
         ajouterErreur('Chaque champ suivi du caractère * est obligatoire');
-    }
-    if ($id != "") {
-        // Si l'id est constitué d'autres caractères que de lettres non accentuées 
-        // et de chiffres, une erreur est générée
-        if (EnCoursDAO::isAnExistingId($id)) {
-            ajouterErreur("La/Le $type $id existe déjà");
-        }
     }
 }
 
