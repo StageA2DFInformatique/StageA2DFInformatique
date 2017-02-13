@@ -29,7 +29,7 @@ echo "
 <table width='100%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
 
    <tr class='enTeteTabNonQuad'>
-      <td colspan='6'><strong><center>Saisie en Cours</center></strong></td>
+      <td colspan='6'><strong><center>Saisie de " . strftime("%B %Y") . "</center></strong></td>
    </tr>";
 echo "
     &nbsp&nbsp<a href = 'cSaisieEnCours.php?action=demanderCreerOpe'><img src='./images/add.png'title='Ajouter une vente ou un dépannage' /></a >

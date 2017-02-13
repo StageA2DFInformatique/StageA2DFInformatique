@@ -36,10 +36,10 @@ if ($action == 'demanderCreerOpe') {
 if ($action == 'demanderModifierOpe') {
     $uneOpe = EnCoursDAO::getOneById($id);
     /* @var $uneOpe EnCours */
+    $date = $uneOpe->getDate();
     $designation = $uneOpe->getDesignation();
     $type = $uneOpe->getType();
     $prix = $uneOpe->getPrix();
-    $date = $uneOpe->getDate();
 }
 
 // Initialisations en fonction du mode (création ou modification) 
