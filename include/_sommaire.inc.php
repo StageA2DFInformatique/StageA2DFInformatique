@@ -4,6 +4,7 @@
  * connexion ou non d'un utilisateur, et dans l'avenir, suivant le type de cet utilisateur 
  * @todo  RAS
  */
+setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 $repInclude = './include/';
 include ($repInclude . "connexionBDD.php");
 //include ($repInclude . "_bdGestionDonnees.lib.php");

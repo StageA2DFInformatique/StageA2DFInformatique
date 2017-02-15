@@ -6,6 +6,7 @@ if (!estVisiteurConnecte()) {
 }
 require($repInclude . "_entete.inc.html");
 require($repInclude . "_sommaire.inc.php");
+setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 
 //Division principale
 echo '<div id="contenu">';
@@ -44,7 +45,7 @@ foreach ($lesSynthese as $laSynthese) {
 
     echo "
 		<tr class='ligneTabNonQuad'>
-         <td width='40%'>&nbsp Synthèse de $date</strong></td>
+         <td width='40%'>&nbsp Synthèse de " . strftime("%B %Y") . "</strong></td>
              
          <td width='35%'>&nbsp <strong>Chiffre d'affaire du mois = </strong> $totalFinMois €</td>
          
