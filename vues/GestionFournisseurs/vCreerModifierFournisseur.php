@@ -66,6 +66,7 @@ echo "<form method='POST' action='cGestionFournisseurs.php?'>
          <td colspan='3'><strong><center>$messageFourni</center></strong></td>
       </tr>";
 
+echo ' <input type="hidden" value="' . $id . '" name="id">';
 echo '
       <tr class="ligneTabNonQuad">
          <td>&nbsp Nom: </td>

@@ -62,6 +62,7 @@ echo "<form method='POST' action='cGestionCharges.php?'>
          <td colspan='3'><strong><center>$messageChrg</center></strong></td>
       </tr>";
 
+echo ' <input type="hidden" value="' . $id . '" name="id">';
 echo '
       <tr class="ligneTabNonQuad">
          <td>&nbsp Nom: </td>

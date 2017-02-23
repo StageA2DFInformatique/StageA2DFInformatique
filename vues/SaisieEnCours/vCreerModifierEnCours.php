@@ -65,6 +65,9 @@ echo "
          <td colspan='3'><strong><center>$messageOpe</center></strong></td>
       </tr>";
 
+echo ' <input type="hidden" value="' . $id . '" name="id">';
+
+
 echo '
       <tr class="ligneTabNonQuad">
          <td>&nbsp Designation: </td>
