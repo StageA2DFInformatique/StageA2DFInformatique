@@ -72,8 +72,22 @@ class EnCoursDAO implements IDAO {
 
     public static function getAll() {
         $lesObjets = array();
-        $requete = "SELECT * FROM Operations ORDER by date";
+        $requete = "SELECT * FROM Operations ORDER by date DESC";
         $stmt = Bdd::getPdo()->prepare($requete);
+        $ok = $stmt->execute();
+        if ($ok) {
+            while ($enreg = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $lesObjets[] = self::enregVersMetier($enreg);
+            }
+        }
+        return $lesObjets;
+    }
+    
+        public static function getAllByDate($date) {
+        $lesObjets = array();
+        $requete = "SELECT * FROM Operations WHERE date LIKE ':date%' ORDER by date DESC";
+        $stmt = Bdd::getPdo()->prepare($requete);
+        $stmt->bindParam(':date', $date);
         $ok = $stmt->execute();
         if ($ok) {
             while ($enreg = $stmt->fetch(PDO::FETCH_ASSOC)) {
