@@ -34,9 +34,9 @@ include ($repInclude . "connexionBDD.php");
                 <li class="smenu">
                     <a href="cSaisieTableauBord.php" title="Tableau de bord">Tableau de bord</a>
                 </li>          
-                <li class="smenu">
+<!--                <li class="smenu">
                     <a href="cConsulterGraphique.php" title="Graphique">Graphique</a>
-                </li> 
+                </li> -->
                 <li class="smenu">
                     <a href="cGestionFournisseurs.php" title="Fournisseurs">Fournisseurs</a>
                 </li> 
