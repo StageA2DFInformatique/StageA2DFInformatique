@@ -48,22 +48,24 @@ switch ($action) {
         $designation = $_REQUEST['designation'];
         $prix = $_REQUEST['prix'];
         $type = $_REQUEST['type'];
-        $date = $_REQUEST['date'];
+        $jour = $_REQUEST['jour'];
+        $mois = $_REQUEST['mois'];
+        $annee = $_REQUEST['annee'];
 
 
         if ($action == 'validerCreerOpe') {
-            verifierDonneesOpeC($designation, $prix, $type, $date);
+            verifierDonneesOpeC($designation, $prix, $type, $jour, $mois, $annee);
             if (nbErreurs() == 0) {
-                $uneOpe = new EnCours(null, $designation, $prix, $type, $date);
+                $uneOpe = new EnCours(null, $designation, $prix, $type, $jour, $mois, $annee);
                 EnCoursDAO::insert($uneOpe);
                 include("vues/SaisieEnCours/vObtenirEnCours.php");
             } else {
                 include("vues/SaisieEnCours/vCreerModifierEnCours.php");
             }
         } else {
-            verifierDonneesOpeM($id, $designation, $prix, $type, $date);
+            verifierDonneesOpeM($id, $designation, $prix, $type, $jour, $mois, $annee);
             if (nbErreurs() == 0) {
-                $uneOpe = new EnCours($id, $designation, $prix, $type, $date);
+                $uneOpe = new EnCours($id, $designation, $prix, $type, $jour, $mois, $annee);
                 EnCoursDAO::update($id, $uneOpe);
                 include("vues/SaisieEnCours/vObtenirEnCours.php");
             } else {
@@ -76,14 +78,14 @@ switch ($action) {
 // Fermeture de la connexion au serveur MySql
 Bdd::deconnecter();
 
-function verifierDonneesOpeC($designation, $prix, $type, $date) {
-    if ($designation == "" || $prix == "" || $type == "" || $date == "") {
+function verifierDonneesOpeC($designation, $prix, $type, $jour, $mois, $annee) {
+    if ($designation == "" || $prix == "" || $type == "" || $jour == "" || $mois == "" || $annee == "") {
         ajouterErreur('Chaque champ suivi du caractère * est obligatoire');
     }
 }
 
-function verifierDonneesOpeM($id, $designation, $prix, $type, $date) {
-    if ($id == "" || $designation == "" || $prix == "" || $type == "" || $date == "") {
+function verifierDonneesOpeM($id, $designation, $prix, $type, $jour, $mois, $annee) {
+    if ($id == "" || $designation == "" || $prix == "" || $type == "" || $jour == "" || $mois == "" || $annee == "") {
         ajouterErreur('Chaque champ suivi du caractère * est obligatoire');
     }
 }
