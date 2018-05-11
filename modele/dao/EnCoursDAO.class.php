@@ -17,9 +17,11 @@ class EnCoursDAO implements IDAO {
         $designation = $enreg[strtoupper('designation')];
         $prix = $enreg[strtoupper('prix')];
         $type = $enreg[strtoupper('type')];
-        $date = $enreg[strtoupper('date')];
+        $jour = $enreg[strtoupper('jour')];
+        $mois = $enreg[strtoupper('mois')];
+        $annee = $enreg[strtoupper('annee')];
 
-        $uneOpe = new EnCours($id, $designation, $prix, $type, $date);
+        $uneOpe = new EnCours($id, $designation, $prix, $type, $jour, $mois, $annee);
 
         return $uneOpe;
     }
@@ -34,13 +36,15 @@ class EnCoursDAO implements IDAO {
         $stmt->bindValue(':designation', $objetMetier->getDesignation());
         $stmt->bindValue(':prix', $objetMetier->getPrix());
         $stmt->bindValue(':type', $objetMetier->getType());
-        $stmt->bindValue(':date', $objetMetier->getDate());
+        $stmt->bindValue(':jour', $objetMetier->getJour());
+        $stmt->bindValue(':mois', $objetMetier->getMois());
+        $stmt->bindValue(':annee', $objetMetier->getAnnee());
     }
 
     /* Insérer un nouvel enregistrement dans la table à partir de l'état d'un objet métier */
 
     public static function insert($objet) {
-        $requete = "INSERT INTO Operations (`designation`, `prix`, `type`, `date`) VALUES (:designation, :prix, :type, :date)";
+        $requete = "INSERT INTO Operations (`designation`, `prix`, `type`, `jour`, `mois`, `annee`) VALUES (:designation, :prix, :type, :jour, :mois, :annee)";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
         $ok = $stmt->execute();
@@ -52,7 +56,7 @@ class EnCoursDAO implements IDAO {
     public static function update($id, $objet) {
         $ok = false;
         $requete = "UPDATE  Operations SET DESIGNATION=:designation, PRIX=:prix, 
-                TYPE=:type, DATE=:date WHERE ID=:id";
+                TYPE=:type, JOUR=:jour, MOIS=:mois, ANNEE=:annee WHERE ID=:id";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
         $stmt->bindParam(':id', $id);
@@ -72,7 +76,7 @@ class EnCoursDAO implements IDAO {
 
     public static function getAll() {
         $lesObjets = array();
-        $requete = "SELECT * FROM Operations ORDER by date DESC";
+        $requete = "SELECT * FROM Operations";
         $stmt = Bdd::getPdo()->prepare($requete);
         $ok = $stmt->execute();
         if ($ok) {
@@ -82,12 +86,27 @@ class EnCoursDAO implements IDAO {
         }
         return $lesObjets;
     }
-    
-        public static function getAllByDate($date) {
+
+    public static function getByDate($mois) {
         $lesObjets = array();
-        $requete = "SELECT * FROM Operations WHERE date LIKE ':date%' ORDER by date DESC";
+        $requete = "SELECT * FROM Operations WHERE MOIS = :mois ORDER by MOIS DESC";
         $stmt = Bdd::getPdo()->prepare($requete);
-        $stmt->bindParam(':date', $date);
+        $stmt->bindParam(':mois', $mois);
+        $ok = $stmt->execute();
+        if ($ok) {
+            while ($enreg = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $lesObjets[] = self::enregVersMetier($enreg);
+            }
+        }
+        return $lesObjets;
+    }
+
+    public static function getByDateAnnee($mois, $annee) {
+        $lesObjets = array();
+        $requete = "SELECT * FROM Operations WHERE MOIS = :mois AND ANNEE = :annee ORDER by MOIS DESC";
+        $stmt = Bdd::getPdo()->prepare($requete);
+        $stmt->bindParam(':mois', $mois);
+        $stmt->bindParam(':annee', $annee);
         $ok = $stmt->execute();
         if ($ok) {
             while ($enreg = $stmt->fetch(PDO::FETCH_ASSOC)) {

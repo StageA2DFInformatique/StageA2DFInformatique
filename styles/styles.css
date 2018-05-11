@@ -197,7 +197,7 @@ input:hover, textarea:hover, select:hover{
 /* Style pour les liens de la page principale */
 #contenu a {
     font-size : 1.1em;
-    color:gray;
+    color:black;
     text-decoration:none;
 }
 #contenu a:hover {

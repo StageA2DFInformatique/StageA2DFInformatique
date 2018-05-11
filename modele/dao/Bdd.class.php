@@ -16,9 +16,9 @@ use \PDOException;
  * DSN MYSQL
  */
 define('HOTE', 'localhost');    // url du serveur de bases de données
-define('BD', 'a2df_informatique');       // nom de la base de données
-define('LOGIN', 'fbaraud');    // login d'un utilisateur de MySql avec des droits sur la BDD
-define('MDP', 'admin');        // mot de passe de cet utilisateur
+define('BD', 'cfleurance_stage');       // nom de la base de données
+define('LOGIN', 'cfleurance_stage');    // login d'un utilisateur de MySql avec des droits sur la BDD
+define('MDP', 'secret');        // mot de passe de cet utilisateur
 define('DSN', "mysql:host=" . HOTE . ";dbname=" . BD); // construction de la chaîne de connexion utilisée par PDO
 
 class Bdd {

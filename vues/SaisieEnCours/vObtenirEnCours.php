@@ -1,5 +1,7 @@
 <?php
 
+setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
+
 // page inaccessible si visiteur non connecté
 if (!estVisiteurConnecte()) {
     header("Location: cSeConnecter.php");
@@ -9,7 +11,6 @@ require($repInclude . "_sommaire.inc.php");
 
 //Division principale
 echo '<div id="contenu">';
-setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 $mois = array('01' => 'Janvier', '02' => 'Fevrier', '03' => 'Mars',
     '04' => 'Avril', '05' => 'Mai', '06' => 'Juin', '07' => 'Juillet',
     '08' => 'Aout', '09' => 'Septembre', '10' => 'Octobre', '11' => 'Novembre', '12' => 'Decembre');
@@ -78,7 +79,7 @@ if (!isset($_GET['mois'])) {
 echo "</tr>";
 echo "
     &nbsp&nbsp<a href = 'cSaisieEnCours.php?action=demanderCreerOpe'><img src='./images/add.png'title='Ajouter une vente ou un dépannage' /></a >
-    &nbsp&nbsp<strong> Total = $unTotal € </strong>";
+    &nbsp&nbsp<strong> Total du mois = $unTotal € </strong>";
 
 if (!isset($_GET['mois'])) {
     $indexMois = sprintf("%02d", strftime("%m"));
@@ -88,21 +89,23 @@ if (!isset($_GET['mois'])) {
     $date = $_GET['annee'] . "-" . $_GET['mois'];
 }
 
-$lesOpes = EnCoursDAO::getAllByDate($date);
+$lesOpes = EnCoursDAO::getByDateAnnee($indexMois,$annee);
 // BOUCLE SUR LES OPERATIONS
 foreach ($lesOpes as $uneOpe) {
     $id = $uneOpe->getId();
     $designation = $uneOpe->getDesignation();
     $type = $uneOpe->getType();
     $prix = $uneOpe->getPrix();
-    $date = $uneOpe->getDate();
+    $jour = $uneOpe->getJour();
+    $mois = $uneOpe->getMois();
+    $annee = $uneOpe->getAnnee();
 
     echo "
     <tr class='ligneTabNonQuad'>
         <td width='40%'><strong><center> $designation </center></strong></td>
         <td width='10%'>&nbsp $type </td> 
         <td width='8%'>&nbsp $prix € </td> 
-        <td width='8%'>&nbsp $date </td> 
+        <td width='15%'>&nbsp Effectué le $jour/$mois</td> 
         <td width='1%' align='center'><a href='cSaisieEnCours.php?action=demanderModifierOpe&id=$id'><img src='./images/modifier.png'title='Modifier' /></a>
         <td width='1%' align='center'><a href='cSaisieEnCours.php?action=demanderSupprimerOpe&id=$id'><img src='./images/supprimer.png' title='Supprimer' /></a>
     </tr>";

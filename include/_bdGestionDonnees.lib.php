@@ -12,8 +12,8 @@ $repInclude = './include/';
 
 function connecterServeurBD() {
     $hote = "localhost";
-    $login = "fbaraud";
-    $mdp = "admin";
+    $login = "cfleurance_stage";
+    $mdp = "secret";
     return mysqli_connect($hote, $login, $mdp);
 }
 
@@ -25,7 +25,7 @@ function connecterServeurBD() {
  * @return boolean succ�s ou �chec de s�lection BD 
  */
 function activerBD($idCnx) {
-    $bd = "a2df_informatique";
+    $bd = "cfleurance_stage";
     $query = "SET CHARACTER SET utf8";
     // Modification du jeu de caract�res de la connexion
     $res = mysqli_query($idCnx, $query);
@@ -52,7 +52,7 @@ function deconnecterServeurBD($idCnx) {
  * @return string cha�ne �chapp�e 
  */
 function filtrerChainePourBD($str) {
-    $cnx = mysqli_connect("localhost", "fbaraud", "admin", "a2df_informatique");
+    $cnx = mysqli_connect("localhost", "cfleurance_stage", "secret", "cfleurance_stage");
     if (!get_magic_quotes_gpc()) {
         // si la directive de configuration magic_quotes_gpc est activ�e dans php.ini,
         // toute cha�ne re�ue par get, post ou cookie est d�j� �chapp�e 

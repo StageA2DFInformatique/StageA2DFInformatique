@@ -27,7 +27,9 @@ if ($action == 'demanderCreerOpe') {
     $designation = '';
     $type = 1;
     $prix = '';
-    $date = date("Y-m-d");
+    $jour = '';
+    $mois = '';
+    $annee = '';
 }
 
 // S'il s'agit d'une modification et qu'on ne "vient" pas de ce formulaire, il
@@ -36,7 +38,9 @@ if ($action == 'demanderCreerOpe') {
 if ($action == 'demanderModifierOpe') {
     $uneOpe = EnCoursDAO::getOneById($id);
     /* @var $uneOpe EnCours */
-    $date = $uneOpe->getDate();
+    $jour = $uneOpe->getJour();
+    $mois = $uneOpe->getMois();
+    $annee = $uneOpe->getAnnee();
     $designation = $uneOpe->getDesignation();
     $type = $uneOpe->getType();
     $prix = $uneOpe->getPrix();
@@ -59,7 +63,7 @@ echo "
     <form method='POST' action='cSaisieEnCours.php?'>
    <input type='hidden' value='$action' name='action'>
        <br>
-      <table width='65%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
+      <table width='85%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
          
       <tr class='enTeteTabNonQuad'>
          <td colspan='3'><strong><center>$messageOpe</center></strong></td>
@@ -74,9 +78,7 @@ echo '
          <td><input type="text" value="' . $designation . '" name="designation" size="30" 
          maxlength="32"></td>
       </tr>
-      <input type="hidden" value="' . $date . '" name="date" >
-      </tr>
-    
+         
       <tr class="ligneTabNonQuad">
          <td>&nbsp Type: </td>
          <td>';
@@ -97,6 +99,21 @@ echo '
          <td>&nbsp Valeur: </td>
          <td><input type="text" value="' . $prix . '"name="prix" size="30" 
          maxlength="8">€ </td>
+      </tr>
+      <tr class="ligneTabNonQuad">
+         <td>&nbsp Jour: </td>
+         <td><input type="text" value="' . $jour . '"name="jour" size="30" 
+         maxlength="2"> </td>
+      </tr>
+      <tr class="ligneTabNonQuad">
+         <td>&nbsp Mois (Janvier = 01, Février = 02 etc...): </td>
+         <td><input type="text" value="' . $mois . '"name="mois" size="30" 
+         maxlength="2"> </td>
+      </tr>
+      <tr class="ligneTabNonQuad">
+         <td>&nbsp Année: </td>
+         <td><input type="text" value="' . $annee . '"name="annee" size="30" 
+         maxlength="4"> </td>
       </tr>';
 
 echo '</div>';

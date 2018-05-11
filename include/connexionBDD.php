@@ -8,10 +8,10 @@
 /* Modification des paramètres de connexion */
 
 $serveur = 'mysql:host=localhost';
-$nomBDD = 'a2df_informatique';
+$nomBDD = 'cfleurance_stage';
 $bdd = 'dbname=' . $nomBDD;
-$user = 'fbaraud';
-$mdp = 'admin';
+$user = 'cfleurance_stage';
+$mdp = 'secret';
 
 /* fin paramètres */
 /* tentative de connexion a la base de donnée */

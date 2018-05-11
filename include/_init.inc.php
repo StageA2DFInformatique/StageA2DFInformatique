@@ -24,6 +24,6 @@ $idConnexion = connecterServeurBD();
 if (!$idConnexion) {
     ajouterErreur($tabErreurs, "Echec de la connexion au serveur MySql");
 } elseif (!activerBD($idConnexion)) {
-    ajouterErreur($tabErreurs, "La base de données a2df_informatique est inexistante ou non accessible");
+    ajouterErreur($tabErreurs, "La base de données cfleurance_stage est inexistante ou non accessible");
 }
 ?>

@@ -19,14 +19,18 @@ class EnCours {
     private $designation;
     private $prix;
     private $type;
-    private $date;
+    private $jour;
+    private $mois;
+    private $annee;
 
-    function __construct($id, $designation, $prix, $type, $date) {
+    function __construct($id, $designation, $prix, $type, $jour, $mois, $annee) {
         $this->id = $id;
         $this->designation = $designation;
         $this->prix = $prix;
         $this->type = $type;
-        $this->date = $date;
+        $this->jour = $jour;
+        $this->mois = $mois;
+        $this->annee = $annee;
     }
 
     function getId() {
@@ -45,8 +49,16 @@ class EnCours {
         return $this->type;
     }
 
-    function getDate() {
-        return $this->date;
+    function getJour() {
+        return $this->jour;
+    }
+
+    function getMois() {
+        return $this->mois;
+    }
+
+    function getAnnee() {
+        return $this->annee;
     }
 
     function setId($id) {
@@ -65,8 +77,16 @@ class EnCours {
         $this->type = $type;
     }
 
-    function setDate($date) {
-        $this->date = $date;
+    function setJour($jour) {
+        $this->jour = $jour;
+    }
+
+    function setMois($mois) {
+        $this->mois = $mois;
+    }
+
+    function setAnnee($annee) {
+        $this->annee = $annee;
     }
 
 }

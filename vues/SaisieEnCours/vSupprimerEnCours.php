@@ -19,7 +19,7 @@ require_once __DIR__ . '/../../include/autoload.php';
 Bdd::connecter();
 
 
-// SUPPRIMER LE FOURNISSEUR SÉLECTIONNÉ
+// SUPPRIMER L'OPERATION SÉLECTIONNÉE
 
 $id = $_REQUEST['id'];  // Non obligatoire mais plus propre
 $uneOpe = EnCoursDAO::getOneById($id);
@@ -27,10 +27,12 @@ $uneOpe = EnCoursDAO::getOneById($id);
 $designation = $uneOpe->getDesignation();
 $prix = $uneOpe->getPrix();
 $type = $uneOpe->getType();
-$date = $uneOpe->getDate();
+$jour = $uneOpe->getjour();
+$mois = $uneOpe->getMois();
+$annee = $uneOpe->getAnnee();
 
 echo "
-<br><center>Voulez-vous vraiment supprimer le $type $designation d'une valeur de $prix et datant du $date ?
+<br><center>Voulez-vous vraiment supprimer le $type $designation d'une valeur de $prix et datant du $jour/$mois/$annee ?
 <h3><br>
 <a href='cSaisieEnCours.php?action=validerSupprimerOpe&id=$id'>Oui</a>
 &nbsp; &nbsp; &nbsp; &nbsp;
